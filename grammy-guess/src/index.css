@@ -92,6 +92,7 @@ a {
   bottom: 5.25rem;
   left: -1rem;
   z-index: 1;
+  cursor: pointer;
 }
 
 @media all and (min-width: 768px) {
@@ -101,7 +102,7 @@ a {
   }
 }
 
-main {
+.nomineeListSection {
   display: flex;
   gap: 9rem;
   padding: 0 9rem 0 7rem;
@@ -116,7 +117,11 @@ main {
 
 .nomineeImg {
   margin-bottom: .95rem;
-  filter: drop-shadow(0px 16px 40px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0px 16px 16px rgba(0, 0, 0, 0.2));
+}
+
+.nomineeImg:hover {
+  filter: drop-shadow(0px 16px 16px rgba(0, 0, 0, 0.2)) brightness(50%);
 }
 
 .nomineeName {
@@ -135,4 +140,34 @@ main {
   line-height: 1.66;
   letter-spacing: -.25px;
   text-transform: uppercase;
+}
+
+.loginBtn,
+.logoutBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 13px 31px;
+  background-color: #1ED760;
+  border: 1px solid #878787;
+  border-radius: 50px;
+  font-family: Helvetica;
+  font-weight: 700;
+  cursor: pointer;
+
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.loginBtn:hover,
+.logoutBtn:hover {
+  background-color: #1FDF64;
+}
+
+.voteBtn,
+.voteMsg {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
 }

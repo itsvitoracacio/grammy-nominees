@@ -1,5 +1,4 @@
-const Header = (props) => {
-  const currentAwardName = 'Best Rap Album'
+const Header = ({ currentAwardName }) => {
 
   return (
     <header>
