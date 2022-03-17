@@ -1,4 +1,4 @@
-const Awards = [
+const AllAwards = [
   {
     categoryName: 'Rap',
     categoryAwards: [
@@ -118,4 +118,4 @@ const Awards = [
   
 ]
 
-export default Awards
+export default AllAwards

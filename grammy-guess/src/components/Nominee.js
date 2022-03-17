@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react'
 
 const Nominee = ({eachAward, eachNominee, token}) => {
 
+  // console.log(token)
+
   const { imgShownType, awardTarget } = eachAward
   const { nomineeName, nomineeArtistName } = eachNominee
   const altText = `${nomineeArtistName}'s ${nomineeName} ${imgShownType}`

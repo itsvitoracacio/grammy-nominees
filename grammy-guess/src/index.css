@@ -59,11 +59,12 @@ body {
 header {
   text-align: right;
   position: fixed;
-  right: 4.7vw;
+  /* right: 4.7vw; */
 }
 
 .logoAwardEdition {
   width: 85%;
+  margin-right: 4.7vw;
 }
 
 h1 {
@@ -72,6 +73,9 @@ h1 {
   font-weight: 400;
   line-height: 1em;
   text-align: right;
+  position: fixed;
+  top: clamp(3rem, 10vw, 8rem);
+  right: 4.7vw;
 }
 
 a {
@@ -80,7 +84,7 @@ a {
   display: inline;
 }
 
-.navToggle {
+.sidebarOpenBtn {
   font-family: HelveticaNeueRoman, sans-serif;
   font-size: clamp(1rem, 3vw, 1.6rem);
   font-weight: 500;
@@ -89,17 +93,117 @@ a {
   color: rgba(0, 0, 0, 0.6);
   transform: rotate(-90deg);
   position: fixed;
-  bottom: 5.25rem;
-  left: -1rem;
-  z-index: 1;
+  bottom: 6rem;
+  left: -3rem;
+  z-index: 2;
   cursor: pointer;
+  transition: all 0.4s ease-out;
 }
 
 @media all and (min-width: 768px) {
-  .navToggle {
-    bottom: 6.5rem;
-    left: -3rem;
+  .sidebarOpenBtn {
+    bottom: 8rem;
+    left: -4.5rem;
   }
+}
+
+.sidebarToggle {
+  display: none;
+}
+
+.sidebarToggle:checked ~ .sidebar {
+  transform: translateX(0);
+  opacity: 0.98;
+}
+
+.sidebarToggle:checked ~ .sidebarOpenBtn {
+  transform: rotate(-90deg) translatey(32vw);
+  transition: all 0.4s ease-out;
+}
+
+.sidebar {
+  background-color: #fff;
+  opacity: 0.5;
+  height: 100vh;
+  width: 33vw;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  transform: translateX(-100%);
+  transition: all 0.4s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 1.5rem 1rem;
+  font-family: HelveticaNeueRoman, sans-serif;
+  font-size: 1rem;
+  box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sidebarLogo {
+  width: 12rem;
+  margin-bottom: 1rem;
+}
+
+.spotifyLoginArea {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+}
+
+.userName {
+  font-family: HelveticaNeueBold;
+  font-weight: 700;
+}
+
+.belowLoginMsg {
+  line-height: 1.3;
+  color: #878787;
+}
+
+.logoutBtn {
+  color: #878787;
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.logoutBtn:hover {
+  text-decoration: underline;
+}
+
+nav {
+  align-self: flex-start;
+}
+
+.awardsList {
+  margin: 0;
+  margin-bottom: 2rem;
+  padding: 0;
+  list-style-type: none;
+}
+
+.awardsList label {
+  font-family: HelveticaNeueBold;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.awardsList li {
+  margin: .5rem 0;
+}
+
+.awardsList label + li {
+  margin: 1rem 0 .5rem;
+}
+
+.sidebarCloseBtn {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 1;
 }
 
 .nomineeListSection {
@@ -143,7 +247,7 @@ a {
 }
 
 .loginBtn,
-.logoutBtn {
+.spotifyBtn {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -154,14 +258,15 @@ a {
   font-family: Helvetica;
   font-weight: 700;
   cursor: pointer;
-
-  position: fixed;
-  bottom: 0;
-  right: 0;
+  font-size: 1rem;
+  text-align: center;
 }
 
-.loginBtn:hover,
-.logoutBtn:hover {
+.loginBtn {
+  margin-bottom: 1rem;
+}
+
+.loginBtn:hover {
   background-color: #1FDF64;
 }
 

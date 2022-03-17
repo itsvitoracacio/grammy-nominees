@@ -1,11 +1,14 @@
 import {useEffect, useState} from 'react'
 import Header from './components/Header'
-import NomineeList from './components/NomineeList'
-import Nav from './components/Nav'
-import Vote from './components/Vote'
+import Sidebar from './components/Sidebar'
+import AwardsPage from './templates/AwardsPage'
+import { Routes, Route } from 'react-router-dom'
+import Home from './templates/Home'
+import AboutPage from './templates/AboutPage'
 
 function App() {
-  const currentAwardName = 'Best Rap Song'
+
+  // const currentAwardName = 'Best Rap Song'
   // const currentAwardName = 'Record of the Year'
 
   const authCreds = {
@@ -39,15 +42,15 @@ function App() {
 
   return (
     <>
-      <Header currentAwardName={currentAwardName}/>
-      {!token ?
-        <a className='loginBtn' href={`${authCreds.AUTH_ENDPOINT}?client_id=${authCreds.CLIENT_ID}&redirect_uri=${authCreds.REDIRECT_URI}&response_type=${authCreds.RESPONSE_TYPE}`}>Login to Spotify</a> :
-        <button className='logoutBtn' onClick={logout}>Logout</button>}
-
-      <Nav />
+      <Header />
+      <Sidebar token={token} authCreds={authCreds} logout={logout}/>
       <main>
-        <NomineeList  currentAwardName={currentAwardName} token={token}/>
-        <Vote currentAwardName={currentAwardName} token={token} authCreds={authCreds}/>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<AboutPage />} />
+          <Route path='/award/:awardName' element={<AwardsPage token={token}/>} />
+        </Routes>
+        {/* <AwardsPage token={token} authCreds={authCreds} currentAwardName={currentAwardName} /> */}
       </main>
     </>
   );

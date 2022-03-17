@@ -1,22 +1,31 @@
 import { Link } from 'react-router-dom'
-import SpotifyLoginArea from './SpotifyLoginArea'
+import AllAwards from '../extra/AllAwards'
 
 const Nav = () => {
   return (
-    <>
-      <span className="navToggle">view awards</span>
-      <div className='sidebar'>
-        <img className='sidebarLogo'/>
-        <SpotifyLoginArea />
-        <ul>
+    <nav>
 
-        </ul>
-        <ul>
-          <span>Rap</span>
-          <li></li>
-        </ul>
-      </div>
-    </>
+      {AllAwards.map(category => {
+
+        return (
+          <ul className='awardsList' key={category.categoryName}>
+            <label>{category.categoryName}</label>
+
+            {category.categoryAwards.map(award => {
+
+              return (
+                
+                <li key={award.awardName}><Link to={`/award/${award.awardName}`}>{award.awardName}</Link></li>
+                
+              )
+            })}
+            
+
+          </ul>
+        )
+      })}
+
+    </nav>
   )
 }
 
