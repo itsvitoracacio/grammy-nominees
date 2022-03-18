@@ -4,7 +4,7 @@
 import { useParams } from 'react-router-dom'
 import NomineeList from '../components/NomineeList'
 
-const AwardsPage = ({ token }) => {
+const AwardsPage = ({ userToken }) => {
 
   // const [isLoading, setIsLoading] = useState(true)
 
@@ -15,7 +15,7 @@ const AwardsPage = ({ token }) => {
   return (
     <>
       <h1>{awardName}</h1>
-      <NomineeList awardName={awardName} token={token}/>
+      <NomineeList awardName={awardName} userToken={userToken}/>
     </>
   )
 

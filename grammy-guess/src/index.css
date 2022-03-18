@@ -49,16 +49,36 @@ margin */
   font-display: swap;
 }
 
-/* Base elements */
+/* Layout */
+/* ALL PAGES LAYOUT */
 body {
-  height: 97vh;
-  padding: .5rem 0 0 7rem;
+  min-height: 97vh; /* sera? */
+  /* padding: .5rem 0 0 0; */
+  margin-bottom: 0;
+  
 }
 
+h1 {
+  position: fixed;
+  top: clamp(3.5rem, 12vw, 8.5rem);
+  right: 4.7vw;
+}
 
+main {
+  /* margin: 0 auto; */
+  padding-bottom: 1rem;
+  padding-top: clamp(10rem, 27vw, 15rem);
+  /* height: 100vh; */
+}
+/* END OF ALL PAGES LAYOUT */
+
+
+/* HEADER LAYOUT */
 header {
   text-align: right;
   position: fixed;
+  padding-top: .5rem;
+  padding-bottom: 6rem;
   /* right: 4.7vw; */
 }
 
@@ -66,37 +86,16 @@ header {
   width: 85%;
   margin-right: 4.7vw;
 }
+/* END OF HEADER LAYOUT */
 
-h1 {
-  font-family: HelveticaNeueMedium, sans-serif;
-  font-size: clamp(1.25rem, 5vw, 2.9625rem);
-  font-weight: 400;
-  line-height: 1em;
-  text-align: right;
-  position: fixed;
-  top: clamp(3rem, 10vw, 8rem);
-  right: 4.7vw;
-}
 
-a {
-  text-decoration: none;
-  color: #000;
-  display: inline;
-}
-
+/* SIDEBAR LAYOUT */
 .sidebarOpenBtn {
-  font-family: HelveticaNeueRoman, sans-serif;
-  font-size: clamp(1rem, 3vw, 1.6rem);
-  font-weight: 500;
-  line-height: 1;
-  letter-spacing: 0.12em;
-  color: rgba(0, 0, 0, 0.6);
   transform: rotate(-90deg);
   position: fixed;
   bottom: 6rem;
   left: -3rem;
   z-index: 2;
-  cursor: pointer;
   transition: all 0.4s ease-out;
 }
 
@@ -122,8 +121,7 @@ a {
 }
 
 .sidebar {
-  background-color: #fff;
-  opacity: 0.5;
+  /* Sidebar layout */
   height: 100vh;
   width: 33vw;
   position: fixed;
@@ -132,14 +130,15 @@ a {
   z-index: 1;
   transform: translateX(-100%);
   transition: all 0.4s ease-out;
+  
+  /* Sidebar as a container */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   padding: 3rem 1.5rem 1rem;
-  font-family: HelveticaNeueRoman, sans-serif;
-  font-size: 1rem;
-  box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .sidebarLogo {
@@ -151,7 +150,164 @@ a {
   text-align: center;
   display: flex;
   flex-direction: column;
+  margin: 2rem 0 1rem;
+}
+
+.loginBtn {
+  margin-bottom: 1rem;
+}
+
+.shareBtn {
   margin: 2rem 0;
+}
+
+nav {
+  align-self: flex-start;
+}
+
+.awardsList {
+  margin: 0;
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.awardsList li {
+  margin: .4rem 0;
+}
+
+.awardsList label + li {
+  margin-top: 1rem;
+}
+
+.sidebarCloseBtn {
+  position: absolute;
+  right: 2rem;
+  bottom: 2rem;
+  z-index: 1;
+}
+/* END OF SIDEBAR LAYOUT */
+
+/* FOOTER LAYOUT */
+footer {
+  /* position: fixed;  */
+  bottom: 0;
+  padding: 0 12.5vw;
+  /* margin: 0 auto; */
+  /* margin-bottom: 1.5rem; */
+}
+
+footer span {
+  display: block;
+}
+/* END OF FOOTER LAYOUT */
+
+
+/* HOME AND ABOUT PAGE LAYOUT */
+.textPage {
+  /* border: 1px solid red; */
+  padding: 0 12.5vw;
+  margin-top: 9rem;
+}
+
+
+.textPage p {
+  margin: 3rem 0;
+}
+
+.textPage p:first-of-type {
+  margin-top: 0;
+}
+/* END OF HOME AND ABOUT PAGE LAYOUT */
+
+
+/* AWARDS PAGE LAYOUT */
+.nomineeListSection {
+  display: flex;
+  gap: 9rem;
+  padding-left: 12rem;
+  /* padding-right: 10rem !important; */
+  margin-top: 5rem;
+  /* position: absolute;
+  top: 45vh; */
+}
+
+.nominee {
+  display: flex;
+  flex-direction: column;
+}
+
+.nomineeImg {
+  margin-bottom: .95rem;
+}
+/* END OF AWARDS PAGE LAYOUT */
+
+
+
+
+
+
+
+/* Components design */
+header {
+  background-color: #fff;
+}
+
+h1 {
+  font-family: HelveticaNeueMedium, sans-serif;
+  font-size: clamp(1.25rem, 5vw, 2.9625rem);
+  font-weight: 400;
+  line-height: 1em;
+  /* text-align: right; */
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+  display: inline;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+/* SIDEBAR ELEMENTS DESIGN */
+.sidebarOpenBtn {
+  font-family: HelveticaNeueRoman, sans-serif;
+  font-size: clamp(1rem, 3vw, 1.6rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
+
+.sidebar {
+  font-family: HelveticaNeueRoman, sans-serif;
+  font-size: 1rem;
+  background-color: #fff;
+  opacity: 0.5;
+  box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loginBtn,
+.spotifyBtn {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 13px 31px;
+  background-color: #1ED760;
+  border: 1px solid #878787;
+  border-radius: 50px;
+  font-family: Helvetica;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.spotifyBtn:hover {
+  background-color: #1FDF64;
 }
 
 .userName {
@@ -174,14 +330,7 @@ a {
   text-decoration: underline;
 }
 
-nav {
-  align-self: flex-start;
-}
-
 .awardsList {
-  margin: 0;
-  margin-bottom: 2rem;
-  padding: 0;
   list-style-type: none;
 }
 
@@ -192,35 +341,56 @@ nav {
 }
 
 .awardsList li {
-  margin: .5rem 0;
+  line-height: 1.3;
 }
 
-.awardsList label + li {
-  margin: 1rem 0 .5rem;
+/* END OF SIDEBAR ELEMENTS DESIGN */
+
+
+/* FOOTER ELEMENTS DESIGN */
+footer {
+  font-family: 'HelveticaNeueRoman', sans-serif;
+  color: #878787;
+  opacity: .6;
+  text-align: center;
 }
 
-.sidebarCloseBtn {
-  position: absolute;
-  right: 2rem;
-  bottom: 2rem;
-  z-index: 1;
+footer p {
+  font-size: .75rem;
+  line-height: 1.4;
+}
+/* END OF FOOTER ELEMENTS DESIGN */
+
+
+/* DESIGNING ELEMENTS COMMON TO THE FOOTER AND SOME PAGES */
+footer a,
+.textPage a {
+  color: #878787;
+}
+/* END OF DESIGNING ELEMENTS COMMON TO THE FOOTER AND SOME PAGES */
+
+
+/* ABOUT PAGE ELEMENTS DESIGN */
+.textPage p {
+  font-family: 'HelveticaNeueRoman';
+  font-size: 1.5rem;
+  line-height: 1.4;
 }
 
-.nomineeListSection {
-  display: flex;
-  gap: 9rem;
-  padding: 0 9rem 0 7rem;
-  position: absolute;
-  top: 45vh;
+.textPage p:first-of-type {
+  font-size: 2rem;
+  font-family: 'HelveticaNeueMedium';
 }
 
-.nominee {
-  display: flex;
-  flex-direction: column;
+.textPage a:hover{
+  text-decoration-thickness: .2rem;
+  text-underline-offset: .2rem;
 }
+/* END OF ABOUT PAGE ELEMENTS DESIGN */
 
+
+/* AWARDS PAGE ELEMENTS DESIGN */
 .nomineeImg {
-  margin-bottom: .95rem;
   filter: drop-shadow(0px 16px 16px rgba(0, 0, 0, 0.2));
 }
 
@@ -245,30 +415,10 @@ nav {
   letter-spacing: -.25px;
   text-transform: uppercase;
 }
+/* END OF AWARDS PAGE ELEMENTS DESIGN */
 
-.loginBtn,
-.spotifyBtn {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 13px 31px;
-  background-color: #1ED760;
-  border: 1px solid #878787;
-  border-radius: 50px;
-  font-family: Helvetica;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 1rem;
-  text-align: center;
-}
 
-.loginBtn {
-  margin-bottom: 1rem;
-}
 
-.loginBtn:hover {
-  background-color: #1FDF64;
-}
 
 .voteBtn,
 .voteMsg {
