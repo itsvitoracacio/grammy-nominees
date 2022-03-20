@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import SpotifyLoginArea from '../components/SpotifyLoginArea'
+import SpotifySidebarLogin from '../components/SpotifySidebarLogin'
 import Nav from '../components/Nav'
 
 const Sidebar = ({ userToken, authCreds, logout }) => {
@@ -15,7 +15,7 @@ const Sidebar = ({ userToken, authCreds, logout }) => {
 				<Link to='/'>
 					<img className='sidebarLogo' src='./sidebar-logo.svg' />
 				</Link>
-				<SpotifyLoginArea
+				<SpotifySidebarLogin
 					userToken={userToken}
 					authCreds={authCreds}
 					logout={logout}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const Nominee = ({ eachAward, eachNominee, clientToken, userToken }) => {
+const Nominee = ({ eachAward, eachNominee, clientToken, userToken, authCreds }) => {
 	// console.log(token)
 
 	const { awardTarget } = eachAward
@@ -10,15 +10,13 @@ const Nominee = ({ eachAward, eachNominee, clientToken, userToken }) => {
 
 	const [nomineeNameFromSpotify, setNomineeNameFromSpotify] = useState('')
 	const [artistNameFromSpotify, setArtistNameFromSpotify] = useState('')
-	const [nomineeImgFromSpotify, setNomineeImgFromSpotify] = useState('')
+	const [nomineeThumbFromSpotify, setNomineeThumbFromSpotify] = useState('')
+	const [nomineeBigImgFromSpotify, setNomineeBigImgFromSpotify] = useState('')
+	const [previewUrlFromSpotify, setPreviewUrlFromSpotify] = useState('')
 
-	const token = clientToken
-
-	let nomineeType = ''
-	if (awardTarget === 'performance') nomineeType = 'track'
-	if (awardTarget === 'notes') nomineeType = 'album'
-	if (awardTarget !== 'performance' && awardTarget !== 'notes')
-		nomineeType = awardTarget
+	let isLoggedIn = userToken
+	let token
+	isLoggedIn ? (token = userToken) : (token = clientToken)
 
 	const fetchNominee = async () => {
 		const { data } = await axios.get('https://api.spotify.com/v1/search', {
@@ -33,41 +31,22 @@ const Nominee = ({ eachAward, eachNominee, clientToken, userToken }) => {
 		})
 
 		const searchResults = data.tracks.items
-		const match1 = searchResults.find(item => item.name === nomineeName)
+		const match1 = () => searchResults.find(item => item.name === nomineeName)
 		const match2 = () => {
-			const secondTry = searchResults.find(item =>
-				item.name.includes(nomineeName)
-			)
-			return secondTry
+			return searchResults.find(item => item.name.includes(nomineeName))
 		}
 
-		match1
-			? console.log(
-					match1.name,
-					'\n',
-					match1.artists[0].name,
-					'vs',
-					nomineeArtistName
-			  )
-			: console.log(
-					'SECOND TRY: \n',
-					match2().name,
-					'\n',
-					match2().artists[0].name,
-					'vs',
-					nomineeArtistName
-			  )
-
 		let resultMatchingNominee
-		match1
-			? (resultMatchingNominee = match1)
-			: (resultMatchingNominee = match2())
+		if (match1()) resultMatchingNominee = match1()
+		else resultMatchingNominee = match2()
 
-		const { name, artists, album } = resultMatchingNominee
+		const { name, artists, album, href, preview_url } = resultMatchingNominee
 
 		setNomineeNameFromSpotify(name)
 		setArtistNameFromSpotify(artists[0].name)
-		setNomineeImgFromSpotify(album.images[1].url)
+		setNomineeThumbFromSpotify(album.images[1].url)
+		setNomineeBigImgFromSpotify(album.images[0].url)
+		setPreviewUrlFromSpotify(preview_url)
 	}
 
 	useEffect(() => {
@@ -75,12 +54,18 @@ const Nominee = ({ eachAward, eachNominee, clientToken, userToken }) => {
 	}, [])
 
 	const renderNominee = () => {
+
+		// document.querySelector('#nomineeImg').addEventListener('mouseover', changeBodyBgImg(nomineeBigImgFromSpotify))
+
+		// const changeBodyBgImg = nomineeImg => body.style.backgroundImage = nomineeImg
+
 		return (
 			<div className='nominee'>
 				<img
 					className='nomineeImg'
+					id='nomineeImg'
 					width='225px'
-					src={nomineeImgFromSpotify}
+					src={nomineeThumbFromSpotify}
 					alt={altText}
 				/>
 				<span className='nomineeName'>{nomineeNameFromSpotify}</span>
@@ -89,12 +74,7 @@ const Nominee = ({ eachAward, eachNominee, clientToken, userToken }) => {
 		)
 	}
 
-	return (
-		<>
-			{/* <span>hey</span> */}
-			{renderNominee()}
-		</>
-	)
+	return <>{renderNominee()}</>
 }
 
 export default Nominee

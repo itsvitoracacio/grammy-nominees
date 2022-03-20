@@ -1,6 +1,6 @@
 import LoggedInAs from './LoggedInAs'
 
-const SpotifyLoginArea = ({ userToken, authCreds, logout }) => {
+const SpotifySidebarLogin = ({ userToken, authCreds, logout }) => {
 	return (
 		<>
 			{!userToken ? (
@@ -30,4 +30,4 @@ const SpotifyLoginArea = ({ userToken, authCreds, logout }) => {
 	)
 }
 
-export default SpotifyLoginArea
+export default SpotifySidebarLogin

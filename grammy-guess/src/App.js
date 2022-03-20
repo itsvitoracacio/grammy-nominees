@@ -51,7 +51,7 @@ function App() {
 					<Route path='/about' element={<AboutPage />} />
 					<Route
 						path='/:awardName'
-						element={<AwardsPage userToken={userToken} />}
+						element={<AwardsPage userToken={userToken} authCreds={authCreds}/>}
 					/>
 				</Routes>
 			</main>
