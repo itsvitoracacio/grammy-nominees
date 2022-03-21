@@ -13,7 +13,7 @@ const Sidebar = ({ userToken, authCreds, logout }) => {
 			</label>
 			<div className='sidebar'>
 				<Link to='/'>
-					<img className='sidebarLogo' src='./sidebar-logo.svg' />
+					<img className='sidebarLogo' src='../sidebar-logo.svg' />
 				</Link>
 				<SpotifySidebarLogin
 					userToken={userToken}
