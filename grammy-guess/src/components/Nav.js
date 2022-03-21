@@ -13,10 +13,13 @@ const Nav = () => {
 
             {category.categoryAwards.map(award => {
 
+              const categoryNameUrl = category.categoryName.replaceAll(' ','-').replaceAll('/','-')
+              const awardNameUrl = award.awardName.replaceAll(' ','-').replaceAll('/','-')
+
               // console.log(award.awardName)
               return (
                 
-                <li key={award.awardName}><Link to={`/${award.awardName}`}>{award.awardName}</Link></li>
+                <li key={award.awardName}><Link to={`/${categoryNameUrl}/${awardNameUrl}`}>{award.awardName}</Link></li>
                 
               )
             })}

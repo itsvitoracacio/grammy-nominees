@@ -50,7 +50,7 @@ function App() {
 					<Route path='/' element={<Home />} />
 					<Route path='/about' element={<AboutPage />} />
 					<Route
-						path='/:awardName'
+						path='/:categoryNameUrl/:awardNameUrl'
 						element={<AwardsPage userToken={userToken} authCreds={authCreds}/>}
 					/>
 				</Routes>

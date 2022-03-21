@@ -2,7 +2,7 @@ const Header = () => {
 	return (
 		<header>
 			<img
-				src='./64th-grammy.svg'
+				src='../64th-grammy.svg'
 				alt="'64th Grammys' in writing"
 				className='logoAwardEdition'
 			/>
