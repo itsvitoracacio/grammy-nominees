@@ -43,6 +43,10 @@ const NomineeList = ({ awardName, userToken, authCreds }) => {
 		award => award.awardName === awardName
 	)
 
+	let isLoggedIn = userToken
+	let token
+	isLoggedIn ? (token = userToken) : (token = clientToken)
+
 	let nomineeListJsx = []
 	currentAward.awardNominees.forEach(currentNominee => {
 		nomineeListJsx.push(
@@ -50,18 +54,14 @@ const NomineeList = ({ awardName, userToken, authCreds }) => {
 				key={currentNominee.nomineeName}
 				eachAward={currentAward}
 				eachNominee={currentNominee}
-				clientToken={clientToken}
-				userToken={userToken}
+				isLoggedIn={isLoggedIn}
+				token={token}
 				authCreds={authCreds}
 			/>
 		)
 	})
 
-	return (
-		<section className='nomineeListSection'>
-			{nomineeListJsx}
-		</section>
-	)
+	return <section className='nomineeListSection'>{nomineeListJsx}</section>
 }
 
 export default NomineeList
