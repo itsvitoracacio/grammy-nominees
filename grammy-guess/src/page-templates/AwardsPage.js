@@ -1,11 +1,7 @@
-// import NomineeList from '../components/NomineeList'
-// import Vote from '../components/Vote'
-// import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import NomineeList from '../components/NomineeList'
 
 const AwardsPage = ({ userToken, authCreds }) => {
-	// const [isLoading, setIsLoading] = useState(true)
 
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
@@ -33,15 +29,6 @@ const AwardsPage = ({ userToken, authCreds }) => {
 			/>
 		</>
 	)
-
-	// console.log(token)
-
-	// return (
-	//   <>
-	//     <NomineeList  currentAwardName={currentAwardName} token={token}/>
-	//     <Vote currentAwardName={currentAwardName} token={token} authCreds={authCreds}/>
-	//   </>
-	// )
 }
 
 export default AwardsPage

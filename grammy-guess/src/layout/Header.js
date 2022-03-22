@@ -1,11 +1,15 @@
+import { Link } from 'react-router-dom'
+
 const Header = () => {
 	return (
 		<header>
-			<img
-				src='../64th-grammy.svg'
-				alt="'64th Grammys' in writing"
-				className='logoAwardEdition'
-			/>
+			<Link to='/'>
+				<img
+					src='../64th-grammy.svg'
+					alt="'64th Grammys' in writing"
+					className='logoAwardEdition'
+				/>
+			</Link>
 		</header>
 	)
 }

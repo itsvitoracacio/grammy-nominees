@@ -1,17 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 
-const Nominee = ({
-	eachAward,
-	eachNominee,
-	isLoggedIn,
-	token,
-	authCreds
-}) => {
-	// console.log(token)
-
-	
-
+const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 	const { awardTarget } = eachAward
 	const { nomineeName, nomineeArtistName, spotifyId } = eachNominee
 	const altText = `${nomineeArtistName}'s ${nomineeName}`
@@ -41,14 +31,13 @@ const Nominee = ({
 				},
 			}
 		)
-		
-		console.log(data);
+
 		const { name, artists, album, images, href, preview_url } = data
 
 		setNomineeNameFromSpotify(name)
 		setArtistNameFromSpotify(artists[0].name)
 
-		switch(apiCallObj) {
+		switch (apiCallObj) {
 			case 'tracks':
 				setNomineeThumbFromSpotify(album.images[1].url)
 				setNomineeBigImgFromSpotify(album.images[0].url)
@@ -64,79 +53,100 @@ const Nominee = ({
 			case 'producers':
 				break
 		}
-		if (apiCallObj === 'tracks') {
-			setNomineeThumbFromSpotify(album.images[1].url)
-			setNomineeBigImgFromSpotify(album.images[0].url)
-		}
-		if (apiCallObj === 'albums') {
-			
-		}
 
-		
-		// setFullUrlFromSpotify(href)
-		// setPreviewUrlFromSpotify(preview_url)
-		setFullUrlFromSpotify('./hotline-bling.mp3')
-		setPreviewUrlFromSpotify('./hotline-bling.mp3')
+		setFullUrlFromSpotify(href)
+		setPreviewUrlFromSpotify(preview_url)
+		// setFullUrlFromSpotify('../hotline-bling.mp3')
+		// setPreviewUrlFromSpotify('../hotline-bling.mp3')
 		if (preview_url) setHasPreview(true)
 	}
 
 	useEffect(() => {
 		fetchNominee()
+		console.log(`Initial state: ${trackIsLoaded}`)
 	}, [])
 
+	const [trackIsLoaded, setTrackIsLoaded] = useState(false)
+
 	let actx
-	let nomineeTrack
+	const nomineeTrack = document.querySelector(`#track-${spotifyId}`)
 	let track
 	const loadTrack = () => {
-		if (actx != undefined) return
-		else {
+		// if (track.mediaElement != undefined) return
+		console.log(trackIsLoaded);
+		if (trackIsLoaded == false) {
 			actx = new AudioContext()
-			nomineeTrack = document.querySelector(`#track-${spotifyId}`)
+			// nomineeTrack = document.querySelector(`#track-${spotifyId}`)
 			track = actx.createMediaElementSource(nomineeTrack)
 			track.connect(actx.destination)
 			console.log('Track loaded!')
 		}
 	}
 
+	const markTrackAsLoaded = () => {
+		setTrackIsLoaded(true)
+	}
+	
+	const [playPauseIcon, setPlayPauseIcon] = useState(' ►')
+	const playPauseBtn = document.querySelector(`#playPauseButton-${spotifyId}`)
+	
 	const playPauseTrack = () => {
-		const playPauseBtn = document.querySelector('#playPauseButton')
+		// if (track != undefined) return
+		// console.log(track);
 
 		// check if context is in suspended state (autoplay policy)
-		if (actx.state === 'suspended') actx.resume()
+		// if (actx.state === 'suspended') actx.resume()
 
 		// play or pause track depending on state
 		if (playPauseBtn.dataset.playing === 'false') {
+			console.log(nomineeTrack);
 			nomineeTrack.play()
 			playPauseBtn.dataset.playing = 'true'
+			setPlayPauseIcon('||')
 		} else {
+			console.log(nomineeTrack);
 			nomineeTrack.pause()
 			playPauseBtn.dataset.playing = 'false'
+			setPlayPauseIcon(' ►')
 		}
 	}
 
 	const renderNominee = () => {
 		return (
-			<div className='nominee'>
+			<div  className='nominee'>
 				<div
-					className='nomineeImg'
-					id={`nomineeImg-${nomineeNameFromSpotify}`}
+					className='nomineeImgArea'
+					// id={`nomineeImg-${nomineeNameFromSpotify}`}
 					onMouseEnter={loadTrack}
+					onMouseLeave={markTrackAsLoaded}
 				>
-					<img width='225px' src={nomineeThumbFromSpotify} alt={altText} />
+					<img
+						width='225px'
+						className='nomineeImg'
+						src={nomineeThumbFromSpotify}
+						alt={altText}
+					/>
 					<audio
 						src={fullUrlFromSpotify}
 						type='audio/mpeg'
 						id={`track-${spotifyId}`}
 					></audio>
-					<button
-						data-playing='false'
-						role='switch'
-						aria-checked='false'
-						onClick={playPauseTrack}
-						id='playPauseButton'
-					>
-						Play/Pause
-					</button>
+					<div className='playAndVoteButtonArea'>
+						<button
+							data-playing='false'
+							role='switch'
+							aria-checked='false'
+							onClick={playPauseTrack}
+							id={`playPauseButton-${spotifyId}`}
+							className='playPauseBtn'
+						>
+							{playPauseIcon}
+						</button>
+						<span>Vote:</span>
+						<button className='spotifyBtn voteBtn'>
+							This is the winner!
+						</button>
+					</div>
 				</div>
 				<span className='nomineeName'>{nomineeNameFromSpotify}</span>
 				<a className='artistName'>{artistNameFromSpotify}</a>
