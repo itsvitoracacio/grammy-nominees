@@ -1,16 +1,12 @@
 import LoggedInAs from './LoggedInAs'
+import LogInButton from './LogInButton'
 
 const SpotifySidebarLogin = ({ userToken, authCreds, logout }) => {
 	return (
 		<>
 			{!userToken ? (
 				<div className='spotifyLoginArea'>
-					<a
-						className='loginBtn'
-						href={`${authCreds.AUTH_ENDPOINT}?client_id=${authCreds.CLIENT_ID}&redirect_uri=${authCreds.REDIRECT_URI}&response_type=${authCreds.RESPONSE_TYPE}`}
-					>
-						Login to Spotify
-					</a>
+					<LogInButton authCreds={authCreds}/>
 					<span className='belowLoginMsg'>
 						to listen to the nominees
 						<br />

@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import NomineeList from '../components/NomineeList'
 
-const AwardsPage = ({ userToken, authCreds }) => {
+const AwardsPage = ({ userToken }) => {
 
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
@@ -25,7 +25,6 @@ const AwardsPage = ({ userToken, authCreds }) => {
 				categoryName={categoryNameSpaceCase}
 				awardName={awardNameSpaceCase}
 				userToken={userToken}
-				authCreds={authCreds}
 			/>
 		</>
 	)

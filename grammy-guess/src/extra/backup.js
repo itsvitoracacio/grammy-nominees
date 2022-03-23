@@ -1,6 +1,3 @@
-import { useState, useEffect, useRef } from 'react'
-import axios from 'axios'
-
 const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 	const { awardTarget } = eachAward
 	const { nomineeName, nomineeArtistName, spotifyId } = eachNominee
@@ -21,13 +18,16 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 	const [previewUrlFromSpotify, setPreviewUrlFromSpotify] = useState('')
 	const [hasPreview, setHasPreview] = useState(false)
 	const [fullUrlFromSpotify, setFullUrlFromSpotify] = useState('')
+	const [playPauseIcon, setPlayPauseIcon] = useState(' ►')
+	const [audioFile, setAudioFile] = useState()
+	const playPauseBtn = document.querySelector(`#playPauseButton-${spotifyId}`)
 
 	const fetchNominee = async () => {
 		const { data } = await axios.get(
 			`https://api.spotify.com/v1/${apiCallObj}/${spotifyId}`,
 			{
 				headers: {
-					'Authorization': `Bearer ${token}`,
+					Authorization: `Bearer ${token}`,
 					'Content-Type': 'audio/mpeg',
 				},
 			}
@@ -40,7 +40,6 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 		setFullUrlFromSpotify(href)
 		if (preview_url) setHasPreview(true)
 		if (preview_url) setPreviewUrlFromSpotify(preview_url)
-
 
 		switch (apiCallObj) {
 			case 'tracks':
@@ -58,13 +57,10 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 			case 'producers':
 				break
 		}
-
-		
 	}
 
 	useEffect(() => {
 		fetchNominee()
-		console.log(`Initial state: ${trackIsLoaded}`)
 	}, [])
 
 	const [trackIsLoaded, setTrackIsLoaded] = useState(false)
@@ -74,23 +70,73 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 	let track
 	const loadTrack = () => {
 		// if (track.mediaElement != undefined) return
-		console.log(trackIsLoaded);
+		console.log(`Track was loaded: ${trackIsLoaded}`, nomineeTrack)
 		if (trackIsLoaded == false) {
 			actx = new AudioContext()
 			// nomineeTrack = document.querySelector(`#track-${spotifyId}`)
 			track = actx.createMediaElementSource(nomineeTrack)
 			track.connect(actx.destination)
-			console.log('Track loaded!')
+			console.log(`Has preview: ${hasPreview}`)
 		}
 	}
 
 	const markTrackAsLoaded = () => {
 		setTrackIsLoaded(true)
+		console.log('Track loaded!', audioFile)
+		console.log(`Is logged in: ${isLoggedIn}`)
 	}
-	
-	const [playPauseIcon, setPlayPauseIcon] = useState(' ►')
-	const playPauseBtn = document.querySelector(`#playPauseButton-${spotifyId}`)
-	
+
+	if (isLoggedIn === true) setAudioFile(fullUrlFromSpotify)
+	if (isLoggedIn === false && hasPreview === true) {
+		return setAudioFile(previewUrlFromSpotify)
+	}
+
+	/* const PlayTrackBtnOrNotAvailableMsg = () => {
+		let output
+		if (isLoggedIn === true || (isLoggedIn === false && hasPreview === true)) {
+			return (output = 'hey' <PlayTrackBtn /> )
+		} else if (isLoggedIn === false && hasPreview === false) {
+			return (output = 'ho' <NotAvailableMsg /> )
+		}
+
+		return <>{output}</>
+	} */
+
+	/* const PlayTrackBtn = () => {
+		return (
+			<>
+				<div className='playAndVoteButtonArea'>
+					<button
+						data-playing='false'
+						role='switch'
+						aria-checked='false'
+						onClick={playPauseTrack}
+						id={`playPauseButton-${spotifyId}`}
+						className='playPauseBtn'
+					>
+						{playPauseIcon}
+					</button>
+					<span>Vote:</span>
+					<button className='spotifyBtn voteBtn'>This is the winner!</button>
+				</div>
+			</>
+		)
+	} */
+
+	/* const NotAvailableMsg = () => {
+		return (
+			<>
+				<div className='playAndVoteButtonArea'>
+					<span>This preview is not available.</span>
+					<LogInButton authCreds={authCreds} />
+					<span>or</span>
+					<span>Just vote:</span>
+					<button className='spotifyBtn voteBtn'>This is the winner!</button>
+				</div>
+			</>
+		)
+	} */
+
 	const playPauseTrack = () => {
 		// if (track != undefined) return
 		// console.log(track);
@@ -100,22 +146,21 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 
 		// play or pause track depending on state
 		if (playPauseBtn.dataset.playing === 'false') {
-			console.log(nomineeTrack);
+			console.log(nomineeTrack)
 			nomineeTrack.play()
 			playPauseBtn.dataset.playing = 'true'
 			setPlayPauseIcon('||')
 		} else {
-			console.log(nomineeTrack);
+			console.log(nomineeTrack)
 			nomineeTrack.pause()
 			playPauseBtn.dataset.playing = 'false'
 			setPlayPauseIcon(' ►')
 		}
 	}
 
-
 	const renderNominee = () => {
 		return (
-			<div  className='nominee'>
+			<div className='nominee'>
 				<div
 					className='nomineeImgArea'
 					// id={`nomineeImg-${nomineeNameFromSpotify}`}
@@ -129,27 +174,12 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 						alt={altText}
 					/>
 					<audio
-						src={previewUrlFromSpotify}
+						src={audioFile}
 						crossOrigin='anonymous'
 						type='audio/mpeg'
 						id={`track-${spotifyId}`}
 					></audio>
-					<div className='playAndVoteButtonArea'>
-						<button
-							data-playing='false'
-							role='switch'
-							aria-checked='false'
-							onClick={playPauseTrack}
-							id={`playPauseButton-${spotifyId}`}
-							className='playPauseBtn'
-						>
-							{playPauseIcon}
-						</button>
-						<span>Vote:</span>
-						<button className='spotifyBtn voteBtn'>
-							This is the winner!
-						</button>
-					</div>
+					{/* <PlayTrackBtnOrNotAvailableMsg /> */}
 				</div>
 				<span className='nomineeName'>{nomineeNameFromSpotify}</span>
 				<a className='artistName'>{artistNameFromSpotify}</a>

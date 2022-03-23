@@ -30,7 +30,8 @@ const NomineeList = ({ categoryName, awardName, userToken, authCreds }) => {
 	const currentCategory = AllAwards.find(cat => cat.categoryName === categoryName)
 	const currentAward = currentCategory.categoryAwards.find(award => award.awardName === awardName)
 
-	let isLoggedIn = userToken
+	let isLoggedIn
+	userToken ? isLoggedIn = true : isLoggedIn = false
 	let token
 	isLoggedIn ? (token = userToken) : (token = clientToken)
 
