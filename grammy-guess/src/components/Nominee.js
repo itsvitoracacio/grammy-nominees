@@ -66,7 +66,11 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 	/* useEffect(() => {
 		console.log(`${nomineeNameFromSpotify} has preview: ${hasPreview}`, preview_url)
 	}, [nomineeNameFromSpotify]) */
-
+	let audioFile
+	isLoggedIn ? (audioFile = fullUrlFromSpotify) : (audioFile = previewUrlFromSpotify)
+	let isTherePreview
+	previewUrlFromSpotify ? isTherePreview = true : isTherePreview = false
+	
 	const [trackIsLoaded, setTrackIsLoaded] = useState(false)
 
 	let actx
@@ -135,7 +139,7 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 						alt={altText}
 					/>
 					<audio
-						src={previewUrlFromSpotify}
+						src={audioFile}
 						crossOrigin='anonymous'
 						type='audio/mpeg'
 						id={`track-${spotifyId}`}
@@ -155,12 +159,14 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 						<button className='spotifyBtn voteBtn'>This is the winner!</button> */}
 						<NomineeCardActions
 							isLoggedIn={isLoggedIn}
-							previewUrlFromSpotify={previewUrlFromSpotify}
-							fullUrlFromSpotify={fullUrlFromSpotify}
+							// previewUrlFromSpotify={previewUrlFromSpotify}
+							// fullUrlFromSpotify={fullUrlFromSpotify}
+							isTherePreview={isTherePreview}
 							authCreds={authCreds}
 							spotifyId={spotifyId}
 							playPauseTrack={playPauseTrack}
 							playPauseIcon={playPauseIcon}
+							audioFile={audioFile}
 						/>
 					</div>
 				</div>

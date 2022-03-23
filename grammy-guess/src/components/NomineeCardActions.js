@@ -2,17 +2,15 @@ import LogInButton from './LogInButton'
 
 const NomineeCardActions = ({
 	isLoggedIn,
-	previewUrlFromSpotify,
-	fullUrlFromSpotify,
+	// previewUrlFromSpotify,
+	// fullUrlFromSpotify,
+	isTherePreview,
 	authCreds,
 	spotifyId,
 	playPauseTrack,
 	playPauseIcon,
 }) => {
-	const isTherePreview = previewUrlFromSpotify
-
-	let audioFile
-	isLoggedIn ? (audioFile = fullUrlFromSpotify) : (audioFile = previewUrlFromSpotify)
+	// const isTherePreview = previewUrlFromSpotify
 
 	const checkForPreview = () => {
 		if (isTherePreview) return playBtn()
