@@ -1,32 +1,51 @@
-const NomineeCardActions = ({ isLoggedIn }) => {
-	isTherePreview = trackUrlFromSpotify
+import LogInButton from './LogInButton'
+
+const NomineeCardActions = ({
+	isLoggedIn,
+	previewUrlFromSpotify,
+	fullUrlFromSpotify,
+	authCreds,
+	spotifyId,
+	playPauseTrack,
+	playPauseIcon,
+}) => {
+	const isTherePreview = previewUrlFromSpotify
+
+	let audioFile
+	isLoggedIn ? (audioFile = fullUrlFromSpotify) : (audioFile = previewUrlFromSpotify)
+
 	const checkForPreview = () => {
-		if (!isTherePreview)
-			<span className='previewNotAvailableMsg'>Preview not available.</span>
+		if (isTherePreview) return playBtn()
+		else return noPreviewLoginBtn()
 	}
 
-	const loginBtn = () => {
+	const noPreviewLoginBtn = () => {
 		return (
-			<div className='spotifyLoginArea'>
-				<a
-					className='loginBtn'
-					href={`${authCreds.AUTH_ENDPOINT}?client_id=${authCreds.CLIENT_ID}&redirect_uri=${authCreds.REDIRECT_URI}&response_type=${authCreds.RESPONSE_TYPE}`}
-				>
-					Login to Spotify
-				</a>
-				<span className='belowLoginMsg'>
-					to listen to the full thing
-					<br />
-					and vote!
-				</span>
-			</div>
+			<>
+				<div className='spotifyLoginArea'>
+					<span className='previewNotAvailableMsg'>Preview not available.</span>
+					<LogInButton authCreds={authCreds} />
+					<span className='belowLoginMsg'>
+						to listen to the full thing
+						<br />
+						or
+					</span>
+				</div>
+			</>
 		)
 	}
 
 	const playBtn = () => {
 		return (
-			<button className='spotifyBtn' id='playBtn'>
-				Listen to the full thing
+			<button
+				data-playing='false'
+				role='switch'
+				aria-checked='false'
+				onClick={playPauseTrack}
+				id={`playPauseButton-${spotifyId}`}
+				className='playPauseBtn'
+			>
+				{playPauseIcon}
 			</button>
 		)
 	}
@@ -43,12 +62,14 @@ const NomineeCardActions = ({ isLoggedIn }) => {
 		)
 	}
 
-	const displayButtons = () => {
-		if (isLoggedIn) playBtn(), voteBtn()
-		else loginBtn()
+	const determineWhatToShow = () => {
+		if (isLoggedIn) return playBtn()
+		else return checkForPreview()
 	}
 
-	return checkForPreview(), displayButtons()
+	return (
+		determineWhatToShow()
+	)
 }
 
 export default NomineeCardActions

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
+import NomineeCardActions from './NomineeCardActions'
 
 const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 	const { awardTarget } = eachAward
@@ -27,7 +28,7 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 			`https://api.spotify.com/v1/${apiCallObj}/${spotifyId}`,
 			{
 				headers: {
-					'Authorization': `Bearer ${token}`,
+					Authorization: `Bearer ${token}`,
 					'Content-Type': 'audio/mpeg',
 				},
 			}
@@ -38,9 +39,7 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 		setNomineeNameFromSpotify(name)
 		setArtistNameFromSpotify(artists[0].name)
 		setFullUrlFromSpotify(href)
-		if (preview_url) setHasPreview(true)
-		if (preview_url) setPreviewUrlFromSpotify(preview_url)
-
+		setPreviewUrlFromSpotify(preview_url)
 
 		switch (apiCallObj) {
 			case 'tracks':
@@ -58,14 +57,15 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 			case 'producers':
 				break
 		}
-
-		
 	}
 
 	useEffect(() => {
 		fetchNominee()
-		console.log(`Initial state: ${trackIsLoaded}`)
 	}, [])
+
+	/* useEffect(() => {
+		console.log(`${nomineeNameFromSpotify} has preview: ${hasPreview}`, preview_url)
+	}, [nomineeNameFromSpotify]) */
 
 	const [trackIsLoaded, setTrackIsLoaded] = useState(false)
 
@@ -73,24 +73,29 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 	const nomineeTrack = document.querySelector(`#track-${spotifyId}`)
 	let track
 	const loadTrack = () => {
+		// choosePlayTrackBtnOrNotAvailableMsg()
 		// if (track.mediaElement != undefined) return
-		console.log(trackIsLoaded);
 		if (trackIsLoaded == false) {
 			actx = new AudioContext()
 			// nomineeTrack = document.querySelector(`#track-${spotifyId}`)
 			track = actx.createMediaElementSource(nomineeTrack)
 			track.connect(actx.destination)
-			console.log('Track loaded!')
 		}
 	}
 
 	const markTrackAsLoaded = () => {
 		setTrackIsLoaded(true)
+		console.log('Track loaded!')
+		console.log(`Is logged in: ${isLoggedIn}`)
 	}
-	
+
+	// const choosePlayTrackBtnOrNotAvailableMsg = () => {
+	// 	if (previewUrlFromSpotify) console.log('oi')
+	// }
+
 	const [playPauseIcon, setPlayPauseIcon] = useState(' ►')
 	const playPauseBtn = document.querySelector(`#playPauseButton-${spotifyId}`)
-	
+
 	const playPauseTrack = () => {
 		// if (track != undefined) return
 		// console.log(track);
@@ -100,22 +105,23 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 
 		// play or pause track depending on state
 		if (playPauseBtn.dataset.playing === 'false') {
-			console.log(nomineeTrack);
+			console.log(nomineeTrack)
 			nomineeTrack.play()
 			playPauseBtn.dataset.playing = 'true'
 			setPlayPauseIcon('||')
 		} else {
-			console.log(nomineeTrack);
+			console.log(nomineeTrack)
 			nomineeTrack.pause()
 			playPauseBtn.dataset.playing = 'false'
 			setPlayPauseIcon(' ►')
 		}
 	}
 
+	// console.log(authCreds)
 
 	const renderNominee = () => {
 		return (
-			<div  className='nominee'>
+			<div className='nominee'>
 				<div
 					className='nomineeImgArea'
 					// id={`nomineeImg-${nomineeNameFromSpotify}`}
@@ -135,7 +141,7 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 						id={`track-${spotifyId}`}
 					></audio>
 					<div className='playAndVoteButtonArea'>
-						<button
+						{/* <button
 							data-playing='false'
 							role='switch'
 							aria-checked='false'
@@ -146,9 +152,16 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 							{playPauseIcon}
 						</button>
 						<span>Vote:</span>
-						<button className='spotifyBtn voteBtn'>
-							This is the winner!
-						</button>
+						<button className='spotifyBtn voteBtn'>This is the winner!</button> */}
+						<NomineeCardActions
+							isLoggedIn={isLoggedIn}
+							previewUrlFromSpotify={previewUrlFromSpotify}
+							fullUrlFromSpotify={fullUrlFromSpotify}
+							authCreds={authCreds}
+							spotifyId={spotifyId}
+							playPauseTrack={playPauseTrack}
+							playPauseIcon={playPauseIcon}
+						/>
 					</div>
 				</div>
 				<span className='nomineeName'>{nomineeNameFromSpotify}</span>
