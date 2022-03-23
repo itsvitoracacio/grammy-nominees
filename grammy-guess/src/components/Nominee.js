@@ -89,8 +89,6 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 
 	const markTrackAsLoaded = () => {
 		setTrackIsLoaded(true)
-		console.log('Track loaded!')
-		console.log(`Is logged in: ${isLoggedIn}`)
 	}
 
 	// const choosePlayTrackBtnOrNotAvailableMsg = () => {
@@ -110,6 +108,7 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 		// play or pause track depending on state
 		if (playPauseBtn.dataset.playing === 'false') {
 			console.log(nomineeTrack)
+			console.log(fullUrlFromSpotify, previewUrlFromSpotify)
 			nomineeTrack.play()
 			playPauseBtn.dataset.playing = 'true'
 			setPlayPauseIcon('||')
