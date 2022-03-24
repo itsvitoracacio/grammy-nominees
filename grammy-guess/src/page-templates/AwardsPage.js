@@ -1,7 +1,13 @@
 import { useParams } from 'react-router-dom'
 import NomineeList from '../components/NomineeList'
 
-const AwardsPage = ({ userToken, authCreds, userGuesses }) => {
+const AwardsPage = ({
+	userToken,
+	authCreds,
+	userGuesses,
+	guessesCount,
+	setGuessesCount,
+}) => {
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
 	const categoryNameSpaceCase = categoryNameUrl
@@ -24,53 +30,39 @@ const AwardsPage = ({ userToken, authCreds, userGuesses }) => {
 			guessingFor: currentAwardName,
 			nomineeChoice: chosenNomineeSpotifyId,
 		}
-		const localStorageUserGuesses = window.localStorage.getItem('userGuesses')
-		let repeatedGuess // variable declared outside of conditional statemente for scoping reasons
+
+		const localStorageUserGuesses = window.localStorage.getItem('userGuesses') // this comes as a JSON string
+		let repeatedGuess
 		if (localStorageUserGuesses) {
-			userGuesses = JSON.parse(localStorageUserGuesses) // putting the locally stored in an array we can manipulate temporarily
-			console.log(userGuesses)
+			userGuesses = JSON.parse(localStorageUserGuesses) // putting the JSON in an array we can manipulate
 			repeatedGuess = userGuesses.find(
 				guess => guess.guessingFor === currentAwardName
 			)
-			console.log(repeatedGuess)
-			// Unguess or Change Guesses for the same category
+			// If unguessing or changing guesses for the same category
 			if (repeatedGuess) {
 				const userGuessesWithoutRepeatedGuess = userGuesses.filter(
 					guess => guess != repeatedGuess
 				)
 				userGuesses = userGuessesWithoutRepeatedGuess // removing previous guess for the same category
+				setGuessesCount(guessesCount--)
 
 				// IF unguessing
 				if (repeatedGuess.nomineeChoice === chosenNomineeSpotifyId) {
+					window.localStorage.setItem(
+						'userGuesses',
+						JSON.stringify(userGuesses)
+					)
 					e.target.innerText = 'This is the winner!' // returning vote button to initial state
+					return
 				}
-				// IF changing guesses
-				else {
-					userGuesses.push(currentGuess) // adding new guess for the same category
-					// HERE WE SHOULD CHECK IF ALL OTHER BUTTONS HAVE THE TEXT "THIS IS THE WINNER!", AND IF NOT, SET IT
-					e.target.innerText = 'Actually, I changed my mind.' // showing to the user that we got their vote
-				}
-
-				// Storing the new user guesses array in the local storage
-				window.localStorage.setItem('userGuesses', JSON.stringify(userGuesses))
-			}
-			// New guess for this category
-			else {
-				userGuesses.push(currentGuess)
-				window.localStorage.setItem('userGuesses', JSON.stringify(userGuesses))
-				componentDidMount() {
-					document.body.style.backgroundColor = "green";
-				}
-				e.target.innerText = 'Actually, I changed my mind.'
 			}
 		}
-		// First guess at all
-		else {
-			userGuesses.push(currentGuess)
-			window.localStorage.setItem('userGuesses', JSON.stringify(userGuesses))
-			console.dir(e.target)
-			e.target.innerText = 'Actually, I changed my mind.'
-		}
+		// 1) First guess at all, 2) First guess for this category or 3) Changing guesses
+		userGuesses.push(currentGuess)
+		setGuessesCount(guessesCount++)
+		window.localStorage.setItem('userGuesses', JSON.stringify(userGuesses))
+		// HERE WE SHOULD CHECK IF ALL OTHER BUTTONS HAVE THE TEXT "THIS IS THE WINNER!", AND IF NOT, SET IT
+		e.target.innerText = 'Actually, I changed my mind.'
 	}
 
 	return (

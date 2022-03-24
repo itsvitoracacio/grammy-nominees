@@ -97,7 +97,7 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds/* , user
 	// 	if (previewUrlFromSpotify) console.log('oi')
 	// }
 
-	const [playPauseIcon, setPlayPauseIcon] = useState(' ►')
+	const [playPauseIcon, setPlayPauseIcon] = useState('►')
 	const playPauseBtn = document.querySelector(`#playPauseButton-${spotifyId}`)
 
 	const playPauseTrack = () => {
@@ -111,11 +111,11 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds/* , user
 		if (playPauseBtn.dataset.playing === 'false') {
 			nomineeTrack.play()
 			playPauseBtn.dataset.playing = 'true'
-			setPlayPauseIcon('||')
+			setPlayPauseIcon('►|')
 		} else {
 			nomineeTrack.pause()
 			playPauseBtn.dataset.playing = 'false'
-			setPlayPauseIcon(' ►')
+			setPlayPauseIcon('►')
 		}
 	}
 

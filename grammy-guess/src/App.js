@@ -42,6 +42,7 @@ function App() {
 	}
 
 	let userGuesses = []
+	const [guessesCount, setGuessesCount] = useState(0)
 
 	return (
 		<>
@@ -56,7 +57,10 @@ function App() {
 						element={
 							<AwardsPage
 								userToken={userToken}
-								authCreds={authCreds} userGuesses={userGuesses}
+								authCreds={authCreds}
+								userGuesses={userGuesses}
+								guessesCount={guessesCount}
+								setGuessesCount={setGuessesCount}
 							/>
 						}
 					/>
