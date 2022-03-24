@@ -42,6 +42,8 @@ function App() {
 		window.localStorage.removeItem('token')
 	}
 
+	let userGuesses = []
+
 	return (
 		<>
 			<Header />
@@ -52,7 +54,7 @@ function App() {
 					<Route path='/about' element={<AboutPage />} />
 					<Route
 						path='/:categoryNameUrl/:awardNameUrl'
-						element={<AwardsPage userToken={userToken} authCreds={authCreds}/>}
+						element={<AwardsPage userToken={userToken} authCreds={authCreds} userGuesses={userGuesses}/>}
 					/>
 				</Routes>
 			</main>

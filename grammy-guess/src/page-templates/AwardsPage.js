@@ -1,8 +1,7 @@
 import { useParams } from 'react-router-dom'
 import NomineeList from '../components/NomineeList'
 
-const AwardsPage = ({ userToken, authCreds }) => {
-
+const AwardsPage = ({ userToken, authCreds, userGuesses }) => {
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
 	const categoryNameSpaceCase = categoryNameUrl
@@ -18,6 +17,28 @@ const AwardsPage = ({ userToken, authCreds }) => {
 		.replaceAll('Performance Song', 'Performance/Song')
 		.replaceAll('Music Small', 'Music/Small')
 
+	const guessUnguess = (currentAwardName, chosenNomineeSpotifyId) => {
+		const currentGuess = {
+			guessingFor: currentAwardName,
+			nomineeChoice: chosenNomineeSpotifyId,
+		}
+
+		const repeatedGuess = userGuesses.find(
+			guess => guess.guessingFor === currentAwardName
+		)
+
+		// unguess
+		if (repeatedGuess) {
+			const userGuessesWithoutRepeatedGuess = userGuesses.filter(
+				guess => guess != repeatedGuess
+			)
+			userGuesses = userGuessesWithoutRepeatedGuess
+			if (repeatedGuess.nomineeChoice === chosenNomineeSpotifyId) return //exit the function without recording the new guess
+		}
+		// guess
+		userGuesses.push(currentGuess)
+	}
+
 	return (
 		<>
 			<h1>{awardNameSpaceCase}</h1>
@@ -26,6 +47,8 @@ const AwardsPage = ({ userToken, authCreds }) => {
 				awardName={awardNameSpaceCase}
 				userToken={userToken}
 				authCreds={authCreds}
+				userGuesses={userGuesses}
+				guessUnguess={guessUnguess}
 			/>
 		</>
 	)

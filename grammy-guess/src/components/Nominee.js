@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import NomineeCardActions from './NomineeCardActions'
 
-const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
-	const { awardTarget } = eachAward
+const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds, userGuesses, guessUnguess }) => {
+	const { awardTarget, awardName } = eachAward
 	const { nomineeName, nomineeArtistName, spotifyId } = eachNominee
 	const altText = `${nomineeArtistName}'s ${nomineeName}`
 
@@ -67,10 +67,12 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 		console.log(`${nomineeNameFromSpotify} has preview: ${hasPreview}`, preview_url)
 	}, [nomineeNameFromSpotify]) */
 	let audioFile
-	isLoggedIn ? (audioFile = fullUrlFromSpotify) : (audioFile = previewUrlFromSpotify)
+	isLoggedIn
+		? (audioFile = fullUrlFromSpotify)
+		: (audioFile = previewUrlFromSpotify)
 	let isTherePreview
-	previewUrlFromSpotify ? isTherePreview = true : isTherePreview = false
-	
+	previewUrlFromSpotify ? (isTherePreview = true) : (isTherePreview = false)
+
 	const [trackIsLoaded, setTrackIsLoaded] = useState(false)
 
 	let actx
@@ -107,13 +109,10 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 
 		// play or pause track depending on state
 		if (playPauseBtn.dataset.playing === 'false') {
-			console.log(nomineeTrack)
-			console.log(fullUrlFromSpotify, previewUrlFromSpotify)
 			nomineeTrack.play()
 			playPauseBtn.dataset.playing = 'true'
 			setPlayPauseIcon('||')
 		} else {
-			console.log(nomineeTrack)
 			nomineeTrack.pause()
 			playPauseBtn.dataset.playing = 'false'
 			setPlayPauseIcon(' ►')
@@ -162,7 +161,10 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds }) => {
 							// fullUrlFromSpotify={fullUrlFromSpotify}
 							isTherePreview={isTherePreview}
 							authCreds={authCreds}
+							userGuesses={userGuesses}
+							awardName={awardName}
 							spotifyId={spotifyId}
+							guessUnguess={guessUnguess}
 							playPauseTrack={playPauseTrack}
 							playPauseIcon={playPauseIcon}
 							audioFile={audioFile}

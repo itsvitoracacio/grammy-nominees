@@ -1,4 +1,5 @@
 import LogInButton from './LogInButton'
+import { useState } from 'react'
 
 const NomineeCardActions = ({
 	isLoggedIn,
@@ -6,68 +7,68 @@ const NomineeCardActions = ({
 	// fullUrlFromSpotify,
 	isTherePreview,
 	authCreds,
+	awardName,
+	userGuesses,
+	guessUnguess,
 	spotifyId,
 	playPauseTrack,
 	playPauseIcon,
 }) => {
 	// const isTherePreview = previewUrlFromSpotify
 
-	const checkForPreview = () => {
-		if (isTherePreview) return playBtn()
-		else return noPreviewLoginBtn()
+	const determineWhatToShow = () => {
+		if (isLoggedIn || isTherePreview) return <PlayAndVoteBtns />
+		else return <NoPreviewLoginAndVoteBtns />
 	}
 
-	const noPreviewLoginBtn = () => {
+	const PlayAndVoteBtns = () => {
 		return (
 			<>
-				<div className='spotifyLoginArea'>
-					<span className='previewNotAvailableMsg'>Preview not available.</span>
-					<LogInButton authCreds={authCreds} />
-					<span className='belowLoginMsg'>
-						to listen to the full thing
-						<br />
-						or
-					</span>
-				</div>
+				<button
+					data-playing='false'
+					role='switch'
+					aria-checked='false'
+					onClick={playPauseTrack}
+					id={`playPauseButton-${spotifyId}`}
+					className='playPauseBtn'
+				>
+					{playPauseIcon}
+				</button>
+				<VoteBtn />
 			</>
 		)
 	}
 
-	const playBtn = () => {
+	const NoPreviewLoginAndVoteBtns = () => {
 		return (
-			<button
-				data-playing='false'
-				role='switch'
-				aria-checked='false'
-				onClick={playPauseTrack}
-				id={`playPauseButton-${spotifyId}`}
-				className='playPauseBtn'
-			>
-				{playPauseIcon}
-			</button>
+			<>
+				<div className='spotifyLoginArea'>
+					<span className='previewNotAvailableMsg'>Preview not available.<br />To listen to the full thing:</span>
+					<LogInButton authCreds={authCreds} />
+					<span className='belowLoginMsg'>
+						<br />
+						or just vote:
+					</span>
+				</div>
+				<VoteBtn />
+			</>
 		)
 	}
 
-	const voteBtn = () => {
+	const VoteBtn = () => {
 		return (
 			<button
 				className='spotifyBtn'
 				id='voteBtn'
 				value='Vote: "This is the winner!"'
+				onClick={guessUnguess(awardName, spotifyId)}
 			>
-				Vote: 'This is the winner!'
+				This is the winner!
 			</button>
 		)
 	}
 
-	const determineWhatToShow = () => {
-		if (isLoggedIn) return playBtn()
-		else return checkForPreview()
-	}
-
-	return (
-		determineWhatToShow()
-	)
+	return determineWhatToShow()
 }
 
 export default NomineeCardActions

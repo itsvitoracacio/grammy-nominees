@@ -1,7 +1,7 @@
 const Home = () => {
   return (
     <>
-      <h1>People's Favorites</h1>
+      <h1>Guess The Winners!</h1>
       <section className="textPage">
         <p>Wanna know who are the this year's nominees and their work? Show you're a music expert. Guess who will win!</p>
 
