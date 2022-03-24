@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import axios from 'axios'
 import NomineeCardActions from './NomineeCardActions'
 
-const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds, userGuesses, guessUnguess }) => {
+const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds/* , userGuesses */, guessUnguess }) => {
 	const { awardTarget, awardName } = eachAward
 	const { nomineeName, nomineeArtistName, spotifyId } = eachNominee
 	const altText = `${nomineeArtistName}'s ${nomineeName}`
@@ -161,7 +161,7 @@ const Nominee = ({ eachAward, eachNominee, isLoggedIn, token, authCreds, userGue
 							// fullUrlFromSpotify={fullUrlFromSpotify}
 							isTherePreview={isTherePreview}
 							authCreds={authCreds}
-							userGuesses={userGuesses}
+							// userGuesses={userGuesses}
 							awardName={awardName}
 							spotifyId={spotifyId}
 							guessUnguess={guessUnguess}

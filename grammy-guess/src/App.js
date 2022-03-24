@@ -8,7 +8,6 @@ import Sidebar from './layout/Sidebar'
 import Footer from './layout/Footer'
 
 function App() {
-
 	const authCreds = {
 		CLIENT_ID: '9d34d6d2667e4f77b6d15e8e468091d6',
 		REDIRECT_URI: 'http://localhost:3000',
@@ -54,7 +53,12 @@ function App() {
 					<Route path='/about' element={<AboutPage />} />
 					<Route
 						path='/:categoryNameUrl/:awardNameUrl'
-						element={<AwardsPage userToken={userToken} authCreds={authCreds} userGuesses={userGuesses}/>}
+						element={
+							<AwardsPage
+								userToken={userToken}
+								authCreds={authCreds} userGuesses={userGuesses}
+							/>
+						}
 					/>
 				</Routes>
 			</main>

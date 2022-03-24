@@ -8,7 +8,7 @@ const NomineeCardActions = ({
 	isTherePreview,
 	authCreds,
 	awardName,
-	userGuesses,
+	// userGuesses,
 	guessUnguess,
 	spotifyId,
 	playPauseTrack,
@@ -43,7 +43,11 @@ const NomineeCardActions = ({
 		return (
 			<>
 				<div className='spotifyLoginArea'>
-					<span className='previewNotAvailableMsg'>Preview not available.<br />To listen to the full thing:</span>
+					<span className='previewNotAvailableMsg'>
+						Preview not available.
+						<br />
+						To listen to the full thing:
+					</span>
 					<LogInButton authCreds={authCreds} />
 					<span className='belowLoginMsg'>
 						<br />
@@ -60,8 +64,8 @@ const NomineeCardActions = ({
 			<button
 				className='spotifyBtn'
 				id='voteBtn'
-				value='Vote: "This is the winner!"'
-				onClick={guessUnguess(awardName, spotifyId)}
+				value={spotifyId}
+				onClick={guessUnguess}
 			>
 				This is the winner!
 			</button>
