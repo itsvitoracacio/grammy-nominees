@@ -1,0 +1,189 @@
+/* SIDEBAR LAYOUT */
+.sidebarOpenBtn {
+	transform: rotate(-90deg);
+	position: fixed;
+	bottom: 6rem;
+	left: -3rem;
+	z-index: 2;
+	transition: all 0.4s ease-out;
+}
+
+@media all and (min-width: 768px) {
+	.sidebarOpenBtn {
+		bottom: 8rem;
+		left: -4.5rem;
+	}
+}
+
+.sidebarToggle {
+	display: none;
+}
+
+.sidebarToggle:checked ~ .sidebar {
+	transform: translateX(0);
+	opacity: 0.98;
+}
+
+.sidebarToggle:checked ~ .sidebarOpenBtn {
+	transform: rotate(-90deg) translatey(clamp(20rem, 33vw, 27rem));
+	transition: all 0.4s ease-out;
+}
+
+.sidebar {
+	/* Sidebar layout */
+	height: 100vh;
+	width: clamp(20rem, 33vw, 27rem);
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	transform: translateX(-100%);
+	transition: all 0.4s ease-out;
+
+	/* Sidebar as a container */
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2.5rem 1.5rem 1rem;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.sidebarLogo {
+	width: 12rem;
+	margin-bottom: 2rem;
+}
+
+.spotifyLoginArea {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 1.25rem 0 2.5rem;
+}
+
+.loginBtn {
+	margin-bottom: 0.75rem;
+}
+
+.spotifyLoginArea .loginBtn {
+	margin-bottom: 2rem;
+}
+
+.previewNotAvailableMsg ~ .loginBtn {
+	font-size: 0.9rem;
+}
+
+.shareBtn {
+	margin: 0 0 1rem;
+}
+
+nav {
+	align-self: flex-start;
+}
+
+.awardsList {
+	margin: 0;
+	margin-bottom: 2rem;
+	padding: 0;
+}
+
+.awardsList li {
+	margin: 0.4rem 0;
+}
+
+.awardsList label + li {
+	margin-top: 1rem;
+}
+
+.sidebarCloseBtn {
+	position: absolute;
+	right: 2rem;
+	bottom: 2rem;
+	z-index: 1;
+}
+/* END OF SIDEBAR LAYOUT */
+
+/* SIDEBAR ELEMENTS DESIGN */
+.sidebarOpenBtn {
+	font-family: HelveticaNeueRoman, sans-serif;
+	font-size: clamp(1rem, 3vw, 1.6rem);
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: 0.12em;
+	color: rgba(0, 0, 0, 0.6);
+	cursor: pointer;
+}
+
+.sidebar {
+	font-family: HelveticaNeueRoman, sans-serif;
+	font-size: 1rem;
+	background-color: #fff;
+	opacity: 0.5;
+	box-shadow: 0px 0px 16px 4px rgba(0, 0, 0, 0.2);
+}
+
+.loginBtn,
+.spotifyBtn {
+	display: inline-block;
+	/* flex-direction: row; */
+	/* align-items: flex-start; */
+	padding-top: clamp(0.8125rem, 1.3vw, 0.9rem);
+	padding-bottom: clamp(0.8125rem, 1.3vw, 0.9rem);
+	padding-left: clamp(1.95rem, 3.125vw, 2.16rem);
+	padding-right: clamp(1.95rem, 3.125vw, 2.16rem);
+	background-color: #1ed760;
+	border: 1px solid #878787;
+	border-radius: 50px;
+	font-family: HelveticaNeueBold;
+	font-weight: 700;
+	cursor: pointer;
+	font-size: clamp(0.9rem, 1.5vw, 1rem);
+	text-align: center;
+}
+
+.spotifyBtn:hover {
+	background-color: #1fdf64;
+}
+
+.loginBtn {
+	width: auto;
+	/* padding: 13px 0px; */
+}
+
+.userName {
+	font-family: HelveticaNeueBold;
+	font-weight: 700;
+}
+
+.spotifyLoginArea span {
+	line-height: 1.4;
+	font-size: 0.8rem;
+	/* color: #878787; */
+}
+
+.logoutBtn {
+	color: #878787;
+	line-height: 1.6;
+	cursor: pointer;
+}
+
+.logoutBtn:hover {
+	text-decoration: underline;
+}
+
+.awardsList {
+	list-style-type: none;
+}
+
+.awardsList label {
+	font-family: HelveticaNeueBold;
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+
+.awardsList li {
+	line-height: 1.3;
+}
+/* END OF SIDEBAR ELEMENTS DESIGN */

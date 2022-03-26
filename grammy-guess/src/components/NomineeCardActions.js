@@ -9,6 +9,7 @@ const NomineeCardActions = ({
 	authCreds,
 	awardName,
 	// userGuesses,
+	guessesCount,
 	guessUnguess,
 	spotifyId,
 	playPauseTrack,

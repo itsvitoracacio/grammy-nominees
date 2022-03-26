@@ -2,6 +2,15 @@ import { Link } from 'react-router-dom'
 import AllAwards from '../extra/AllAwards'
 
 const Nav = () => {
+
+	/* const checkForGuess = () => {
+		return (
+			<span>
+
+			</span>
+		)
+	} */
+
 	return (
 		<nav>
 			{AllAwards.map(category => {
@@ -22,6 +31,7 @@ const Nav = () => {
 									<Link to={`/${categoryNameUrl}/${awardNameUrl}`}>
 										{award.awardName}
 									</Link>
+									{/* {checkForGuess} */}
 								</li>
 							)
 						})}

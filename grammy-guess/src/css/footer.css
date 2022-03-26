@@ -1,0 +1,32 @@
+/* FOOTER LAYOUT */
+footer {
+	/* position: fixed;  */
+	bottom: 0;
+	padding: 0 12.5vw;
+	/* margin: 0 auto; */
+	/* margin-bottom: 1.5rem; */
+}
+
+footer span {
+	display: block;
+}
+/* END OF FOOTER LAYOUT */
+
+
+/* FOOTER ELEMENTS DESIGN */
+footer {
+	font-family: HelveticaNeueRoman, sans-serif;
+	color: #878787;
+	opacity: 0.6;
+	text-align: center;
+}
+
+footer p {
+	font-size: 0.75rem;
+	line-height: 1.4;
+}
+
+footer a {
+  color: #878787
+}
+/* END OF FOOTER ELEMENTS DESIGN */

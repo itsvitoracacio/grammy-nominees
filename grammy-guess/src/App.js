@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './page-templates/Home'
 import AboutPage from './page-templates/AboutPage'
 import AwardsPage from './page-templates/AwardsPage'
+import ShareGuesses from './page-templates/ShareGuesses'
 import Header from './layout/Header'
 import Sidebar from './layout/Sidebar'
 import Footer from './layout/Footer'
@@ -43,6 +44,7 @@ function App() {
 
 	let userGuesses = []
 	const [guessesCount, setGuessesCount] = useState(0)
+	const [updateState, setUpdateState] = useState(() => (false))
 
 	return (
 		<>
@@ -61,9 +63,12 @@ function App() {
 								userGuesses={userGuesses}
 								guessesCount={guessesCount}
 								setGuessesCount={setGuessesCount}
+								updateState={updateState}
+								setUpdateState={setUpdateState}
 							/>
 						}
 					/>
+					<Route path='/share-your-guesses' element={<ShareGuesses userGuesses={userGuesses} />}/>
 				</Routes>
 			</main>
 			<Footer />

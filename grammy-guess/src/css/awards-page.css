@@ -1,0 +1,106 @@
+/* AWARDS PAGE LAYOUT */
+.nomineeListSection {
+	display: flex;
+	gap: 9rem;
+	padding-left: 12rem;
+	/* padding-right: 10rem !important; */
+	margin-top: 5rem;
+	/* position: absolute;
+  top: 45vh; */
+}
+
+.nominee {
+	display: flex;
+	flex-direction: column;
+}
+
+.playAndVoteButtonArea {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding-top: 1.5rem;
+  display: none;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.nomineeImgArea:hover .playAndVoteButtonArea {
+  display: flex;
+}
+
+.previewNotAvailableMsg {
+	line-height: 1.2;
+}
+
+.playAndVoteButtonArea span {
+  margin-bottom: .35rem;
+  font-size: .8rem;
+}
+
+.playPauseBtn {
+  margin-bottom: 1.5rem;
+}
+
+.nomineeImgArea {
+  position: relative;
+  margin-bottom: 0.95rem;
+  max-height: 225px;
+  /* border: 1px solid red; */
+  /* height: 225px; */
+  /* width: auto; */
+}
+/* END OF AWARDS PAGE LAYOUT */
+
+
+/* AWARDS PAGE ELEMENTS DESIGN */
+.nomineeImgArea {
+	filter: drop-shadow(0px 16px 16px rgba(0, 0, 0, 0.2));
+}
+
+.nomineeImgArea:hover .nomineeImg {
+	filter:  blur(2px);
+  opacity: .8;
+}
+
+.playAndVoteButtonArea {
+  font-family: HelveticaNeueRoman, sans-serif;
+  color: #fff;
+}
+
+.playPauseBtn {
+  font-size: 1.2rem;
+  background-color: transparent;
+  color: #fff;
+  border: 5px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding-left: .15rem;
+}
+
+.voteBtn {
+  font-size: .9rem;
+  padding: 11px 28px;
+}
+
+.nomineeName {
+	font-family: HelveticaNeueBold, sans-serif;
+	font-size: 1.1rem;
+	font-weight: 700;
+	font-style: italic;
+	line-height: 1.25;
+	letter-spacing: -0.25px;
+}
+
+.artistName {
+	font-family: HelveticaNeueBold, sans-serif;
+	font-size: 0.95rem;
+	font-weight: 700;
+	line-height: 1.66;
+	letter-spacing: -0.25px;
+	text-transform: uppercase;
+}
+/* END OF AWARDS PAGE ELEMENTS DESIGN */

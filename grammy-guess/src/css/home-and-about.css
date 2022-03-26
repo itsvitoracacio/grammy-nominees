@@ -1,0 +1,38 @@
+/* HOME AND ABOUT PAGE LAYOUT */
+.textPage {
+	/* border: 1px solid red; */
+	padding: 0 12.5vw;
+	margin-top: 9rem;
+}
+
+.textPage p {
+	margin: 3rem 0;
+}
+
+.textPage p:first-of-type {
+	margin-top: 0;
+}
+/* END OF HOME AND ABOUT PAGE LAYOUT */
+
+
+/* ABOUT PAGE ELEMENTS DESIGN */
+.textPage p {
+	font-family: HelveticaNeueRoman;
+	font-size: 1.5rem;
+	line-height: 1.4;
+}
+
+.textPage p:first-of-type {
+	font-size: 2rem;
+	font-family: HelveticaNeueMedium;
+}
+
+.textPage a {
+  color: #878787;
+}
+
+.textPage a:hover {
+	text-decoration-thickness: 0.2rem;
+	text-underline-offset: 0.2rem;
+}
+/* END OF ABOUT PAGE ELEMENTS DESIGN */

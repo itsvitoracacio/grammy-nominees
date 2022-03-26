@@ -7,6 +7,8 @@ const AwardsPage = ({
 	userGuesses,
 	guessesCount,
 	setGuessesCount,
+	updateState,
+	setUpdateState
 }) => {
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
@@ -44,7 +46,14 @@ const AwardsPage = ({
 					guess => guess != repeatedGuess
 				)
 				userGuesses = userGuessesWithoutRepeatedGuess // removing previous guess for the same category
-				setGuessesCount(guessesCount--)
+				console.log(userGuesses)
+				const newGuessesCount = userGuesses.length
+				window.localStorage.setItem('localStorageGuessesCount', newGuessesCount)
+				setUpdateState(!updateState)
+				// setGuessesCount(window.localStorage.getItem('localStorageGuessesCount'))
+				console.log(
+					`This should decrease - arr.length: ${newGuessesCount}, state: ${guessesCount}, updateState: ${updateState}`
+				)
 
 				// IF unguessing
 				if (repeatedGuess.nomineeChoice === chosenNomineeSpotifyId) {
@@ -59,7 +68,16 @@ const AwardsPage = ({
 		}
 		// 1) First guess at all, 2) First guess for this category or 3) Changing guesses
 		userGuesses.push(currentGuess)
-		setGuessesCount(guessesCount++)
+		console.log(userGuesses)
+		const newGuessesCount = userGuesses.length
+		// const localStorageGuessesCount = JSON.parse(window.localStorage.getItem(localStorageGuessesCount))
+		window.localStorage.setItem('localStorageGuessesCount', newGuessesCount)
+		setUpdateState(!updateState)
+		// setGuessesCount(window.localStorage.getItem('localStorageGuessesCount'))
+		// window.localStorage.setItem('guessesCount', JSON.stringify(localStorageGuessesCount))
+		console.log(
+			`This should increase - arr.length: ${newGuessesCount}, state: ${guessesCount}, updateState: ${updateState}`
+		)
 		window.localStorage.setItem('userGuesses', JSON.stringify(userGuesses))
 		// HERE WE SHOULD CHECK IF ALL OTHER BUTTONS HAVE THE TEXT "THIS IS THE WINNER!", AND IF NOT, SET IT
 		e.target.innerText = 'Actually, I changed my mind.'
@@ -74,6 +92,7 @@ const AwardsPage = ({
 				userToken={userToken}
 				authCreds={authCreds}
 				// userGuesses={userGuesses}
+				guessesCount={guessesCount}
 				guessUnguess={guessUnguess}
 			/>
 		</>

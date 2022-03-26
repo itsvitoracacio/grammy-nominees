@@ -8,6 +8,7 @@ const NomineeList = ({
 	awardName,
 	userToken,
 	authCreds /* , userGuesses */,
+	guessesCount,
 	guessUnguess,
 }) => {
 	const CLIENT_ID = '9d34d6d2667e4f77b6d15e8e468091d6'
@@ -44,9 +45,6 @@ const NomineeList = ({
 	userToken ? (isLoggedIn = true) : (isLoggedIn = false)
 	let token
 	isLoggedIn ? (token = userToken) : (token = clientToken)
-	console.log(clientToken)
-	console.log(userToken)
-	console.log(token)
 
 	let nomineeListJsx = []
 	currentAward.awardNominees.forEach(currentNominee => {
@@ -59,6 +57,7 @@ const NomineeList = ({
 				token={token}
 				authCreds={authCreds}
 				// userGuesses={userGuesses}
+				guessesCount={guessesCount}
 				guessUnguess={guessUnguess}
 			/>
 		)

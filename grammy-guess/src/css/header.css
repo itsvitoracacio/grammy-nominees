@@ -1,0 +1,21 @@
+/* HEADER LAYOUT */
+header {
+	text-align: right;
+	position: fixed;
+	padding-top: 0.5rem;
+	padding-bottom: 6rem;
+	/* right: 4.7vw; */
+}
+
+.logoAwardEdition {
+	width: 85%;
+	margin-right: 4.7vw;
+}
+/* END OF HEADER LAYOUT */
+
+
+/* HEADER ELEMENTS DESIGN */
+header {
+  background-color: #fff;
+}
+/* END OF HEADER ELEMENTS DESIGN */

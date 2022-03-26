@@ -1,0 +1,78 @@
+.shareGuessesPageWrapper * {
+	padding: 0;
+	margin: 0;
+}
+
+.shareGuessesPageWrapper {
+	aspect-ratio: 9 / 16;
+	max-width: 662px;
+	padding: 0.875rem;
+	margin: 0 auto;
+}
+
+.shareGuessesPageWrapper span {
+	display: inline-block;
+}
+
+.shareMyguess {
+	border-top: 0.2rem solid black;
+	border-bottom: 0.2rem solid black;
+	font-family: 'HelveticaNeueBold';
+	font-size: clamp(1.298rem, 2.2766vw, 1.8rem);
+	padding: 0.8rem 0;
+}
+
+.underline {
+	font-family: 'HelveticaNeueBold';
+	text-decoration: underline;
+	text-underline-offset: 14%;
+}
+
+.shareWinner {
+	height: 10.2rem;
+	width: 100%;
+	border-bottom: 0.2rem solid black;
+	display: flex;
+  justify-content: space-between;
+}
+
+.shareCategory {
+  font-family: 'HelveticaNeueRoman';
+  font-size: clamp(0.16rem, 3.33vw, 1.4rem);
+	width: 22.5%;
+	padding-top: 1.5rem;
+}
+
+.shareCategory > span {
+	width: clamp(4.5rem, 7.6vw, 6rem);
+	padding-bottom: 1.5rem;
+	border-bottom: 2px solid black;
+	margin-right: 2rem;
+}
+
+.shareWork {
+  font-family: 'HelveticaNeueBold';
+  font-size: clamp(0.5rem, 10vw, 4.2rem);
+  line-height: 1.2;
+  letter-spacing: -1px;
+	width: 43.75%;
+	text-align: left;
+	align-self: flex-end;
+}
+
+.shareArtist {
+  font-family: 'HelveticaNeueRoman';
+  font-size: clamp(0.16rem, 3.33vw, 1.4rem);
+	width: 33.75%;
+	align-self: flex-end;
+}
+
+.shareArtist > span {
+  margin-left: 1.5rem;
+}
+
+.footer {
+  padding: 0.8rem 0;
+	font-family: 'HelveticaNeueBold';
+	font-size: clamp(1.5rem, 2.2766vw, 1.78rem);
+}
