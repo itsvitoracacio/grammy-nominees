@@ -116,6 +116,8 @@ const Nominee = ({
 			<div className='nominee'>
 				<div
 					className='nomineeImgArea'
+					width='225px' // Find a way to make this be a square even when the image doesn't load
+					height='225px'
 					onMouseEnter={loadTrack}
 					onMouseLeave={markTrackAsLoaded}
 				>

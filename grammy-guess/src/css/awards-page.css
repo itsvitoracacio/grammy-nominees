@@ -30,6 +30,14 @@
   display: flex;
 }
 
+.playAndVoteButtonArea .spotifyLoginArea {
+  margin: 0;
+}
+
+.playAndVoteButtonArea .loginBtn {
+  margin-bottom: 0;
+}
+
 .previewNotAvailableMsg {
 	line-height: 1.2;
 }
@@ -60,7 +68,7 @@
 }
 
 .nomineeImgArea:hover .nomineeImg {
-	filter:  blur(2px);
+	filter:  blur(2px) brightness(50%);
   opacity: .8;
 }
 
