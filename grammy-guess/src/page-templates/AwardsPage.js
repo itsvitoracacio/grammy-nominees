@@ -7,8 +7,6 @@ const AwardsPage = ({
 	userGuesses,
 	guessesCount,
 	setGuessesCount,
-	updateState,
-	setUpdateState
 }) => {
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
@@ -25,12 +23,22 @@ const AwardsPage = ({
 		.replaceAll('Performance Song', 'Performance/Song')
 		.replaceAll('Music Small', 'Music/Small')
 
+	// This function is called on the NomineeCardActions component
 	const guessUnguess = e => {
 		const currentAwardName = e.target.baseURI.split('/')[4]
 		const chosenNomineeSpotifyId = e.target.attributes.value.value
 		const currentGuess = {
 			guessingFor: currentAwardName,
 			nomineeChoice: chosenNomineeSpotifyId,
+			// Need to add nominee name and nominee artists here so we don't have to do another API call for the share screen
+		}
+
+		let newGuessesCount
+		const updateUserGuessesAndCount = () => {
+			window.localStorage.setItem('userGuesses', JSON.stringify(userGuesses))
+			newGuessesCount = userGuesses.length
+			window.localStorage.setItem('localStorageGuessesCount', newGuessesCount)
+			setGuessesCount(newGuessesCount)
 		}
 
 		const localStorageUserGuesses = window.localStorage.getItem('userGuesses') // this comes as a JSON string
@@ -40,19 +48,16 @@ const AwardsPage = ({
 			repeatedGuess = userGuesses.find(
 				guess => guess.guessingFor === currentAwardName
 			)
+
 			// If unguessing or changing guesses for the same category
 			if (repeatedGuess) {
 				const userGuessesWithoutRepeatedGuess = userGuesses.filter(
 					guess => guess != repeatedGuess
 				)
 				userGuesses = userGuessesWithoutRepeatedGuess // removing previous guess for the same category
-				console.log(userGuesses)
-				const newGuessesCount = userGuesses.length
-				window.localStorage.setItem('localStorageGuessesCount', newGuessesCount)
-				setUpdateState(!updateState)
-				// setGuessesCount(window.localStorage.getItem('localStorageGuessesCount'))
+				updateUserGuessesAndCount()
 				console.log(
-					`This should decrease - arr.length: ${newGuessesCount}, state: ${guessesCount}, updateState: ${updateState}`
+					`This should decrease - arr.length: ${newGuessesCount}, state: ${guessesCount}`
 				)
 
 				// IF unguessing
@@ -66,21 +71,14 @@ const AwardsPage = ({
 				}
 			}
 		}
+		
 		// 1) First guess at all, 2) First guess for this category or 3) Changing guesses
 		userGuesses.push(currentGuess)
-		console.log(userGuesses)
-		const newGuessesCount = userGuesses.length
-		// const localStorageGuessesCount = JSON.parse(window.localStorage.getItem(localStorageGuessesCount))
-		window.localStorage.setItem('localStorageGuessesCount', newGuessesCount)
-		setUpdateState(!updateState)
-		// setGuessesCount(window.localStorage.getItem('localStorageGuessesCount'))
-		// window.localStorage.setItem('guessesCount', JSON.stringify(localStorageGuessesCount))
+		updateUserGuessesAndCount()
 		console.log(
-			`This should increase - arr.length: ${newGuessesCount}, state: ${guessesCount}, updateState: ${updateState}`
+			`This should increase - arr.length: ${newGuessesCount}, state: ${guessesCount}`
 		)
-		window.localStorage.setItem('userGuesses', JSON.stringify(userGuesses))
-		// HERE WE SHOULD CHECK IF ALL OTHER BUTTONS HAVE THE TEXT "THIS IS THE WINNER!", AND IF NOT, SET IT
-		e.target.innerText = 'Actually, I changed my mind.'
+		e.target.innerText = "Actually, it's not them."
 	}
 
 	return (

@@ -1,16 +1,13 @@
 import UserWinner from '../components/UserWinner'
 
 const ShareGuesses = ({ userGuesses }) => {
-
 	let userGuessesJsx = []
 	userGuesses.forEach(guess => {
-		userGuessesJsx.push(
-			<UserWinner guess={guess}/>
-		)
+		userGuessesJsx.push(<UserWinner guess={guess} />)
 	})
 
 	return (
-		<div className="shareGuessesPageWrapper">
+		<div className='shareGuessesPageWrapper'> {/* Remove this class and div when we're able to use different css files on different pages -> will also need to change the CSS file for this page */}
 			<div className='shareMyguess'>
 				<p>
 					These are <span className='underline'>my guesses</span> for the{' '}
@@ -18,101 +15,7 @@ const ShareGuesses = ({ userGuesses }) => {
 				</p>
 			</div>
 
-			<div className='shareWinner'>
-				<div className='shareCategory'>
-					<p>Album of The Year</p>
-				</div>
-				<div className='shareWork'>
-					<p>Montero</p>
-				</div>
-				<div className='shareArtist'>
-					<p>Lil Nas X</p>
-				</div>
-			</div>
-
-			<div className='shareWinner'>
-				<div className='shareCategory'>
-					<p>Album of The Year</p>
-				</div>
-				<div className='shareWork'>
-					<p>Montero</p>
-				</div>
-				<div className='shareArtist'>
-					<p>Lil Nas X</p>
-				</div>
-			</div>
-
-			<div className='shareWinner'>
-				<div className='shareCategory'>
-					<p>Album of The Year</p>
-				</div>
-				<div className='shareWork'>
-					<p>Montero</p>
-				</div>
-				<div className='shareArtist'>
-					<p>Lil Nas X</p>
-				</div>
-			</div>
-
-			<div className='shareWinner'>
-				<div className='shareCategory'>
-					<p>Album of The Year</p>
-				</div>
-				<div className='shareWork'>
-					<p>Montero</p>
-				</div>
-				<div className='shareArtist'>
-					<p>Lil Nas X</p>
-				</div>
-			</div>
-
-			<div className='shareWinner'>
-				<div className='shareCategory'>
-					<p>Album of The Year</p>
-				</div>
-				<div className='shareWork'>
-					<p>Montero</p>
-				</div>
-				<div className='shareArtist'>
-					<p>Lil Nas X</p>
-				</div>
-			</div>
-
-			<div className='shareWinner'>
-				<div className='shareCategory'>
-					<p>Album of The Year</p>
-				</div>
-				<div className='shareWork'>
-					<p>Montero</p>
-				</div>
-				<div className='shareArtist'>
-					<p>Lil Nas X</p>
-				</div>
-			</div>
-
-			<div className='shareWinner'>
-				<div className='shareCategory'>
-					<p>Album of The Year</p>
-				</div>
-				<div className='shareWork'>
-					<p>Montero</p>
-				</div>
-				<div className='shareArtist'>
-					<p>Lil Nas X</p>
-				</div>
-			</div>
-
-			<div className='shareWinner'>
-				<div className='shareCategory'>
-					<p>Album of The Year</p>
-				</div>
-				<div className='shareWork'>
-					<p>Montero</p>
-				</div>
-				<div className='shareArtist'>
-					<p>Lil Nas X</p>
-				</div>
-			</div>
+			{userGuessesJsx}
 
 			<div className='footer'>
 				<p>

@@ -11,6 +11,7 @@ const NomineeList = ({
 	guessesCount,
 	guessUnguess,
 }) => {
+	// App credentials to be used in case user doesn't want to log in
 	const CLIENT_ID = '9d34d6d2667e4f77b6d15e8e468091d6'
 	const CLIENT_SECRET = '32d7d019ad2443e390a34215dbcaed25'
 
@@ -33,7 +34,6 @@ const NomineeList = ({
 		fetchClientToken()
 	}, [])
 
-	let currentAwardObj
 	const currentCategory = AllAwards.find(
 		cat => cat.categoryName === categoryName
 	)

@@ -3,8 +3,6 @@ import { useState } from 'react'
 
 const NomineeCardActions = ({
 	isLoggedIn,
-	// previewUrlFromSpotify,
-	// fullUrlFromSpotify,
 	isTherePreview,
 	authCreds,
 	awardName,
@@ -15,7 +13,6 @@ const NomineeCardActions = ({
 	playPauseTrack,
 	playPauseIcon,
 }) => {
-	// const isTherePreview = previewUrlFromSpotify
 
 	const determineWhatToShow = () => {
 		if (isLoggedIn || isTherePreview) return <PlayAndVoteBtns />
@@ -66,7 +63,7 @@ const NomineeCardActions = ({
 				className='spotifyBtn'
 				id='voteBtn'
 				value={spotifyId}
-				onClick={guessUnguess}
+				onClick={guessUnguess} // This function is declared on the AwardsPage component
 			>
 				This is the winner!
 			</button>

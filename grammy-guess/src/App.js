@@ -11,8 +11,8 @@ import Footer from './layout/Footer'
 function App() {
 	const authCreds = {
 		CLIENT_ID: '9d34d6d2667e4f77b6d15e8e468091d6',
-		REDIRECT_URI: 'http://localhost:3000',
-		// REDIRECT_URI: 'https://idyllic-douhua-a03845.netlify.app/',
+		// REDIRECT_URI: 'http://localhost:3000',
+		REDIRECT_URI: 'https://idyllic-douhua-a03845.netlify.app/',
 		AUTH_ENDPOINT: 'https://accounts.spotify.com/authorize',
 		RESPONSE_TYPE: 'token',
 	}
@@ -20,6 +20,7 @@ function App() {
 	const [userToken, setUserToken] = useState('')
 
 	useEffect(() => {
+		// Grabbing the user token when the user is logged into Spotify
 		const hash = window.location.hash
 		let userToken = window.localStorage.getItem('token')
 
@@ -37,14 +38,14 @@ function App() {
 		setUserToken(userToken)
 	}, [])
 
+	// Function for the user to log out of Spotify. Need to add UX confirmation of logging out
 	const logout = () => {
 		setUserToken('')
 		window.localStorage.removeItem('token')
 	}
 
-	let userGuesses = []
+	let userGuesses = [] // This arr will store user guesses before they're saved to localStorage
 	const [guessesCount, setGuessesCount] = useState(0)
-	const [updateState, setUpdateState] = useState(() => (false))
 
 	return (
 		<>
@@ -63,12 +64,13 @@ function App() {
 								userGuesses={userGuesses}
 								guessesCount={guessesCount}
 								setGuessesCount={setGuessesCount}
-								updateState={updateState}
-								setUpdateState={setUpdateState}
 							/>
 						}
 					/>
-					<Route path='/share-your-guesses' element={<ShareGuesses userGuesses={userGuesses} />}/>
+					<Route
+						path='/share-your-guesses'
+						element={<ShareGuesses userGuesses={userGuesses} />}
+					/>
 				</Routes>
 			</main>
 			<Footer />

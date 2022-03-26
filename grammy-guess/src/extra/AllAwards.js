@@ -4,7 +4,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Album Of The Year',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Happier Than Ever',
@@ -60,7 +60,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Record Of The Year',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Kiss Me More ',
@@ -116,7 +116,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Song Of The Year',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Kiss Me More ',
@@ -233,7 +233,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Traditional Pop Vocal Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'A Holly Dolly Christmas',
@@ -269,7 +269,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Pop Vocal Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Sour',
@@ -300,7 +300,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Pop Solo Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'drivers license',
@@ -331,7 +331,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Pop Duo/Group Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Kiss Me More ',
@@ -367,7 +367,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Dance/Electronic Music Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Judgement',
@@ -403,7 +403,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Dance/Electronic Recording',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Hero',
@@ -449,7 +449,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Contemporary Instrumental Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Deep: The Baritone Sessions, Vol 2',
@@ -485,7 +485,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Rock Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'McCartney III',
@@ -516,7 +516,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Rock Song',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Waiting On A War',
@@ -547,7 +547,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Rock Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Making A Fire',
@@ -578,7 +578,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Metal Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName:
@@ -616,7 +616,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Alternative Music Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: "Daddy's Home",
@@ -652,7 +652,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Progressive R&B Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Studying Abroad: Extended Stay',
@@ -689,7 +689,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best R&B Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Heaux Tales',
@@ -720,7 +720,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best R&B Song',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Good Days',
@@ -751,7 +751,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best R&B Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Pick Up Your Feelings',
@@ -782,7 +782,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Traditional R&B Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'How Much Can A Heart Take',
@@ -820,7 +820,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Rap Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Donda',
@@ -851,7 +851,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Rap Song',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'M Y . L I F E',
@@ -882,7 +882,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Rap Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Thot S***',
@@ -908,7 +908,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Melodic Rap Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Hurricane',
@@ -945,7 +945,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Country Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Starting Over ',
@@ -976,7 +976,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Country Song',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Remember Her Name',
@@ -1012,7 +1012,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Country Solo Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'You Should Probably Leave',
@@ -1043,7 +1043,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Country Duo/Group Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: "Drunk (And I Don't Wanna Go Home)",
@@ -1079,7 +1079,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best New Age Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Pieces Of Forever',
@@ -1115,7 +1115,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Jazz Vocal Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Songwrights Apothecary Lab',
@@ -1146,7 +1146,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Jazz Instrumental Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Side-Eye NYC (V1.IV)',
@@ -1179,7 +1179,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Large Jazz Ensemble Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Jackets XL',
@@ -1211,7 +1211,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Latin Jazz Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'El Arte Del Bolero',
@@ -1244,7 +1244,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Improvised Jazz Solo',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Humpty Humpty (Set 2)',
@@ -1280,7 +1280,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Gospel Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Changing Your Story Live!',
@@ -1311,7 +1311,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Contemporary Christian Music Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Old Church Basement',
@@ -1342,7 +1342,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Roots Gospel Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'My Savior',
@@ -1373,7 +1373,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Gospel Performance/Song',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Wait On You',
@@ -1408,7 +1408,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Contemporary Christian Music Performance/Song',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Jireh',
@@ -1449,7 +1449,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Latin Pop Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Revelación',
@@ -1485,7 +1485,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Música Urbana Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Sin Miedo (Del Amor Y Otros Demonios) 8',
@@ -1516,7 +1516,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Latin Rock Or Alternative Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Sonidos De Karmática Resonancia',
@@ -1552,7 +1552,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Regional Mexican Music Album (Including Tejano)',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Ayayay! (Súper Deluxe)',
@@ -1583,7 +1583,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Tropical Latin Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Live In Peru',
@@ -1619,7 +1619,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Americana Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Stand For Myself',
@@ -1650,7 +1650,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Bluegrass Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Music Is What I See',
@@ -1676,7 +1676,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Traditional Blues Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Take Me Back',
@@ -1707,7 +1707,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Contemporary Blues Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: '662',
@@ -1739,7 +1739,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Folk Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Blue Heron Suite',
@@ -1770,7 +1770,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Regional Roots Music Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Live In New Orleans!',
@@ -1801,7 +1801,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best American Roots Song',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Bored',
@@ -1838,7 +1838,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best American Roots Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Bored',
@@ -1880,7 +1880,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Reggae Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: '10',
@@ -1921,7 +1921,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Global Music Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Made In Lagos: Deluxe Edition',
@@ -1954,7 +1954,7 @@ const AllAwards = [
 
 			{
 				awardName: 'Best Global Music Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Essence ',
@@ -1990,7 +1990,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: "Best Children's Music Album",
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'All One Tribe',
@@ -2023,14 +2023,47 @@ const AllAwards = [
 	},
 	{
 		categoryName: 'Spoken Word',
-		categoryAwards: [],
+		categoryAwards: [
+			{
+				awardName: 'Best Spoken Word Album',
+				awardTarget: 'albums',
+				awardNominees: [
+					{
+						nomineeName: 'A Promised Land',
+						nomineeArtistName: 'Barack Obama',
+						spotifyId: '',
+					},
+					{
+						nomineeName: '8:46',
+						nomineeArtistName: 'Dave Chapelle & Almir Sulaiman',
+						spotifyId: '47U16veRI8bIYiSmXGlYba',
+					},
+					{
+						nomineeName: 'Catching Dreams: Live At Fort Knox Chicago',
+						nomineeArtistName: 'J. Ivy',
+						spotifyId: '6k2MHYTdkGM5Mgmo0dwDtu',
+					},
+					{
+						nomineeName:
+							'Carry On: Reflections For A New Generation From John Lewis',
+						nomineeArtistName: 'Don Cheadle',
+						spotifyId: '',
+					},
+					{
+						nomineeName: 'Aftermath',
+						nomineeArtistName: 'LeVar Burton',
+						spotifyId: '',
+					},
+				],
+			},
+		],
 	},
 	{
 		categoryName: 'Comedy',
 		categoryAwards: [
 			{
 				awardName: 'Best Comedy Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Zero F***s Given',
@@ -2071,7 +2104,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Musical Theater Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: "Andrew Lloyd Webber's Cinderella",
@@ -2119,7 +2152,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Compilation Soundtrack For Visual Media',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'In The Heights',
@@ -2164,7 +2197,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Score Soundtrack For Visual Media',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Soul',
@@ -2196,7 +2229,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Song Written For Visual Media',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Speak Now [From One Night In Miami...]',
@@ -2238,11 +2271,11 @@ const AllAwards = [
 		],
 	},
 	{
-		categoryName: 'Composing/Arranging',
+		categoryName: 'Composing',
 		categoryAwards: [
 			{
 				awardName: 'Best Instrumental Composition',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Eberhard',
@@ -2274,9 +2307,14 @@ const AllAwards = [
 					},
 				],
 			},
+		],
+	},
+	{
+		categoryName: 'Arranging',
+		categoryAwards: [
 			{
 				awardName: 'Best Arrangement, Instrumental Or A Capella',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'The Struggle Within',
@@ -2310,7 +2348,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Arrangement, Instruments And Vocals',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'To The Edge Of Longing (Edit Version)',
@@ -2346,11 +2384,11 @@ const AllAwards = [
 		],
 	},
 	{
-		categoryName: 'Package, Notes & Historical',
+		categoryName: 'Package, Notes & Historical Field',
 		categoryAwards: [
 			{
 				awardName: 'Best Recording Package',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Serpentine Prison',
@@ -2384,7 +2422,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Boxed Or Special Limited Edition Package',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: '77-81',
@@ -2421,7 +2459,7 @@ const AllAwards = [
 
 			{
 				awardName: 'Best Historical Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: "Sign O' The Times (Super Deluxe Edition)",
@@ -2462,7 +2500,7 @@ const AllAwards = [
 
 			{
 				awardName: 'Best Album Notes',
-				awardTarget: 'notes',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName:
@@ -2502,11 +2540,11 @@ const AllAwards = [
 		],
 	},
 	{
-		categoryName: 'Production',
+		categoryName: 'Engineered Album',
 		categoryAwards: [
 			{
 				awardName: 'Best Engineered Album Non-Classical',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Dawn',
@@ -2541,44 +2579,8 @@ const AllAwards = [
 				],
 			},
 			{
-				awardName: 'Best Immersive Audio Album',
-				awardTarget: 'album',
-				awardNominees: [
-					{
-						nomineeName: 'The Future Bites ',
-						nomineeArtistName:
-							'Jake Fields & Steven Wilson, immersive mix engineers; Dave Kosten & Steven Wilson, immersive producers (Steven Wilson)',
-						spotifyId: '2rbqMQIVHHeTJTU51JB2tu',
-					},
-					{
-						nomineeName: 'Stille Grender',
-						nomineeArtistName:
-							'Morten Lindberg, immersive mix engineer; Morten Lindberg, immersive mastering engineer; Morten Lindberg, immersive producer (Anne Karin Sundal-Ask & Det Norske Jentekor)',
-						spotifyId: '1KQmNBEaomP2O8uhgcPc8R',
-					},
-					{
-						nomineeName: 'Fine Line',
-						nomineeArtistName:
-							'Greg Penny, immersive mix engineer; Greg Penny, immersive mastering engineer; Greg Penny, immersive producer (Harry Styles)',
-						spotifyId: '7xV2TzoaVc0ycW7fwBwAml',
-					},
-					{
-						nomineeName: 'Clique',
-						nomineeArtistName:
-							'Jim Anderson & Ulrike Schwarz, immersive mix engineers; Bob Ludwig, immersive mastering engineer; Jim Anderson, immersive producer (Patricia Barber)',
-						spotifyId: '4VtqGCzJeDTuZgewVUOvm3',
-					},
-					{
-						nomineeName: 'Alicia',
-						nomineeArtistName:
-							'George Massenburg & Eric Schilling, immersive mix engineers; Michael Romanowski, immersive mastering engineer; Ann Mincieli, immersive producer (Alicia Keys)',
-						spotifyId: '1168pCxg0HeTRqyutFf4o1',
-					},
-				],
-			},
-			{
 				awardName: 'Best Engineered Album, Classical',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: "Mahler: Symphony No. 8, 'Symphony Of A Thousand'",
@@ -2611,45 +2613,44 @@ const AllAwards = [
 					},
 				],
 			},
+		],
+	},
+	{
+		categoryName: 'Production Field',
+		categoryAwards: [
 			{
-				awardName: 'Best Remixed Recording',
-				awardTarget: 'track',
+				awardName: 'Producer Of The Year, Non-Classical',
+				awardTarget: 'producer',
 				awardNominees: [
 					{
-						nomineeName: 'Talks (Mura Masa Remix)',
-						nomineeArtistName: 'Alexander Crossan, remixer (PVA)',
-						spotifyId: '1DaVrzTEaAnqoilrZT262b',
-					},
-					{
-						nomineeName: 'Passenger (Mike Shinoda Remix)',
-						nomineeArtistName: 'Mike Shinoda, remixer (Deftones)',
-						spotifyId: '0Vfb936Sz3p9k67BHrHQD5',
-					},
-					{
-						nomineeName: 'Met Him Last Night (Dave Audé Remix)',
+						nomineeName: 'Ricky Reed',
 						nomineeArtistName:
-							'Dave Audé, remixer (Demi Lovato & Ariana Grande)',
-						spotifyId: '0mHz9vqcznnfUcLqfQb3kd',
+							"//aguardiente y limón%????% (Kali Uchis) (T) • Can't Let You Go (Terrace Martin Featuring Nick Grant) (S) • Damn Bean (John-Robert) (T) • Don't Go Yet (Camila Cabello) (S) • Gold-Diggers Sound (Leon Bridges) (A) • Piece Of You (Shawn Mendes) (T) • Pushing Away (Junior Mesa) (T) • Rumors (Lizzo Featuring Cardi B) (S) • Sing (Jon Batiste) (T)",
+						spotifyId: '',
 					},
 					{
-						nomineeName: 'Inside Out (3SCAPE DRM Remix)',
-						nomineeArtistName: '3SCAPE DRM, remixer (Zedd & Griff)',
-						spotifyId: '30fFoEhZX88S4p0mhcxJXb',
+						nomineeName: 'Hit-Boy',
+						nomineeArtistName:
+							"•Judas And The Black Messiah: The Inspired Album (Various Artists) (A) • King's Disease II (Nas) (A)",
+						spotifyId: '',
 					},
 					{
-						nomineeName: 'Constant Craving (Fashionably Late Remix)',
-						nomineeArtistName: 'Tracy Young, remixer (K.D. Lang)',
-						spotifyId: '3jBKvIBydiJ9I9ZZ6oX3Fg',
+						nomineeName: 'Mike Elizondo',
+						nomineeArtistName:
+							"• Glow On (Turnstile) (A) • Good Day (Twenty One Pilots) (T) • Life By Misadventure (Rag'n'Bone Man) (A) • Mercy (Jonas Brothers) (T) • Mulberry Street (Twenty One Pilots) (T) • Obviously (Lake Street Dive) (A) • Repeat (Grace Vanderwaal) (S) • Taking The Heat (Joy Oladokun) (T)",
+						spotifyId: '',
 					},
 					{
-						nomineeName: 'Born For Greatness (Cymek Remix)',
-						nomineeArtistName: 'Spencer Bastian, remixer (Papa Roach)',
-						spotifyId: '1cIhglQAD85Rb1nkbirm4I',
+						nomineeName: 'Rogét Chahayed',
+						nomineeArtistName:
+							"• //aguardiente Y Limón %????% (Kali Uchis) (T) • Ain't S*** (Doja Cat) (T) • Beautiful (Shelley FKA DRAM) (T) • Blueberry Eyes (MAX Featuring SUGA of BTS) (S) • Fire In The Sky (Anderson .Paak) (T) • Kiss Me More (Doja Cat Featuring SZA) (S) • Lazy Susan (21 Savage With Rich Brian Featuring Warren Hue & Masimwei) (S) • NITROUS (Joji) (T) • Vibez (ZAYN) (S)",
+						spotifyId: '',
 					},
 					{
-						nomineeName: 'Back To Life (Booker T Kings Of Soul Satta Dub)',
-						nomineeArtistName: 'Booker T, remixer (Soul II Soul)',
-						spotifyId: '2v4B8t7kO4jh6qGChrwRz2',
+						nomineeName: 'Jack Antonoff',
+						nomineeArtistName:
+							'• Chemtrails Over The Country Club (Lana Del Rey) (A) • Daddy’s Home (St. Vincent) (A) • Gold Rush (Taylor Swift) (T) • Sling (Clairo) (A) • Solar Power (Lorde) (A) • Take The Sadness Out Of Saturday Night (Bleachers) (A)',
+						spotifyId: '',
 					},
 				],
 			},
@@ -2690,38 +2691,85 @@ const AllAwards = [
 				],
 			},
 			{
-				awardName: 'Producer Of The Year, Non-Classical',
-				awardTarget: 'producer',
+				awardName: 'Best Immersive Audio Album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
-						nomineeName: 'Ricky Reed',
+						nomineeName: 'The Future Bites ',
 						nomineeArtistName:
-							"//aguardiente y limón%????% (Kali Uchis) (T) • Can't Let You Go (Terrace Martin Featuring Nick Grant) (S) • Damn Bean (John-Robert) (T) • Don't Go Yet (Camila Cabello) (S) • Gold-Diggers Sound (Leon Bridges) (A) • Piece Of You (Shawn Mendes) (T) • Pushing Away (Junior Mesa) (T) • Rumors (Lizzo Featuring Cardi B) (S) • Sing (Jon Batiste) (T)",
-						spotifyId: '',
+							'Jake Fields & Steven Wilson, immersive mix engineers; Dave Kosten & Steven Wilson, immersive producers (Steven Wilson)',
+						spotifyId: '2rbqMQIVHHeTJTU51JB2tu',
 					},
 					{
-						nomineeName: 'Hit-Boy',
+						nomineeName: 'Stille Grender',
 						nomineeArtistName:
-							"•Judas And The Black Messiah: The Inspired Album (Various Artists) (A) • King's Disease II (Nas) (A)",
-						spotifyId: '',
+							'Morten Lindberg, immersive mix engineer; Morten Lindberg, immersive mastering engineer; Morten Lindberg, immersive producer (Anne Karin Sundal-Ask & Det Norske Jentekor)',
+						spotifyId: '1KQmNBEaomP2O8uhgcPc8R',
 					},
 					{
-						nomineeName: 'Mike Elizondo',
+						nomineeName: 'Fine Line',
 						nomineeArtistName:
-							"• Glow On (Turnstile) (A) • Good Day (Twenty One Pilots) (T) • Life By Misadventure (Rag'n'Bone Man) (A) • Mercy (Jonas Brothers) (T) • Mulberry Street (Twenty One Pilots) (T) • Obviously (Lake Street Dive) (A) • Repeat (Grace Vanderwaal) (S) • Taking The Heat (Joy Oladokun) (T)",
-						spotifyId: '',
+							'Greg Penny, immersive mix engineer; Greg Penny, immersive mastering engineer; Greg Penny, immersive producer (Harry Styles)',
+						spotifyId: '7xV2TzoaVc0ycW7fwBwAml',
 					},
 					{
-						nomineeName: 'Rogét Chahayed',
+						nomineeName: 'Clique',
 						nomineeArtistName:
-							"• //aguardiente Y Limón %????% (Kali Uchis) (T) • Ain't S*** (Doja Cat) (T) • Beautiful (Shelley FKA DRAM) (T) • Blueberry Eyes (MAX Featuring SUGA of BTS) (S) • Fire In The Sky (Anderson .Paak) (T) • Kiss Me More (Doja Cat Featuring SZA) (S) • Lazy Susan (21 Savage With Rich Brian Featuring Warren Hue & Masimwei) (S) • NITROUS (Joji) (T) • Vibez (ZAYN) (S)",
-						spotifyId: '',
+							'Jim Anderson & Ulrike Schwarz, immersive mix engineers; Bob Ludwig, immersive mastering engineer; Jim Anderson, immersive producer (Patricia Barber)',
+						spotifyId: '4VtqGCzJeDTuZgewVUOvm3',
 					},
 					{
-						nomineeName: 'Jack Antonoff',
+						nomineeName: 'Alicia',
 						nomineeArtistName:
-							'• Chemtrails Over The Country Club (Lana Del Rey) (A) • Daddy’s Home (St. Vincent) (A) • Gold Rush (Taylor Swift) (T) • Sling (Clairo) (A) • Solar Power (Lorde) (A) • Take The Sadness Out Of Saturday Night (Bleachers) (A)',
-						spotifyId: '',
+							'George Massenburg & Eric Schilling, immersive mix engineers; Michael Romanowski, immersive mastering engineer; Ann Mincieli, immersive producer (Alicia Keys)',
+						spotifyId: '1168pCxg0HeTRqyutFf4o1',
+					},
+				],
+			},
+		],
+	},
+	{
+		categoryName: 'Remixer',
+		categoryAwards: [
+			{
+				awardName: 'Best Remixed Recording, Non-Classical',
+				awardTarget: 'tracks',
+				awardNominees: [
+					{
+						nomineeName: 'Talks (Mura Masa Remix)',
+						nomineeArtistName: 'Alexander Crossan, remixer (PVA)',
+						spotifyId: '1DaVrzTEaAnqoilrZT262b',
+					},
+					{
+						nomineeName: 'Passenger (Mike Shinoda Remix)',
+						nomineeArtistName: 'Mike Shinoda, remixer (Deftones)',
+						spotifyId: '0Vfb936Sz3p9k67BHrHQD5',
+					},
+					{
+						nomineeName: 'Met Him Last Night (Dave Audé Remix)',
+						nomineeArtistName:
+							'Dave Audé, remixer (Demi Lovato & Ariana Grande)',
+						spotifyId: '0mHz9vqcznnfUcLqfQb3kd',
+					},
+					{
+						nomineeName: 'Inside Out (3SCAPE DRM Remix)',
+						nomineeArtistName: '3SCAPE DRM, remixer (Zedd & Griff)',
+						spotifyId: '30fFoEhZX88S4p0mhcxJXb',
+					},
+					{
+						nomineeName: 'Constant Craving (Fashionably Late Remix)',
+						nomineeArtistName: 'Tracy Young, remixer (K.D. Lang)',
+						spotifyId: '3jBKvIBydiJ9I9ZZ6oX3Fg',
+					},
+					{
+						nomineeName: 'Born For Greatness (Cymek Remix)',
+						nomineeArtistName: 'Spencer Bastian, remixer (Papa Roach)',
+						spotifyId: '1cIhglQAD85Rb1nkbirm4I',
+					},
+					{
+						nomineeName: 'Back To Life (Booker T Kings Of Soul Satta Dub)',
+						nomineeArtistName: 'Booker T, remixer (Soul II Soul)',
+						spotifyId: '2v4B8t7kO4jh6qGChrwRz2',
 					},
 				],
 			},
@@ -2732,7 +2780,7 @@ const AllAwards = [
 		categoryAwards: [
 			{
 				awardName: 'Best Orchestral Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Adams: My Father Knew Charles Ives; Harmonielehre',
@@ -2768,7 +2816,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Classical Solo Vocal Album',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Jake Heggie: Unexpected Shadows',
@@ -2801,7 +2849,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Classical Compendium',
-				awardTarget: 'album',
+				awardTarget: 'albums',
 				awardNominees: [
 					{
 						nomineeName: 'Women Warriors - The Voices Of Change',
@@ -2838,7 +2886,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Opera Recording',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Poulenc: Dialogues Des Carmélites',
@@ -2874,7 +2922,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Classical Instrumental Solo',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Mak Bach',
@@ -2906,7 +2954,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Contemporary Classical Composition',
-				awardTarget: 'track',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Caroline Shaw: Narrow Sea',
@@ -2941,7 +2989,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Choral Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'The Singing Guitar',
@@ -2984,7 +3032,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best Chamber Music/Small Ensemble Performance',
-				awardTarget: 'performance',
+				awardTarget: 'tracks',
 				awardNominees: [
 					{
 						nomineeName: 'Bruits',
