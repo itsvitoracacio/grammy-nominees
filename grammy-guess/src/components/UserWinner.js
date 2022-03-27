@@ -1,6 +1,4 @@
 const UserWinner = ({ guess }) => {
-	const { guessingFor, nomineeChoice } = guess
-
 	let artistToShare = ''
 	/* if (artists.length === 1) {
     artistToShare = artists[0].name
@@ -15,13 +13,13 @@ const UserWinner = ({ guess }) => {
 	return (
 		<div className='shareWinner'>
 			<div className='shareCategory'>
-				<span>{guessingFor}</span>
+				<span>{guess.guessingFor}</span>
 			</div>
 			<div className='shareWork'>
-				<span>{nomineeChoice}</span>
+				<span>{guess.nomineeChoiceName}</span>
 			</div>
 			<div className='shareArtist'>
-				<span>{artistToShare}</span>
+				<span>{guess.nomineeChoiceArtists}</span>
 			</div>
 		</div>
 	)

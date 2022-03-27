@@ -7,29 +7,42 @@ const AwardsPage = ({
 	userGuesses,
 	guessesCount,
 	setGuessesCount,
+	setCurrentPage,
+	currentPage
 }) => {
+	setCurrentPage('AwardsPage')
+	console.log(currentPage)
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
-	const categoryNameSpaceCase = categoryNameUrl
-		.replaceAll('-', ' ')
-		.replaceAll('Dance Eletronic', 'Dance/Eletronic')
-		.replaceAll('Gospel Contemporary', 'Gospel/Contemporary')
-		.replaceAll('Video Film', 'Video/Film')
-		.replaceAll('Composing Arranging', 'Composing/Arranging')
-	const awardNameSpaceCase = awardNameUrl
-		.replaceAll('-', ' ')
-		.replaceAll('Dance Eletronic', 'Dance/Eletronic')
-		.replaceAll('Duo Group', 'Duo/Group')
-		.replaceAll('Performance Song', 'Performance/Song')
-		.replaceAll('Music Small', 'Music/Small')
+	const toSpaceCaseCat = categoryNameUrl => {
+		return categoryNameUrl
+			.replaceAll('-', ' ')
+			.replaceAll('Dance Eletronic', 'Dance/Eletronic')
+			.replaceAll('Gospel Contemporary', 'Gospel/Contemporary')
+			.replaceAll('Video Film', 'Video/Film')
+			.replaceAll('Composing Arranging', 'Composing/Arranging')
+	}
+
+	const toSpaceCaseAward = awardNameUrl => {
+		return awardNameUrl
+			.replaceAll('-', ' ')
+			.replaceAll('Dance Eletronic', 'Dance/Eletronic')
+			.replaceAll('Duo Group', 'Duo/Group')
+			.replaceAll('Performance Song', 'Performance/Song')
+			.replaceAll('Music Small', 'Music/Small')
+	}
 
 	// This function is called on the NomineeCardActions component
 	const guessUnguess = e => {
-		const currentAwardName = e.target.baseURI.split('/')[4]
+		const currentAwardNameUrl = e.target.baseURI.split('/')[4]
+		const currentAwardName = toSpaceCaseAward(currentAwardNameUrl)
 		const chosenNomineeSpotifyId = e.target.attributes.value.value
+		console.dir(e.target);
 		const currentGuess = {
 			guessingFor: currentAwardName,
-			nomineeChoice: chosenNomineeSpotifyId,
+			// nomineeChoiceId: chosenNomineeSpotifyId,
+			nomineeChoiceName: e.target.attributes[3].value,
+			nomineeChoiceArtists: e.target.attributes[4].value,
 			// Need to add nominee name and nominee artists here so we don't have to do another API call for the share screen
 		}
 
@@ -71,7 +84,7 @@ const AwardsPage = ({
 				}
 			}
 		}
-		
+
 		// 1) First guess at all, 2) First guess for this category or 3) Changing guesses
 		userGuesses.push(currentGuess)
 		updateUserGuessesAndCount()
@@ -83,10 +96,10 @@ const AwardsPage = ({
 
 	return (
 		<>
-			<h1>{awardNameSpaceCase}</h1>
+			<h1>{toSpaceCaseAward(awardNameUrl)}</h1>
 			<NomineeList
-				categoryName={categoryNameSpaceCase}
-				awardName={awardNameSpaceCase}
+				categoryName={toSpaceCaseCat(categoryNameUrl)}
+				awardName={toSpaceCaseAward(awardNameUrl)}
 				userToken={userToken}
 				authCreds={authCreds}
 				// userGuesses={userGuesses}

@@ -11,8 +11,8 @@ import Footer from './layout/Footer'
 function App() {
 	const authCreds = {
 		CLIENT_ID: '9d34d6d2667e4f77b6d15e8e468091d6',
-		// REDIRECT_URI: 'http://localhost:3000',
-		REDIRECT_URI: 'https://idyllic-douhua-a03845.netlify.app/',
+		REDIRECT_URI: 'http://localhost:3000',
+		// REDIRECT_URI: 'https://idyllic-douhua-a03845.netlify.app/',
 		AUTH_ENDPOINT: 'https://accounts.spotify.com/authorize',
 		RESPONSE_TYPE: 'token',
 	}
@@ -44,14 +44,42 @@ function App() {
 		window.localStorage.removeItem('token')
 	}
 
-	let userGuesses = [] // This arr will store user guesses before they're saved to localStorage
+	console.dir(document)
+	const pageUrl = document.URL.split('/')[3]
+	// console.log(pageUrl)
+	/* const showHeaderOrNot = () => {
+		if (pagePath === '/share-your-guesses') {
+			return
+		}
+		else {
+			return (
+				<Header />
+			)
+		}
+	} */
+
+	// let userGuesses = [] // This arr will store user guesses before they're saved to localStorage
+	const [userGuesses, setUserGuesses] = useState([])
 	const [guessesCount, setGuessesCount] = useState(0)
+	const [currentPage, setCurrentPage] = useState('')
 
 	return (
 		<>
-			<Header />
+			<Header
+				className={
+					currentPage != 'share-screen'
+						? 'headerRegularPages'
+						: 'headerShareScreen'
+				}
+			/>
 			<Sidebar userToken={userToken} authCreds={authCreds} logout={logout} />
-			<main>
+			<main
+				className={
+					pageUrl != 'share-screen'
+						? 'mainRegularPages'
+						: 'mainShareScreen'
+				}
+			>
 				<Routes>
 					<Route path='/' element={<Home />} />
 					<Route path='/about' element={<AboutPage />} />
@@ -64,12 +92,20 @@ function App() {
 								userGuesses={userGuesses}
 								guessesCount={guessesCount}
 								setGuessesCount={setGuessesCount}
+								setCurrentPage={setCurrentPage}
+								currentPage={currentPage}
 							/>
 						}
 					/>
 					<Route
 						path='/share-your-guesses'
-						element={<ShareGuesses userGuesses={userGuesses} />}
+						element={
+							<ShareGuesses
+								userGuesses={userGuesses}
+								currentPage={currentPage}
+								setCurrentPage={setCurrentPage}
+							/>
+						}
 					/>
 				</Routes>
 			</main>

@@ -17,6 +17,7 @@ const Nominee = ({
 
 	const [nomineeNameFromSpotify, setNomineeNameFromSpotify] = useState('')
 	const [artistNameFromSpotify, setArtistNameFromSpotify] = useState('')
+	const [allArtistsFromSpotify, setAllArtistsFromSpotify] = useState('')
 	const [nomineeThumbFromSpotify, setNomineeThumbFromSpotify] = useState('')
 	const [nomineeBigImgFromSpotify, setNomineeBigImgFromSpotify] = useState('')
 	const [previewUrlFromSpotify, setPreviewUrlFromSpotify] = useState('')
@@ -35,9 +36,14 @@ const Nominee = ({
 		)
 
 		const { name, artists, album, images, href, preview_url } = data
+		
+		const allArtistsNamesArr = []
+		artists.forEach(artist => allArtistsNamesArr.push(artist.name))
+		const allAristsNamesStr = allArtistsNamesArr.join(', ')
 
 		setNomineeNameFromSpotify(name)
 		setArtistNameFromSpotify(artists[0].name)
+		setAllArtistsFromSpotify(allAristsNamesStr)
 		setFullUrlFromSpotify(href)
 		setPreviewUrlFromSpotify(preview_url)
 
@@ -140,6 +146,8 @@ const Nominee = ({
 							authCreds={authCreds}
 							awardName={awardName}
 							spotifyId={spotifyId}
+							nomineeNameFromSpotify={nomineeNameFromSpotify}
+							allArtistsFromSpotify={allArtistsFromSpotify}
 							guessesCount={guessesCount}
 							guessUnguess={guessUnguess}
 							playPauseTrack={playPauseTrack}

@@ -3,7 +3,7 @@ header {
 	text-align: right;
 	position: fixed;
 	padding-top: 0.5rem;
-	padding-bottom: 6rem;
+	padding-bottom: 3rem;
 	/* right: 4.7vw; */
 }
 
@@ -11,6 +11,11 @@ header {
 	width: 85%;
 	margin-right: 4.7vw;
 }
+
+.headerShareScreen {
+	display: none;
+}
+
 /* END OF HEADER LAYOUT */
 
 

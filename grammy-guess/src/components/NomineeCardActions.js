@@ -10,6 +10,8 @@ const NomineeCardActions = ({
 	guessesCount,
 	guessUnguess,
 	spotifyId,
+	nomineeNameFromSpotify,
+	allArtistsFromSpotify,
 	playPauseTrack,
 	playPauseIcon,
 }) => {
@@ -63,6 +65,8 @@ const NomineeCardActions = ({
 				className='spotifyBtn'
 				id='voteBtn'
 				value={spotifyId}
+				data-nominee-name={nomineeNameFromSpotify}
+				data-artists-list={allArtistsFromSpotify}
 				onClick={guessUnguess} // This function is declared on the AwardsPage component
 			>
 				This is the winner!

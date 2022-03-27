@@ -39,7 +39,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Montero',
 						nomineeArtistName: 'Lil Nas X',
-						spotifyId: '67BtfxlNbhBmCDR2L2l8qd',
+						spotifyId: '6pOiDiuDQqrmo5DbG0ZubR',
 					},
 					{
 						nomineeName: 'Sour',
