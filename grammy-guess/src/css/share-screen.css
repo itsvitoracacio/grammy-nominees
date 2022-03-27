@@ -10,19 +10,22 @@
 .shareGuessesPageWrapper {
 	aspect-ratio: 9 / 16;
 	max-width: 662px;
-	padding: 0.875rem;
+	padding: .875rem;
+	padding-left: 4rem;
 	margin: 0 auto;
 }
+
+
 
 .shareGuessesPageWrapper span {
 	display: inline-block;
 }
 
-.shareMyguess {
+.shareMyGuess {
 	border-top: 0.2rem solid black;
 	border-bottom: 0.2rem solid black;
 	font-family: 'HelveticaNeueBold';
-	font-size: clamp(1.298rem, 2.2766vw, 1.8rem);
+	font-size: clamp(1.156rem, 3.69vw, 1.659rem);
 	padding: 0.8rem 0;
 }
 
@@ -79,4 +82,13 @@
   padding: 0.8rem 0;
 	font-family: 'HelveticaNeueBold';
 	font-size: clamp(1.5rem, 2.2766vw, 1.78rem);
+}
+
+@media all and (min-width: 768px) {
+	.shareGuessesPageWrapper {
+		padding-left: .875rem;
+	}
+	.shareMyGuess {
+		font-size: 1.8rem;
+	}
 }
