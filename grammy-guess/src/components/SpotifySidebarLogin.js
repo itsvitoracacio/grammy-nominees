@@ -16,11 +16,13 @@ const SpotifySidebarLogin = ({ userToken, authCreds, logout }) => {
 				</div>
 			) : (
 				<div className='spotifyLoginArea'>
-					<LoggedInAs userToken={userToken} />
+					<LoggedInAs userToken={userToken} logout={logout}/>
 					<a className='logoutBtn' onClick={logout}>
 						Click Here to Logout
 					</a>
-					<a className='spotifyBtn shareBtn'>Share Your Winners on Social</a>
+					<Link to={'/share-your-guesses'} className='spotifyBtn shareBtn'>
+						Share Your Guesses
+					</Link>
 				</div>
 			)}
 		</>

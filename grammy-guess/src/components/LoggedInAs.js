@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const LoggedInAs = ({ userToken }) => {
+const LoggedInAs = ({ userToken, logout }) => {
 	const [userName, setUserName] = useState('')
 
 	const fetchUser = async () => {
@@ -10,8 +10,9 @@ const LoggedInAs = ({ userToken }) => {
 				Authorization: `Bearer ${userToken}`,
 			},
 		})
-
-		setUserName(data.display_name)
+		// .then(response => response.json())
+		.then(response => setUserName(data.display_name))
+		.catch(err => logout())
 	}
 
 	useEffect(() => {

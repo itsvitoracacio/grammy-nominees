@@ -62,7 +62,7 @@ const NomineeCardActions = ({
 	const VoteBtn = () => {
 		return (
 			<button
-				className='spotifyBtn'
+				className='spotifyBtn voteBtn'
 				id='voteBtn'
 				value={spotifyId}
 				data-nominee-name={nomineeNameFromSpotify}

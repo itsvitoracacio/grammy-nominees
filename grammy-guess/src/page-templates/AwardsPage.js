@@ -10,7 +10,7 @@ const AwardsPage = ({
 	setCurrentPage,
 	currentPage
 }) => {
-	setCurrentPage('AwardsPage')
+	// setCurrentPage('AwardsPage')
 	console.log(currentPage)
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
@@ -40,7 +40,7 @@ const AwardsPage = ({
 		console.dir(e.target);
 		const currentGuess = {
 			guessingFor: currentAwardName,
-			// nomineeChoiceId: chosenNomineeSpotifyId,
+			nomineeChoiceId: chosenNomineeSpotifyId,
 			nomineeChoiceName: e.target.attributes[3].value,
 			nomineeChoiceArtists: e.target.attributes[4].value,
 			// Need to add nominee name and nominee artists here so we don't have to do another API call for the share screen
@@ -74,7 +74,7 @@ const AwardsPage = ({
 				)
 
 				// IF unguessing
-				if (repeatedGuess.nomineeChoice === chosenNomineeSpotifyId) {
+				if (repeatedGuess.nomineeChoiceId === chosenNomineeSpotifyId) {
 					window.localStorage.setItem(
 						'userGuesses',
 						JSON.stringify(userGuesses)

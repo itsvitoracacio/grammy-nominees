@@ -139,12 +139,14 @@ nav {
 	font-family: HelveticaNeueBold;
 	font-weight: 700;
 	cursor: pointer;
-	font-size: clamp(0.9rem, 1.5vw, 1rem);
+	font-size: 0.9rem;
 	text-align: center;
 }
 
-.spotifyBtn:hover {
+.spotifyBtn:hover,
+.loginBtn:hover {
 	background-color: #1fdf64;
+	text-decoration: none;
 }
 
 .loginBtn {
@@ -159,14 +161,16 @@ nav {
 
 .spotifyLoginArea span {
 	line-height: 1.4;
-	font-size: 0.8rem;
+	font-size: 0.9rem;
 	/* color: #878787; */
 }
 
 .logoutBtn {
+	font-size: 0.9rem;
 	color: #878787;
 	line-height: 1.6;
 	cursor: pointer;
+	margin-bottom: 1rem;
 }
 
 .logoutBtn:hover {
