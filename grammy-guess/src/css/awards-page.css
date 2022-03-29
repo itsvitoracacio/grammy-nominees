@@ -1,110 +1,226 @@
 /* AWARDS PAGE LAYOUT */
+.mainRegularPages {
+	/* overflow: hidden; */
+}
+
 .nomineeListSection {
 	display: flex;
-	gap: 9rem;
-	padding-left: 12rem;
+	flex-direction: column;
+	/* padding-left: 12rem; */
 	/* padding-right: 10rem !important; */
-	margin-top: 5rem;
-	/* position: absolute;
-  top: 45vh; */
+	/* margin-top: 5rem; */
+	/* justify-content: flex-start; */
+	align-items: flex-end;
+	transform: rotate(-90deg) translateY(-37.17%);
+	transform-origin: right top;
+	/* margin: 0 auto; */
+	width: 68vh;
+	height: 100vw;
+	overflow-y: auto;
+	overflow-x: hidden;
+	position: fixed;
+	top: clamp(10rem, 25vw, 14rem);
+	background-color: lavender;
+	background-color: transparent;
+	/* padding-top: 20rem; */
+	padding-right: 5.35rem;
+	padding-bottom: 2rem;
+}
+
+.nomineeListSection {
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
+}
+.nomineeListSection::-webkit-scrollbar {
+	width: 0;
 }
 
 .nominee {
 	display: flex;
 	flex-direction: column;
+	/* justify-content: flex-start; */
+	transform: rotate(90deg) translateX(172%);
+	transform-origin: right top;
+	height: auto;
+	/* width: 100px; */
+	max-width: 200px;
+	/* max-height: 350px; */
+	/* width: 10vh; */
+	/* padding: 0 1rem; */
 }
 
 .playAndVoteButtonArea {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  padding-top: .5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.nomineeImgArea:hover .playAndVoteButtonArea {
-  display: flex;
+	/* height: 100%; */
+	/* width: 100%; */
+	/* position: absolute; */
+	/* top: 0; */
+	padding-top: 1rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	/* gap: 0.75rem; */
 }
 
 .playAndVoteButtonArea .spotifyLoginArea {
-  margin: 0;
+	margin: 0;
 }
 
 .playAndVoteButtonArea .loginBtn {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
-.previewNotAvailableMsg {
-	line-height: 1.2;
+.nominee .previewNotAvailableMsg {
+	line-height: 1;
+  font-size: .65rem;
 }
 
-.playAndVoteButtonArea span {
-  margin-bottom: .35rem;
-  font-size: .8rem;
+.playPauseBtnArea label {
+	/* margin-bottom: 0.35rem; */
+	font-size: 0.75rem;
+  cursor: pointer;
 }
 
 .playPauseBtn {
-  margin-bottom: 1.5rem;
+	/* margin-bottom: 1.5rem; */
 }
 
 .nomineeImgArea {
-  position: relative;
-  margin-bottom: 0.95rem;
-  max-height: 225px;
-  /* border: 1px solid red; */
-  /* height: 225px; */
-  /* width: auto; */
+	/* position: relative; */
+	/* margin-bottom: 0.5rem; */
+	max-height: 225px;
+	/* border: 1px solid red; */
+	/* max-height: 225px; */
+	/* width: auto; */
 }
 /* END OF AWARDS PAGE LAYOUT */
 
-
 /* AWARDS PAGE ELEMENTS DESIGN */
+.apiCompliance {
+	font-family: HelveticaNeueMedium, sans-serif;
+	font-size: clamp(0.5rem, 1.6vw, 0.6rem);
+	display: flex;
+	justify-content: flex-end;
+	gap: 0.5rem;
+	position: fixed;
+	top: clamp(5.75rem, 18.4vw, 12.25rem);
+	right: 4.7vw;
+}
+
+.apiCompliance span {
+	text-align: right;
+	display: block;
+	line-height: 1;
+	align-self: center;
+}
+
 .nomineeImgArea {
 	filter: drop-shadow(0px 16px 16px rgba(0, 0, 0, 0.2));
 }
 
-.nomineeImg {
-  filter: brightness(60%)
+.playAndVoteButtonArea {
+	font-family: HelveticaNeueRoman, sans-serif;
+	color: #000;
 }
 
-.playAndVoteButtonArea {
-  font-family: HelveticaNeueRoman, sans-serif;
-  color: #fff;
+.nominee .loginBtn {
+	/* padding-top: clamp(0.8125rem, 1.3vw, 0.6rem);
+  padding-bottom: clamp(0.8125rem, 1.3vw, 0.6rem);
+  padding-left: clamp(1.95rem, 3.125vw, 1.5rem);
+  padding-right: clamp(1.95rem, 3.125vw, 1.5rem); */
+	padding: 0.6rem 1.5rem;
+	background-color: #1ed760;
+	border: 1px solid #878787;
+	border-radius: 50px;
+	font-family: HelveticaNeueBold;
+	font-weight: 700;
+	cursor: pointer;
+	font-size: 0.75rem;
+}
+
+.playPauseBtnArea {
+	font-family: HelveticaNeueBold, sans-serif;
+	text-transform: uppercase;
+	/* font-size: 1rem; */
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+}
+
+.playPauseBtnArea span {
+	font-family: HelveticaNeueBold, sans-serif;
+	margin: 0 0 0.1rem;
 }
 
 .playPauseBtn {
-  font-size: 1.2rem;
-  background-color: transparent;
-  color: #fff;
-  border: 5px solid #fff;
-  border-radius: 50%;
-  cursor: pointer;
-  width: 3.25rem;
-  height: 3.25rem;
-  padding-left: .15rem;
+	font-size: 0.75rem;
+	background-color: transparent;
+	/* color: #000; */
+	border: 3.5px solid #000;
+	border-radius: 50%;
+	cursor: pointer;
+	width: 2rem;
+	height: 2rem;
+	padding-left: 0.15rem;
 }
 
-.voteBtn {
-  padding-left: 2rem;
-  padding-right: 2rem;
+.belowLoginMsg {
+	margin-top: 0.5rem;
+}
+
+.nominee {
+	box-sizing: content-box;
+	border-radius: 5px;
+	transition: box-shadow 0.2s ease, border 0.2s ease;
+	background-color: #fff;
+	padding: 1.5rem 1.5rem 0.5rem;
+	border: 1px solid #d3d3d3;
+}
+
+.nomineeCardBottom {
+	border-top: none;
+	padding: 0.5rem 0;
+}
+
+.nominee:hover {
+	transition: box-shadow 0.2s ease;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+	/* border: 1px solid transparent; */
+}
+
+.nominee .voteBtn {
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	padding: 0.25rem 0;
+	font-family: HelveticaNeueBold;
+	font-weight: 700;
+	cursor: pointer;
+	border-top: 1px solid #eaeaea;
+	border-right: 1px solid #eaeaea;
+	border-bottom: none;
+	border-left: 1px solid #eaeaea;
+	/* border: none; */
+	display: inline;
+	background-color: transparent;
+}
+
+.nominee .voteBtn:hover {
+	text-decoration: underline;
+	text-decoration-thickness: 0.125rem;
 }
 
 .nomineeName {
-	font-family: HelveticaNeueBold, sans-serif;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	font-weight: 700;
 	font-style: italic;
 	line-height: 1.25;
 	letter-spacing: -0.25px;
+	display: block;
 }
 
 .artistName {
 	font-family: HelveticaNeueBold, sans-serif;
-	font-size: 0.95rem;
+	font-size: 0.8rem;
 	font-weight: 700;
 	line-height: 1.66;
 	letter-spacing: -0.25px;
@@ -113,19 +229,15 @@
 /* END OF AWARDS PAGE ELEMENTS DESIGN */
 
 @media all and (min-width: 768px) {
-  .playAndVoteButtonArea {
-    display: none;
-  }
+	.nomineeListSection {
+		/* transform: rotate(-90deg) translateY(-315px); */
+	}
 
-  .nomineeImgArea {
-    filter: drop-shadow(0px 16px 16px rgba(0, 0, 0, 0.2));
-  }
+	.playAndVoteButtonArea {
+		/* display: none; */
+	}
 
-  .nomineeImg {
-    filter: brightness(100%);
-  }
-
-  .nomineeImgArea:hover .nomineeImg {
-    filter:  blur(2px) brightness(50%);
-  }
+	.nomineeImgArea {
+		filter: drop-shadow(0px 16px 16px rgba(0, 0, 0, 0.2));
+	}
 }

@@ -11,7 +11,7 @@ import Footer from './layout/Footer'
 function App() {
 	const authCreds = {
 		CLIENT_ID: '9d34d6d2667e4f77b6d15e8e468091d6',
-		// REDIRECT_URI: 'http://localhost:3000',
+		REDIRECT_URI: 'http://localhost:3000',
 		// REDIRECT_URI: 'https://idyllic-douhua-a03845.netlify.app/',
 		AUTH_ENDPOINT: 'https://accounts.spotify.com/authorize',
 		RESPONSE_TYPE: 'token',
@@ -44,7 +44,7 @@ function App() {
 		window.localStorage.removeItem('token')
 	}
 
-	console.dir(document)
+	// console.dir(document)
 	const pageUrl = document.URL.split('/')[3]
 	// console.log(pageUrl)
 	/* const showHeaderOrNot = () => {

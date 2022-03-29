@@ -24,7 +24,7 @@ const AllAwards = [
 					{
 						nomineeName: 'We Are',
 						nomineeArtistName: 'Jon Batiste',
-						spotifyId: '3CAUdHOsgijdnNsjO7o7Hd',
+						spotifyId: '6kHFkPvL2X3rZPuS3CEMUE',
 					},
 					{
 						nomineeName: 'Justice (Triple Chucks Deluxe)',
@@ -464,7 +464,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Tree Falls',
 						nomineeArtistName: 'Taylor Eigsti',
-						spotifyId: '1Q3tHYDDgSHRf4nKjTZ0So',
+						spotifyId: '5oOEOJDE14zdQE2b1qdAoe',
 					},
 					{
 						nomineeName: 'The Garden',
@@ -474,7 +474,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Double Dealin',
 						nomineeArtistName: 'Randy Brecker & Eric Marienthal',
-						spotifyId: '2q6s4W6BkdXproLbqxoaQv',
+						spotifyId: '25xr7JEjg5KqHYdasVnLNA',
 					},
 				],
 			},
@@ -699,7 +699,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Back Of My Mind',
 						nomineeArtistName: 'H.E.R.',
-						spotifyId: '0NYEdeOOdXN6Nw2AeKecSJ',
+						spotifyId: '4IwODpNZKFYkHWXSeWMGmP',
 					},
 					{
 						nomineeName: 'Gold-Diggers Sound',
@@ -1068,7 +1068,7 @@ const AllAwards = [
 					{
 						nomineeName: "If I Didn't Love You",
 						nomineeArtistName: 'Jason Aldean & Carrie Underwood',
-						spotifyId: '',
+						spotifyId: '1WQ40xJSvgDmD9K7ckJwux',
 					},
 				],
 			},
@@ -1135,7 +1135,7 @@ const AllAwards = [
 					{
 						nomineeName: 'SuperBlue',
 						nomineeArtistName: 'Kurt Elling & Charlie Hunter',
-						spotifyId: '04E4IjVnj7uruPKNLSHlp',
+						spotifyId: '04E4IjVnj7uruPKNLSHlpj',
 					},
 					{
 						nomineeName: 'Generations',
@@ -1189,7 +1189,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Swirling',
 						nomineeArtistName: 'Sun Ra Arkestra',
-						spotifyId: '4mWs5nO4KFAfqAdbn9OP28',
+						spotifyId: '3zYyRJVrm6q4X49WgPY6mO',
 					},
 					{
 						nomineeName: 'For Jimmy, Wes And Oliver',
@@ -1232,13 +1232,13 @@ const AllAwards = [
 					{
 						nomineeName: 'The South Bronx Story',
 						nomineeArtistName: 'Carlos Henriquez',
-						spotifyId: '0KcPziBxg02mzQKf5klaWW',
+						spotifyId: '6VFUzsgpC08qg9gsdlYD2O',
 					},
 					{
 						nomineeName: 'Mirror Mirror ',
 						nomineeArtistName:
 							'Eliane Elias with Chick Corea and Chucho Valdés',
-						spotifyId: '0L5qYK3OwHfgc0efmx3Ocg',
+						spotifyId: '7fY6WeLxNht7kRepoOKxOX',
 					},
 				],
 			},
@@ -1254,7 +1254,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Absence',
 						nomineeArtistName: 'Terence Blanchard',
-						spotifyId: '1fzoq1zIpM4L6KOpjpfLdp',
+						spotifyId: '1v8Yegje2XmBIt3M948R7x',
 					},
 					{
 						nomineeName: 'Bigger Than Us',
@@ -1264,7 +1264,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Kick Those Feet',
 						nomineeArtistName: 'Kenny Barron',
-						spotifyId: '',
+						spotifyId: '3ygeZ4QD8DjjwWiarjm21t',
 					},
 					{
 						nomineeName: 'Shackodougou',
@@ -1295,7 +1295,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Believe For It',
 						nomineeArtistName: 'Cece Winans',
-						spotifyId: '0CJjzOsUXKb99TQA7zFJfQ',
+						spotifyId: '5UXG9YjxHZu7l4tTNjwIYX',
 					},
 					{
 						nomineeName: 'Jonny X Mali: Live In LA',
@@ -1326,7 +1326,7 @@ const AllAwards = [
 					{
 						nomineeName: 'The Blessing (Live)',
 						nomineeArtistName: 'Kari Jobe',
-						spotifyId: '5O306r2a9Nl7rm5ZlaTqka',
+						spotifyId: '2pVOjdjBRafs3JAL0Q6o2b',
 					},
 					{
 						nomineeName: 'Feels Like Home Vol. 2',
@@ -1336,7 +1336,7 @@ const AllAwards = [
 					{
 						nomineeName: 'No Stranger',
 						nomineeArtistName: 'Natalie Grant',
-						spotifyId: '3CgVELNt3NmhqPtp9uzYIy',
+						spotifyId: '4wYslUVJNf2XSXBpbTVTMk',
 					},
 				],
 			},
@@ -1420,7 +1420,7 @@ const AllAwards = [
 						nomineeName: 'Hold Us Together',
 						nomineeArtistName:
 							'H.E.R. & Tauren Wells; Josiah Bassey, Dernst Emile II & H.E.R., songwriters',
-						spotifyId: '3SKza3YPBri1k43LB1Tqy4',
+						spotifyId: '42Q6AOIHAybfNz8tFMwrWl',
 					},
 					{
 						nomineeName: 'Believe For It',
@@ -1432,7 +1432,7 @@ const AllAwards = [
 						nomineeName: 'Man Of Your Word',
 						nomineeArtistName:
 							'Chandler Moore & KJ Scriven; Jonathan Jay, Nathan Jess & Chandler Moore, songwriters',
-						spotifyId: '',
+						spotifyId: '6TigGiyqHr7Dy1CaCeKhdP',
 					},
 					{
 						nomineeName: 'We Win',
@@ -1546,7 +1546,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Deja',
 						nomineeArtistName: 'Bomba Estéreo',
-						spotifyId: '2ik8UFH9uZK065mFeoQoz9',
+						spotifyId: '5znLnc0oe8wA9On08nv8gd',
 					},
 				],
 			},
@@ -1557,7 +1557,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Ayayay! (Súper Deluxe)',
 						nomineeArtistName: 'Christian Nodal',
-						spotifyId: '7iQc2DabEtzp60faOO9EmN',
+						spotifyId: '6aUbcanpJvwQqa7hs2mxoL',
 					},
 					{
 						nomineeName: 'Un Canto Por México, Vol. II',
@@ -1727,7 +1727,7 @@ const AllAwards = [
 					{
 						nomineeName: 'Royal Tea',
 						nomineeArtistName: 'Joe Bonamassa',
-						spotifyId: '6Xc97DvvgvgzisfpDfUKFY',
+						spotifyId: '1i8hO7RSXJ4FOumcLoDyN2',
 					},
 					{
 						nomineeName: 'Delta Kream',
@@ -1780,7 +1780,7 @@ const AllAwards = [
 					{
 						nomineeName: "Kau Ka Pe'a",
 						nomineeArtistName: "Kalani Pe'a",
-						spotifyId: '7gJXzv4XyEjEOFgKKc6wfl',
+						spotifyId: '53uezkNFp2GGqvDpfqbUW2',
 					},
 					{
 						nomineeName: 'Corey Ledet Zydeco',
@@ -1790,12 +1790,12 @@ const AllAwards = [
 					{
 						nomineeName: 'My People',
 						nomineeArtistName: 'Cha Wa',
-						spotifyId: '5Oyetsx1wOyE5P9WoyT6OA',
+						spotifyId: '5Z1GzBZmKbok1f6iCacE6c',
 					},
 					{
 						nomineeName: 'Bloodstains & Teardrops',
 						nomineeArtistName: 'Big Chief Monk Bourdreaux',
-						spotifyId: '6innUXmLEMJRp84di1z5Ib',
+						spotifyId: '0FC5dOHyFvJrjrxjRgR8GZ',
 					},
 				],
 			},
@@ -1905,12 +1905,12 @@ const AllAwards = [
 					{
 						nomineeName: 'Positive Vibration',
 						nomineeArtistName: 'Gramps Morgan',
-						spotifyId: '4UNm4SNzlMECtFnzX4Sfh0',
+						spotifyId: '3HADFKAkbC3CJE86yMvHeD',
 					},
 					{
 						nomineeName: 'Pamoja',
 						nomineeArtistName: 'Etana',
-						spotifyId: '2JqFKn3niQVwOqfU2OCOFp',
+						spotifyId: '02eRn8jdP6ccs05lf26hgK',
 					},
 				],
 			},
@@ -2280,14 +2280,14 @@ const AllAwards = [
 					{
 						nomineeName: 'Eberhard',
 						nomineeArtistName:
-							"Arturo O’Farrill, composer (Arturo O'Farrill & The Afro Latin Jazz Ensemble)",
-						spotifyId: '',
+							"Lyle Mays, composer (Lyle Mays)",
+						spotifyId: '6wmNtLV4MstxOVA06GvttX',
 					},
 					{
 						nomineeName: 'Dreaming In Lions: Dreaming In Lions',
 						nomineeArtistName:
 							"Arturo O’Farrill, composer (Arturo O'Farrill & The Afro Latin Jazz Ensemble)",
-						spotifyId: '0pkU2fBus3YM1SgsaXcpj3',
+						spotifyId: '6f0f42UR3c7p59K2AhGjWP',
 					},
 					{
 						nomineeName: 'Concerto For Orchestra: Finale',

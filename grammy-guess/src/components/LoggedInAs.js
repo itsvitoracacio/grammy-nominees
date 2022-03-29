@@ -5,14 +5,15 @@ const LoggedInAs = ({ userToken, logout }) => {
 	const [userName, setUserName] = useState('')
 
 	const fetchUser = async () => {
-		const { data } = await axios.get('https://api.spotify.com/v1/me', {
-			headers: {
-				Authorization: `Bearer ${userToken}`,
-			},
-		})
-		// .then(response => response.json())
-		.then(response => setUserName(data.display_name))
-		.catch(err => logout())
+		const { data } = await axios
+			.get('https://api.spotify.com/v1/me', {
+				headers: {
+					Authorization: `Bearer ${userToken}`,
+				},
+			})
+			// .then(response => response.json())
+			.then(() => setUserName(data.display_name))
+			.catch(() => logout())
 	}
 
 	useEffect(() => {

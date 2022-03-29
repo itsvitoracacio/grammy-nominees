@@ -3,7 +3,7 @@ header {
 	text-align: right;
 	position: fixed;
 	padding-top: 0.5rem;
-	padding-bottom: 3rem;
+	padding-bottom: 5rem;
 	/* right: 4.7vw; */
 }
 
@@ -21,6 +21,6 @@ header {
 
 /* HEADER ELEMENTS DESIGN */
 header {
-  background-color: #fff;
+  /* background-color: #fff; */
 }
 /* END OF HEADER ELEMENTS DESIGN */

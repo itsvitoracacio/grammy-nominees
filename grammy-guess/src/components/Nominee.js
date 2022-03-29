@@ -33,10 +33,10 @@ const Nominee = ({
 					'Content-Type': 'audio/mpeg',
 				},
 			}
-		)
+		) /* .catch() */ //load placeholder img, name and artist name, all without nominee card
 
 		const { name, artists, album, images, href, preview_url } = data
-		
+
 		const allArtistsNamesArr = []
 		artists.forEach(artist => allArtistsNamesArr.push(artist.name))
 		const allAristsNamesStr = allArtistsNamesArr.join(', ')
@@ -117,18 +117,37 @@ const Nominee = ({
 		}
 	}
 
+	const VoteBtn = () => {
+		return (
+			<>
+				<button
+					className='voteBtn'
+					id='voteBtn'
+					value={spotifyId}
+					data-nominee-name={nomineeNameFromSpotify}
+					data-artists-list={allArtistsFromSpotify}
+					data-nominee-img={nomineeBigImgFromSpotify}
+					onClick={guessUnguess} // This function is declared on the AwardsPage component
+				>
+					This is the winner!
+				</button>
+			</>
+		)
+	}
+
 	const renderNominee = () => {
 		return (
 			<div className='nominee'>
+				<VoteBtn />
 				<div
 					className='nomineeImgArea'
-					width='225px' // Find a way to make this be a square even when the image doesn't load
-					height='225px'
+					width='188px' // Find a way to make this be a square even when the image doesn't load
+					height='188px'
 					onMouseEnter={loadTrack}
 					onMouseLeave={markTrackAsLoaded}
 				>
 					<img
-						width='225px'
+						width='200px'
 						className='nomineeImg'
 						src={nomineeThumbFromSpotify}
 						alt={altText}
@@ -139,6 +158,10 @@ const Nominee = ({
 						type='audio/mpeg'
 						id={`track-${spotifyId}`}
 					></audio>
+				</div>
+				<div className='nomineeCardBottom'>
+					<span className='nomineeName'>{nomineeNameFromSpotify}</span>
+					<span className='artistName'>{artistNameFromSpotify}</span>
 					<div className='playAndVoteButtonArea'>
 						<NomineeCardActions
 							isLoggedIn={isLoggedIn}
@@ -148,6 +171,7 @@ const Nominee = ({
 							spotifyId={spotifyId}
 							nomineeNameFromSpotify={nomineeNameFromSpotify}
 							allArtistsFromSpotify={allArtistsFromSpotify}
+							nomineeBigImgFromSpotify={nomineeBigImgFromSpotify}
 							guessesCount={guessesCount}
 							guessUnguess={guessUnguess}
 							playPauseTrack={playPauseTrack}
@@ -156,8 +180,6 @@ const Nominee = ({
 						/>
 					</div>
 				</div>
-				<span className='nomineeName'>{nomineeNameFromSpotify}</span>
-				<a className='artistName'>{artistNameFromSpotify}</a>
 			</div>
 		)
 	}

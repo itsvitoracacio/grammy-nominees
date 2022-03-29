@@ -2,13 +2,16 @@
 footer {
 	/* position: fixed;  */
 	bottom: 0;
-	padding: 0 12.5vw;
+	/* padding: 0 12.5vw; */
 	/* margin: 0 auto; */
 	/* margin-bottom: 1.5rem; */
+	width: 100%;
+	padding-bottom: .5rem;
 }
 
 footer span {
 	display: block;
+	display: none;
 }
 /* END OF FOOTER LAYOUT */
 
@@ -19,6 +22,9 @@ footer {
 	color: #878787;
 	opacity: 0.6;
 	text-align: center;
+	position: absolute;
+	/* bottom: 1rem; */
+
 }
 
 footer p {

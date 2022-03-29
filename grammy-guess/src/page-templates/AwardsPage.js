@@ -8,10 +8,10 @@ const AwardsPage = ({
 	guessesCount,
 	setGuessesCount,
 	setCurrentPage,
-	currentPage
+	currentPage,
 }) => {
 	// setCurrentPage('AwardsPage')
-	console.log(currentPage)
+	// console.log(currentPage)
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
 	const toSpaceCaseCat = categoryNameUrl => {
@@ -32,18 +32,20 @@ const AwardsPage = ({
 			.replaceAll('Music Small', 'Music/Small')
 	}
 
+	document.body.style.height = '100vh'
+
 	// This function is called on the NomineeCardActions component
 	const guessUnguess = e => {
 		const currentAwardNameUrl = e.target.baseURI.split('/')[4]
 		const currentAwardName = toSpaceCaseAward(currentAwardNameUrl)
 		const chosenNomineeSpotifyId = e.target.attributes.value.value
-		console.dir(e.target);
+		// console.dir(e.target)
 		const currentGuess = {
 			guessingFor: currentAwardName,
 			nomineeChoiceId: chosenNomineeSpotifyId,
 			nomineeChoiceName: e.target.attributes[3].value,
 			nomineeChoiceArtists: e.target.attributes[4].value,
-			// Need to add nominee name and nominee artists here so we don't have to do another API call for the share screen
+			nomineeChoiceImg: e.target.attributes[5].value,
 		}
 
 		let newGuessesCount
@@ -52,6 +54,15 @@ const AwardsPage = ({
 			newGuessesCount = userGuesses.length
 			window.localStorage.setItem('localStorageGuessesCount', newGuessesCount)
 			setGuessesCount(newGuessesCount)
+			toggleBgImage(currentGuess.nomineeChoiceImg)
+		}
+
+		const toggleBgImage = nomineeChoiceImg => {
+			const isBgImgOn = document.body.classList.contains('bgImgOn')
+			isBgImgOn
+				? (document.body.style.background = '')
+				: (document.body.style.background = `no-repeat top/cover url(${nomineeChoiceImg}) `)
+			document.body.classList.toggle('bgImgOn')
 		}
 
 		const localStorageUserGuesses = window.localStorage.getItem('userGuesses') // this comes as a JSON string
@@ -97,6 +108,14 @@ const AwardsPage = ({
 	return (
 		<>
 			<h1>{toSpaceCaseAward(awardNameUrl)}</h1>
+			<div className='apiCompliance'>
+				<span>
+					All nominee info
+					<br />
+					is provided by
+				</span>
+				<img width='70px' height='21.16px' src='../spotify-logo-black.png' />
+			</div>
 			<NomineeList
 				categoryName={toSpaceCaseCat(categoryNameUrl)}
 				awardName={toSpaceCaseAward(awardNameUrl)}
