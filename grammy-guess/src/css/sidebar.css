@@ -25,14 +25,14 @@
 }
 
 .sidebarToggle:checked ~ .sidebarOpenBtn {
-	transform: rotate(-90deg) translatey(clamp(20rem, 33vw, 27rem));
+	transform: rotate(-90deg) translatey(clamp(20rem, 29vw, 27rem));
 	transition: all 0.4s ease-out;
 }
 
 .sidebar {
 	/* Sidebar layout */
 	height: 100vh;
-	width: clamp(20rem, 33vw, 27rem);
+	width: clamp(20rem, 29vw, 27rem);
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -102,6 +102,14 @@ nav {
 	right: 2rem;
 	bottom: 2rem;
 	z-index: 1;
+}
+
+.sidebar {
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
+}
+.sidebar::-webkit-scrollbar {
+	width: 0;
 }
 /* END OF SIDEBAR LAYOUT */
 

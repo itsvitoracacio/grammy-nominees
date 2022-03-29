@@ -20,17 +20,19 @@
 	overflow-x: hidden;
 	position: fixed;
 	top: clamp(10rem, 25vw, 14rem);
-	background-color: lavender;
+	/* background-color: lavender; */
 	background-color: transparent;
 	/* padding-top: 20rem; */
-	padding-right: 5.35rem;
-	padding-bottom: 2rem;
+	padding-right: 3rem;
+	/* padding-bottom: 2rem; */
 }
 
+body,
 .nomineeListSection {
 	overflow: -moz-scrollbars-none;
 	-ms-overflow-style: none;
 }
+body::-webkit-scrollbar,
 .nomineeListSection::-webkit-scrollbar {
 	width: 0;
 }
@@ -72,13 +74,13 @@
 
 .nominee .previewNotAvailableMsg {
 	line-height: 1;
-  font-size: .65rem;
+	font-size: 0.65rem;
 }
 
 .playPauseBtnArea label {
 	/* margin-bottom: 0.35rem; */
 	font-size: 0.75rem;
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .playPauseBtn {
@@ -101,7 +103,7 @@
 	font-size: clamp(0.5rem, 1.6vw, 0.6rem);
 	display: flex;
 	justify-content: flex-end;
-	gap: 0.5rem;
+	gap: 11px;
 	position: fixed;
 	top: clamp(5.75rem, 18.4vw, 12.25rem);
 	right: 4.7vw;
@@ -121,6 +123,10 @@
 .playAndVoteButtonArea {
 	font-family: HelveticaNeueRoman, sans-serif;
 	color: #000;
+}
+
+.nominee label {
+	cursor: pointer;
 }
 
 .nominee .loginBtn {
@@ -144,7 +150,7 @@
 	/* font-size: 1rem; */
 	display: flex;
 	align-items: center;
-	gap: .5rem;
+	gap: 0.5rem;
 }
 
 .playPauseBtnArea span {

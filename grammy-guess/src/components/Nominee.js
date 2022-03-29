@@ -122,7 +122,7 @@ const Nominee = ({
 			<>
 				<button
 					className='voteBtn'
-					id='voteBtn'
+					id={`voteBtn-${spotifyId}`}
 					value={spotifyId}
 					data-nominee-name={nomineeNameFromSpotify}
 					data-artists-list={allArtistsFromSpotify}
@@ -146,12 +146,14 @@ const Nominee = ({
 					onMouseEnter={loadTrack}
 					onMouseLeave={markTrackAsLoaded}
 				>
-					<img
-						width='200px'
-						className='nomineeImg'
-						src={nomineeThumbFromSpotify}
-						alt={altText}
-					/>
+					<label htmlFor={`voteBtn-${spotifyId}`}>
+						<img
+							width='200px'
+							className='nomineeImg'
+							src={nomineeThumbFromSpotify}
+							alt={altText}
+						/>
+					</label>
 					<audio
 						src={audioFile}
 						crossOrigin='anonymous'

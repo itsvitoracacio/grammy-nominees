@@ -5,7 +5,7 @@ const Header = () => {
 		<header>
 			<Link to='/'>
 				<img
-					src='../64th-grammy.svg'
+					src='../64th-grammy-black.svg'
 					alt="'64th Grammys' in writing"
 					className='logoAwardEdition'
 				/>

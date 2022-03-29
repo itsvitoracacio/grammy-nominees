@@ -6,13 +6,11 @@ const Footer = () => {
 			<p>
 				<span>
 					<Link to='/about'>
-						click here to learn more about this project built by a couple of
-						smart, elegant, funny, and humble individuals.
+						click here to learn more about this project.
 					</Link>
 				</span>
 				<span>
-					this website is not affiliated with The Grammy Awards, the Recording
-					Academy, Spotify or any of their partners and sponsors.
+					this website does not store any data from you.
 				</span>
 			</p>
 		</footer>
