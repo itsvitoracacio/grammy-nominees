@@ -10,6 +10,7 @@ const NomineeList = ({
 	authCreds /* , userGuesses */,
 	guessesCount,
 	guessUnguess,
+	guessUnguess2
 }) => {
 	// App credentials to be used in case user doesn't want to log in
 	const CLIENT_ID = '9d34d6d2667e4f77b6d15e8e468091d6'
@@ -59,6 +60,7 @@ const NomineeList = ({
 				// userGuesses={userGuesses}
 				guessesCount={guessesCount}
 				guessUnguess={guessUnguess}
+				guessUnguess2={guessUnguess2}
 			/>
 		)
 	})

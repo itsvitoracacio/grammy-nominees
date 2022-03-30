@@ -11,8 +11,8 @@ import Footer from './layout/Footer'
 function App() {
 	const authCreds = {
 		CLIENT_ID: '9d34d6d2667e4f77b6d15e8e468091d6',
-		// REDIRECT_URI: 'http://localhost:3000',
-		REDIRECT_URI: 'https://idyllic-douhua-a03845.netlify.app/',
+		REDIRECT_URI: 'http://localhost:3000',
+		// REDIRECT_URI: 'https://idyllic-douhua-a03845.netlify.app/',
 		AUTH_ENDPOINT: 'https://accounts.spotify.com/authorize',
 		RESPONSE_TYPE: 'token',
 	}
@@ -44,24 +44,19 @@ function App() {
 		window.localStorage.removeItem('token')
 	}
 
-	// console.dir(document)
 	const pageUrl = document.URL.split('/')[3]
-	// console.log(pageUrl)
-	/* const showHeaderOrNot = () => {
-		if (pagePath === '/share-your-guesses') {
-			return
-		}
-		else {
-			return (
-				<Header />
-			)
-		}
-	} */
 
+	const [hasGuessed, setHasGuessed] = useState(false)
 	// let userGuesses = [] // This arr will store user guesses before they're saved to localStorage
 	const [userGuesses, setUserGuesses] = useState([])
 	const [guessesCount, setGuessesCount] = useState(0)
 	const [currentPage, setCurrentPage] = useState('')
+
+	const guessUnguess2 = () => {
+		hasGuessed ? unguess() : guess()
+	}
+	const guess = () => setHasGuessed(true)
+	const unguess = () => setHasGuessed(false)
 
 	return (
 		<>
@@ -71,13 +66,12 @@ function App() {
 						? 'headerRegularPages'
 						: 'headerShareScreen'
 				}
+				hasGuessed={hasGuessed}
 			/>
 			<Sidebar userToken={userToken} authCreds={authCreds} logout={logout} />
 			<main
 				className={
-					pageUrl != 'share-screen'
-						? 'mainRegularPages'
-						: 'mainShareScreen'
+					pageUrl != 'share-screen' ? 'mainRegularPages' : 'mainShareScreen'
 				}
 			>
 				<Routes>
@@ -94,6 +88,8 @@ function App() {
 								setGuessesCount={setGuessesCount}
 								setCurrentPage={setCurrentPage}
 								currentPage={currentPage}
+								hasGuessed={hasGuessed}
+								guessUnguess2={guessUnguess2}
 							/>
 						}
 					/>

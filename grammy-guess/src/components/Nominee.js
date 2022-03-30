@@ -10,6 +10,7 @@ const Nominee = ({
 	authCreds /* , userGuesses */,
 	guessesCount,
 	guessUnguess,
+	guessUnguess2,
 }) => {
 	const { awardTarget, awardName } = eachAward
 	const { nomineeName, nomineeArtistName, spotifyId } = eachNominee
@@ -109,11 +110,11 @@ const Nominee = ({
 		if (playPauseBtn.dataset.playing === 'false') {
 			nomineeTrack.play()
 			playPauseBtn.dataset.playing = 'true'
-			setPlayPauseIcon('►|') // Change this for a fa-icon
+			setPlayPauseIcon('►|') // Change this to a fa-icon
 		} else {
 			nomineeTrack.pause()
 			playPauseBtn.dataset.playing = 'false'
-			setPlayPauseIcon('►') // Change this for a fa-icon
+			setPlayPauseIcon('►') // Change this to a fa-icon
 		}
 	}
 
@@ -127,7 +128,7 @@ const Nominee = ({
 					data-nominee-name={nomineeNameFromSpotify}
 					data-artists-list={allArtistsFromSpotify}
 					data-nominee-img={nomineeBigImgFromSpotify}
-					onClick={guessUnguess} // This function is declared on the AwardsPage component
+					onClick={guessUnguess2} // This function is declared on the AwardsPage component
 				>
 					This is the winner!
 				</button>

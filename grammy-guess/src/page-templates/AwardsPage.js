@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom'
 import NomineeList from '../components/NomineeList'
+import AwardsPageHeader from '../components/theme-sensitive/AwardsPageHeader'
 
 const AwardsPage = ({
 	userToken,
@@ -9,11 +10,12 @@ const AwardsPage = ({
 	setGuessesCount,
 	setCurrentPage,
 	currentPage,
+	hasGuessed,
+	guessUnguess2
 }) => {
-	// setCurrentPage('AwardsPage')
-	// console.log(currentPage)
+	// Grab the award name and the category name from the url to determine which nominees to show
 	const { categoryNameUrl, awardNameUrl } = useParams()
-
+	// Function to convert the category name from the url to the format that can match the AllAwards obj
 	const toSpaceCaseCat = categoryNameUrl => {
 		return categoryNameUrl
 			.replaceAll('-', ' ')
@@ -23,6 +25,7 @@ const AwardsPage = ({
 			.replaceAll('Composing Arranging', 'Composing/Arranging')
 	}
 
+	// Function to convert the award name from the url to the format that can match the AllAwards obj
 	const toSpaceCaseAward = awardNameUrl => {
 		return awardNameUrl
 			.replaceAll('-', ' ')
@@ -34,14 +37,15 @@ const AwardsPage = ({
 
 	document.body.style.height = '100vh'
 
-	// This function is called on the NomineeCardActions component
+	// This function is called on the Nominee component
 	const guessUnguess = e => {
-		const currentAwardNameUrl = e.target.baseURI.split('/')[4]
-		const currentAwardName = toSpaceCaseAward(currentAwardNameUrl)
+		// Converting the current page award name from the page url into 'Space Case'
+		const currentPageAwardName = toSpaceCaseAward(awardNameUrl)
+
+		// Getting data from the button clicked to vote and using it to create an object to use as the new guess
 		const chosenNomineeSpotifyId = e.target.attributes.value.value
-		// console.dir(e.target)
 		const currentGuess = {
-			guessingFor: currentAwardName,
+			guessingFor: currentPageAwardName,
 			nomineeChoiceId: chosenNomineeSpotifyId,
 			nomineeChoiceName: e.target.attributes[3].value,
 			nomineeChoiceArtists: e.target.attributes[4].value,
@@ -54,41 +58,46 @@ const AwardsPage = ({
 			newGuessesCount = userGuesses.length
 			window.localStorage.setItem('localStorageGuessesCount', newGuessesCount)
 			setGuessesCount(newGuessesCount)
-			toggleBgImage(currentGuess.nomineeChoiceImg)
+			// toggleAwardsPageTheme(currentGuess.nomineeChoiceImg)
 		}
 
-		const toggleBgImage = nomineeChoiceImg => {
+		/* const toggleAwardsPageTheme = nomineeChoiceImg => {
+			// This represent the previous state. Should be specific to each award page
 			const isBgImgOn = document.body.classList.contains('bgImgOn')
+			// Set new state based on previous state
 			if (isBgImgOn) {
 				document.body.style.background = ''
 				switchTextColors('#000')
+				applyTheme('hasntVotedYet')
 			} else {
 				document.body.style.background = `no-repeat top/cover url(${nomineeChoiceImg})`
 				switchTextColors('#fff')
+				applyTheme('hasVoted')
 			}
+			// Update state based on latest settings
 			document.body.classList.toggle('bgImgOn')
-		}
+		} */
 
-		const switchTextColors = color => {
-			let spotifyLogoSrc
+		/* const switchTextColors = color => {
 			let headerLogoSrc
-			let sidebarToggleColor
+			let spotifyLogoSrc
+			let sidebarOpenBtnColor
 			let footerTextColor
 			if (color === '#000') {
 				headerLogoSrc = '../64th-grammy-black.svg'
 				spotifyLogoSrc = '../spotify-logo-black.png'
-				sidebarToggleColor = 'rgba(0, 0, 0, 0.6)'
+				sidebarOpenBtnColor = 'rgba(0, 0, 0, 0.6)'
 				footerTextColor = '#878787'
 			} else if (color === '#fff') {
 				headerLogoSrc = '../64th-grammy-white.svg'
 				spotifyLogoSrc = '../spotify-logo-white.png'
-				sidebarToggleColor = 'rgba(255, 255, 255, 0.75)'
+				sidebarOpenBtnColor = 'rgba(255, 255, 255, 0.75)'
 				footerTextColor = 'rgba(255, 255, 255, 0.9)'
 			}
 			document.children[0].children[1].children[1].children[0].children[0].children[0].attributes[0].value =
 				headerLogoSrc
 			document.children[0].children[1].children[1].children[2].style.color =
-				sidebarToggleColor
+				sidebarOpenBtnColor
 			document.children[0].children[1].children[1].children[5].style.color =
 				footerTextColor
 			document.children[0].children[1].children[1].children[5].children[0].children[0].children[0].style.color =
@@ -99,14 +108,14 @@ const AwardsPage = ({
 				color
 			document.children[0].children[1].children[1].children[4].children[1].children[1].attributes[2].value =
 				spotifyLogoSrc
-		}
+		} */
 
 		const localStorageUserGuesses = window.localStorage.getItem('userGuesses') // this comes as a JSON string
 		let repeatedGuess
 		if (localStorageUserGuesses) {
 			userGuesses = JSON.parse(localStorageUserGuesses) // putting the JSON in an array we can manipulate
 			repeatedGuess = userGuesses.find(
-				guess => guess.guessingFor === currentAwardName
+				guess => guess.guessingFor === currentPageAwardName
 			)
 
 			// If unguessing or changing guesses for the same category
@@ -116,9 +125,9 @@ const AwardsPage = ({
 				)
 				userGuesses = userGuessesWithoutRepeatedGuess // removing previous guess for the same category
 				updateUserGuessesAndCount()
-				console.log(
+				/* console.log(
 					`This should decrease - arr.length: ${newGuessesCount}, state: ${guessesCount}`
-				)
+				) */
 
 				// IF unguessing
 				if (repeatedGuess.nomineeChoiceId === chosenNomineeSpotifyId) {
@@ -126,7 +135,6 @@ const AwardsPage = ({
 						'userGuesses',
 						JSON.stringify(userGuesses)
 					)
-					// e.target.innerText = 'This is the winner!' // returning vote button to initial state
 					return
 				}
 			}
@@ -135,23 +143,17 @@ const AwardsPage = ({
 		// 1) First guess at all, 2) First guess for this category or 3) Changing guesses
 		userGuesses.push(currentGuess)
 		updateUserGuessesAndCount()
-		console.log(
+		/* console.log(
 			`This should increase - arr.length: ${newGuessesCount}, state: ${guessesCount}`
-		)
-		// e.target.innerText = "Actually, it's not them."
+		) */
 	}
 
 	return (
 		<>
-			<h1>{toSpaceCaseAward(awardNameUrl)}</h1>
-			<div className='apiCompliance'>
-				<span>
-					All nominee info
-					<br />
-					is provided by
-				</span>
-				<img width='70px' height='21.16px' src='../spotify-logo-black.png' />
-			</div>
+			<AwardsPageHeader
+				categoryName={toSpaceCaseAward(awardNameUrl)}
+				hasGuessed={hasGuessed}
+			/>
 			<NomineeList
 				categoryName={toSpaceCaseCat(categoryNameUrl)}
 				awardName={toSpaceCaseAward(awardNameUrl)}
@@ -160,6 +162,7 @@ const AwardsPage = ({
 				// userGuesses={userGuesses}
 				guessesCount={guessesCount}
 				guessUnguess={guessUnguess}
+				guessUnguess2={guessUnguess2}
 			/>
 		</>
 	)

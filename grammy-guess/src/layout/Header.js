@@ -1,15 +1,9 @@
-import { Link } from 'react-router-dom'
+import HeaderLogo from '../components/theme-sensitive/HeaderLogo'
 
-const Header = () => {
+const Header = ({ hasGuessed }) => {
 	return (
 		<header>
-			<Link to='/'>
-				<img
-					src='../64th-grammy-black.svg'
-					alt="'64th Grammys' in writing"
-					className='logoAwardEdition'
-				/>
-			</Link>
+			<HeaderLogo hasGuessed={hasGuessed}/>
 		</header>
 	)
 }
