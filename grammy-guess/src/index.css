@@ -5,11 +5,4 @@
 @import './css/home-and-about.css';
 @import './css/awards-page.css';
 @import './css/share-screen.css';
-
-
-
-.voteMsg {
-	position: fixed;
-	bottom: 1.5rem;
-	left: 50%;
-}
+@import './css/nominee-card.css';

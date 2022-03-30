@@ -165,23 +165,21 @@ const Nominee = ({
 				<div className='nomineeCardBottom'>
 					<span className='nomineeName'>{nomineeNameFromSpotify}</span>
 					<span className='artistName'>{artistNameFromSpotify}</span>
-					<div className='playAndVoteButtonArea'>
-						<NomineeCardActions
-							isLoggedIn={isLoggedIn}
-							isTherePreview={isTherePreview}
-							authCreds={authCreds}
-							awardName={awardName}
-							spotifyId={spotifyId}
-							nomineeNameFromSpotify={nomineeNameFromSpotify}
-							allArtistsFromSpotify={allArtistsFromSpotify}
-							nomineeBigImgFromSpotify={nomineeBigImgFromSpotify}
-							guessesCount={guessesCount}
-							guessUnguess={guessUnguess}
-							playPauseTrack={playPauseTrack}
-							playPauseIcon={playPauseIcon}
-							audioFile={audioFile}
-						/>
-					</div>
+					{<NomineeCardActions
+						isLoggedIn={isLoggedIn}
+						isTherePreview={isTherePreview}
+						authCreds={authCreds}
+						awardName={awardName}
+						spotifyId={spotifyId}
+						nomineeNameFromSpotify={nomineeNameFromSpotify}
+						allArtistsFromSpotify={allArtistsFromSpotify}
+						nomineeBigImgFromSpotify={nomineeBigImgFromSpotify}
+						guessesCount={guessesCount}
+						guessUnguess={guessUnguess}
+						playPauseTrack={playPauseTrack}
+						playPauseIcon={playPauseIcon}
+						audioFile={audioFile}
+					/>}
 				</div>
 			</div>
 		)
