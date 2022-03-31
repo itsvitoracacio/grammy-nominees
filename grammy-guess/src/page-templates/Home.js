@@ -1,4 +1,5 @@
-const Home = () => {
+const Home = ({ renderGuessConfirmationToUser }) => {
+  // renderGuessConfirmationToUser()
   return (
     <>
       <h1>Guess The Winners!</h1>

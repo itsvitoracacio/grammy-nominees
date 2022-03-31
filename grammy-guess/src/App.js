@@ -8,7 +8,14 @@ import Header from './layout/Header'
 import Sidebar from './layout/Sidebar'
 import Footer from './layout/Footer'
 
+/*------TABLE OF CONTENTS------
+..HANDLING SPOTIFY USER CREDENTIALS - line 17 (need to include user confirmation for logout)
+..MAKING, STORING, AND SHOWING GUESSES - line 53
+..RENDERING THE APP - line 168
+*/
+
 function App() {
+	// HANDLING SPOTIFY USER CREDENTIALS
 	const authCreds = {
 		CLIENT_ID: '9d34d6d2667e4f77b6d15e8e468091d6',
 		REDIRECT_URI: 'http://localhost:3000',
@@ -44,13 +51,20 @@ function App() {
 		window.localStorage.removeItem('token')
 	}
 
+	// MAKING, STORING, AND SHOWING GUESSES
+	const guess = () => setHasGuessed(true)
+	const unguess = () => setHasGuessed(false)
 	const pageUrl = document.URL.split('/')[4] || document.URL.split('/')[3]
+	const updateCurrentPageState = () => setCurrentPage(pageUrl)
 
 	const [hasGuessed, setHasGuessed] = useState(false)
-	// let userGuesses = [] // This arr will store user guesses before they're saved to localStorage
 	const [userGuesses, setUserGuesses] = useState([])
 	const [guessesCount, setGuessesCount] = useState(0)
 	const [currentPage, setCurrentPage] = useState('')
+
+	useEffect(() => {
+		renderGuessConfirmationToUser()
+	}, [currentPage])
 
 	// Function to convert the award name from the url to the format that can match the AllAwards obj
 	const toSpaceCaseAward = awardNameUrl => {
@@ -62,54 +76,53 @@ function App() {
 			.replaceAll('Music Small', 'Music/Small')
 	}
 
-	useEffect(() => {
-		renderGuessConfirmationToUser()
-	}, [currentPage])
-
-	const updateCurrentPageState = () => setCurrentPage(pageUrl)
-
 	const renderGuessConfirmationToUser = () => {
-		const currentAwardPageName = toSpaceCaseAward(
-			document.body.baseURI.split('/')[4]
-		)
-		const userGuessesLocallyStored =
-			JSON.parse(window.localStorage.getItem('userGuesses')) || []
-		if (userGuessesLocallyStored) {
-			console.log(userGuessesLocallyStored)
-			const prevGuessForCurrentPage = userGuessesLocallyStored.find(
-				guess => guess.guessingFor === currentAwardPageName
-			)
-			if (prevGuessForCurrentPage) {
-				const { chosenNomineeImg } = prevGuessForCurrentPage
-				document.body.style.background = `no-repeat top/cover url(${chosenNomineeImg})`
-				guess()
-				return
+		// const currentPageUrl = document.body.baseURI.split('/')[3]
+		const currentAwardPageUrl = document.body.baseURI.split('/')[4]
+		if (currentAwardPageUrl) {
+			const currentAwardPageName = toSpaceCaseAward(currentAwardPageUrl)
+			const userGuessesLocallyStored =
+				JSON.parse(window.localStorage.getItem('userGuesses')) || []
+			if (userGuessesLocallyStored) {
+				// console.log(userGuessesLocallyStored)
+				const prevGuessForCurrentPage = userGuessesLocallyStored.find(
+					guess => guess.guessingFor === currentAwardPageName
+				)
+				if (prevGuessForCurrentPage) {
+					const { chosenNomineeImg } = prevGuessForCurrentPage
+					document.body.style.height = '100vh'
+					document.body.style.background = `no-repeat top/cover url(${chosenNomineeImg})`
+					guess()
+					return
+				}
 			}
 		}
+		// console.log('Should revert bg to white')
 		// setting the bg to white in case there's no vote for this page's award or if it's not an award page
 		document.body.style.background = ''
 		unguess()
 	}
 
 	const guessUnguess2 = e => {
+		// Converting the url path to "space case"
 		const currentAwardPageName = toSpaceCaseAward(
 			document.body.baseURI.split('/')[4]
 		)
+		// Grabbing the current votes that are stored locally
 		const userGuessesLocallyStored =
 			JSON.parse(window.localStorage.getItem('userGuesses')) || []
-		console.log(userGuessesLocallyStored)
-		// console.dir(e.target)
+		// Creating an object to store the current guess' details
 		const currentGuess = {
 			guessingFor: currentAwardPageName,
 			chosenNomineeName: e.target.dataset.nomineeName,
 			chosenNomineeArtists: e.target.dataset.artistsList,
 			chosenNomineeImg: e.target.dataset.nomineeImg,
 		}
-		console.log(currentGuess)
+		// Destruturing currentGuess to access chosenNomineeImg on its own
 		const { chosenNomineeImg } = currentGuess
-		// console.log(chosenNomineeImg)
+		// Assinging the user guesses to a new variable just to keep the function semantically correct
 		let newUserGuesses = userGuessesLocallyStored
-		// console.log(newUserGuesses)
+
 		// CASE: USER HAS ALREADY VOTED AT ALL - checking if there are any guesses already on the local storage
 		if (userGuessesLocallyStored) {
 			// getting a potentially already-existing guess for the SAME AWARD
@@ -117,7 +130,7 @@ function App() {
 				guess => guess.guessingFor === currentAwardPageName
 			)
 
-			// CASE: USER IS UNGUESSING OR CHANGING GUESSES - checking if there is a valid value inside the variable 'repeatedGuess'
+			// CASE: USER IS UNGUESSING OR CHANGING GUESSES - checking if there is a valid value inside the variable 'prevGuessForCurrentPage'
 			if (prevGuessForCurrentPage) {
 				// creating an arr without the already-existing repeated guess
 				const allGuessesWithoutPrevGuessForCurrentPage =
@@ -139,8 +152,6 @@ function App() {
 						JSON.stringify(newUserGuesses)
 					)
 					renderGuessConfirmationToUser()
-					// unguess()
-					// document.body.style.background = ''
 
 					// getting out of the function so that the rest of it doesn't run
 					return
@@ -151,18 +162,13 @@ function App() {
 
 		// including the current guess in our main userGuessesArr
 		newUserGuesses.push(currentGuess)
-		console.log(newUserGuesses)
 
 		// doing everything we need to do after the user guesses
 		window.localStorage.setItem('userGuesses', JSON.stringify(newUserGuesses))
 		renderGuessConfirmationToUser()
-		// document.body.style.background = `no-repeat top/cover url(${chosenNomineeImg})`
-		// guess()
-		// hasGuessed ? unguess() : guess()
 	}
-	const guess = () => setHasGuessed(true)
-	const unguess = () => setHasGuessed(false)
 
+	// RENDERING THE APP
 	return (
 		<>
 			<Header
@@ -180,22 +186,30 @@ function App() {
 				}
 			>
 				<Routes>
-					<Route path='/' element={<Home />} />
-					<Route path='/about' element={<AboutPage />} />
+					<Route
+						path='/'
+						element={
+							<Home
+								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
+							/>
+						}
+					/>
+					<Route
+						path='/about'
+						element={
+							<AboutPage
+								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
+							/>
+						}
+					/>
 					<Route
 						path='/:categoryNameUrl/:awardNameUrl'
 						element={
 							<AwardsPage
 								userToken={userToken}
 								authCreds={authCreds}
-								userGuesses={userGuesses}
-								guessesCount={guessesCount}
-								setGuessesCount={setGuessesCount}
-								setCurrentPage={setCurrentPage}
-								currentPage={currentPage}
 								hasGuessed={hasGuessed}
 								guessUnguess2={guessUnguess2}
-								updateCurrentPageState={updateCurrentPageState}
 								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
 							/>
 						}
@@ -207,6 +221,7 @@ function App() {
 								userGuesses={userGuesses}
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}
+								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
 							/>
 						}
 					/>

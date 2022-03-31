@@ -7,9 +7,7 @@ const NomineeList = ({
 	categoryName,
 	awardName,
 	userToken,
-	authCreds /* , userGuesses */,
-	guessesCount,
-	guessUnguess,
+	authCreds,
 	guessUnguess2
 }) => {
 	// App credentials to be used in case user doesn't want to log in
@@ -57,9 +55,6 @@ const NomineeList = ({
 				isLoggedIn={isLoggedIn}
 				token={token}
 				authCreds={authCreds}
-				// userGuesses={userGuesses}
-				guessesCount={guessesCount}
-				guessUnguess={guessUnguess}
 				guessUnguess2={guessUnguess2}
 			/>
 		)

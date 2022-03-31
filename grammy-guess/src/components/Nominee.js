@@ -1,15 +1,13 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
-import NomineeCardActions from './NomineeCardActions'
+import PlayOrLogin from './PlayOrLogin'
 
 const Nominee = ({
 	eachAward,
 	eachNominee,
 	isLoggedIn,
 	token,
-	authCreds /* , userGuesses */,
-	guessesCount,
-	guessUnguess,
+	authCreds,
 	guessUnguess2,
 }) => {
 	const { awardTarget, awardName } = eachAward
@@ -23,7 +21,7 @@ const Nominee = ({
 	const [nomineeBigImgFromSpotify, setNomineeBigImgFromSpotify] = useState('')
 	const [previewUrlFromSpotify, setPreviewUrlFromSpotify] = useState('')
 	const [hasPreview, setHasPreview] = useState(false)
-	const [fullUrlFromSpotify, setFullUrlFromSpotify] = useState('') // API doesn't provide full URL!!!
+	const [fullUriFromSpotify, setFullUriFromSpotify] = useState('') // API doesn't provide full URL!!!
 
 	const fetchNominee = async () => {
 		const { data } = await axios.get(
@@ -35,8 +33,8 @@ const Nominee = ({
 				},
 			}
 		) /* .catch() */ //load placeholder img, name and artist name, all without nominee card
-
-		const { name, artists, album, images, href, preview_url } = data
+		// console.dir(data)
+		const { name, artists, album, images, uri, preview_url } = data
 
 		const allArtistsNamesArr = []
 		artists.forEach(artist => allArtistsNamesArr.push(artist.name))
@@ -45,7 +43,7 @@ const Nominee = ({
 		setNomineeNameFromSpotify(name)
 		setArtistNameFromSpotify(artists[0].name)
 		setAllArtistsFromSpotify(allAristsNamesStr)
-		setFullUrlFromSpotify(href)
+		setFullUriFromSpotify(uri)
 		setPreviewUrlFromSpotify(preview_url)
 
 		switch (awardTarget) {
@@ -73,14 +71,10 @@ const Nominee = ({
 		fetchNominee()
 	}, [])
 
-	/* useEffect(() => {
-		console.log(`${nomineeNameFromSpotify} has preview: ${hasPreview}`, preview_url)
-	}, [nomineeNameFromSpotify]) */
-
 	// This block will need to change now that we know there's no full track URL provided
 	let audioFile
 	isLoggedIn
-		? (audioFile = fullUrlFromSpotify)
+		? (audioFile = fullUriFromSpotify)
 		: (audioFile = previewUrlFromSpotify)
 	let isTherePreview
 	previewUrlFromSpotify ? (isTherePreview = true) : (isTherePreview = false)
@@ -128,7 +122,7 @@ const Nominee = ({
 					data-nominee-name={nomineeNameFromSpotify}
 					data-artists-list={allArtistsFromSpotify}
 					data-nominee-img={nomineeBigImgFromSpotify}
-					onClick={guessUnguess2} // This function is declared on the AwardsPage component
+					onClick={guessUnguess2} // This function is declared on the App component
 				>
 					This is the winner!
 				</button>
@@ -165,20 +159,15 @@ const Nominee = ({
 				<div className='nomineeCardBottom'>
 					<span className='nomineeName'>{nomineeNameFromSpotify}</span>
 					<span className='artistName'>{artistNameFromSpotify}</span>
-					{<NomineeCardActions
+					{<PlayOrLogin
 						isLoggedIn={isLoggedIn}
 						isTherePreview={isTherePreview}
 						authCreds={authCreds}
-						awardName={awardName}
+						token={token}
 						spotifyId={spotifyId}
-						nomineeNameFromSpotify={nomineeNameFromSpotify}
-						allArtistsFromSpotify={allArtistsFromSpotify}
-						nomineeBigImgFromSpotify={nomineeBigImgFromSpotify}
-						guessesCount={guessesCount}
-						guessUnguess={guessUnguess}
 						playPauseTrack={playPauseTrack}
 						playPauseIcon={playPauseIcon}
-						audioFile={audioFile}
+						playableUri={fullUriFromSpotify ? [fullUriFromSpotify] : []}
 					/>}
 				</div>
 			</div>
