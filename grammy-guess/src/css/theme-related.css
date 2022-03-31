@@ -1,0 +1,17 @@
+/* Awards Page Header */
+.awardsPageElement-themeHasGuessed-true {
+	color: #fff
+}
+.awardsPageElement-themeHasGuessed-false {
+	color: #000
+}
+
+/* Nominees > Vote Button */
+/* .voteBtn-themeHasGuessed-true {
+	color: #fff;
+	background-color: #000;
+}
+.voteBtn-themeHasGuessed-false {
+	color: #000;
+	background-color: #fff;
+} */

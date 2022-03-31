@@ -10,11 +10,16 @@ const AwardsPage = ({
 	setGuessesCount,
 	setCurrentPage,
 	currentPage,
+	updateCurrentPageState,
 	hasGuessed,
-	guessUnguess2
+	guessUnguess2,
+	renderGuessConfirmationToUser,
 }) => {
+	renderGuessConfirmationToUser()
 	// Grab the award name and the category name from the url to determine which nominees to show
 	const { categoryNameUrl, awardNameUrl } = useParams()
+	// const runRenderGuessConfirmationToUser = () => renderGuessConfirmationToUser()
+	// updateCurrentPageState()
 	// Function to convert the category name from the url to the format that can match the AllAwards obj
 	const toSpaceCaseCat = categoryNameUrl => {
 		return categoryNameUrl

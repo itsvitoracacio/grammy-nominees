@@ -44,7 +44,7 @@ function App() {
 		window.localStorage.removeItem('token')
 	}
 
-	const pageUrl = document.URL.split('/')[3]
+	const pageUrl = document.URL.split('/')[4] || document.URL.split('/')[3]
 
 	const [hasGuessed, setHasGuessed] = useState(false)
 	// let userGuesses = [] // This arr will store user guesses before they're saved to localStorage
@@ -52,8 +52,113 @@ function App() {
 	const [guessesCount, setGuessesCount] = useState(0)
 	const [currentPage, setCurrentPage] = useState('')
 
-	const guessUnguess2 = () => {
-		hasGuessed ? unguess() : guess()
+	// Function to convert the award name from the url to the format that can match the AllAwards obj
+	const toSpaceCaseAward = awardNameUrl => {
+		return awardNameUrl
+			.replaceAll('-', ' ')
+			.replaceAll('Dance Eletronic', 'Dance/Eletronic')
+			.replaceAll('Duo Group', 'Duo/Group')
+			.replaceAll('Performance Song', 'Performance/Song')
+			.replaceAll('Music Small', 'Music/Small')
+	}
+
+	useEffect(() => {
+		renderGuessConfirmationToUser()
+	}, [currentPage])
+
+	const updateCurrentPageState = () => setCurrentPage(pageUrl)
+
+	const renderGuessConfirmationToUser = () => {
+		const currentAwardPageName = toSpaceCaseAward(
+			document.body.baseURI.split('/')[4]
+		)
+		const userGuessesLocallyStored =
+			JSON.parse(window.localStorage.getItem('userGuesses')) || []
+		if (userGuessesLocallyStored) {
+			console.log(userGuessesLocallyStored)
+			const prevGuessForCurrentPage = userGuessesLocallyStored.find(
+				guess => guess.guessingFor === currentAwardPageName
+			)
+			if (prevGuessForCurrentPage) {
+				const { chosenNomineeImg } = prevGuessForCurrentPage
+				document.body.style.background = `no-repeat top/cover url(${chosenNomineeImg})`
+				guess()
+				return
+			}
+		}
+		// setting the bg to white in case there's no vote for this page's award or if it's not an award page
+		document.body.style.background = ''
+		unguess()
+	}
+
+	const guessUnguess2 = e => {
+		const currentAwardPageName = toSpaceCaseAward(
+			document.body.baseURI.split('/')[4]
+		)
+		const userGuessesLocallyStored =
+			JSON.parse(window.localStorage.getItem('userGuesses')) || []
+		console.log(userGuessesLocallyStored)
+		// console.dir(e.target)
+		const currentGuess = {
+			guessingFor: currentAwardPageName,
+			chosenNomineeName: e.target.dataset.nomineeName,
+			chosenNomineeArtists: e.target.dataset.artistsList,
+			chosenNomineeImg: e.target.dataset.nomineeImg,
+		}
+		console.log(currentGuess)
+		const { chosenNomineeImg } = currentGuess
+		// console.log(chosenNomineeImg)
+		let newUserGuesses = userGuessesLocallyStored
+		// console.log(newUserGuesses)
+		// CASE: USER HAS ALREADY VOTED AT ALL - checking if there are any guesses already on the local storage
+		if (userGuessesLocallyStored) {
+			// getting a potentially already-existing guess for the SAME AWARD
+			const prevGuessForCurrentPage = userGuessesLocallyStored.find(
+				guess => guess.guessingFor === currentAwardPageName
+			)
+
+			// CASE: USER IS UNGUESSING OR CHANGING GUESSES - checking if there is a valid value inside the variable 'repeatedGuess'
+			if (prevGuessForCurrentPage) {
+				// creating an arr without the already-existing repeated guess
+				const allGuessesWithoutPrevGuessForCurrentPage =
+					userGuessesLocallyStored.filter(
+						guess => guess != prevGuessForCurrentPage
+					)
+
+				// removing from our main arr the previous guess for the same category
+				newUserGuesses = allGuessesWithoutPrevGuessForCurrentPage
+
+				// CASE: USER IS UNGUESSING - checking if the current guess is for the SAME NOMINEE as the previous guess the user has made for this award
+				if (
+					prevGuessForCurrentPage.chosenNomineeName ===
+					currentGuess.chosenNomineeName
+				) {
+					// doing everything we need to do after the user unguesses
+					window.localStorage.setItem(
+						'userGuesses',
+						JSON.stringify(newUserGuesses)
+					)
+					renderGuessConfirmationToUser()
+					// unguess()
+					// document.body.style.background = ''
+
+					// getting out of the function so that the rest of it doesn't run
+					return
+				}
+			}
+		}
+		// This portion only runs if the current guess is: 1) the first guess at all, 2) the first guess for this award or 3) a different guess for the same award
+
+		// including the current guess in our main userGuessesArr
+		newUserGuesses.push(currentGuess)
+		console.log(newUserGuesses)
+
+		// doing everything we need to do after the user guesses
+		window.localStorage.setItem('userGuesses', JSON.stringify(newUserGuesses))
+		renderGuessConfirmationToUser()
+		// document.body.style.background = `no-repeat top/cover url(${chosenNomineeImg})`
+		// guess()
+		// hasGuessed ? unguess() : guess()
 	}
 	const guess = () => setHasGuessed(true)
 	const unguess = () => setHasGuessed(false)
@@ -90,6 +195,8 @@ function App() {
 								currentPage={currentPage}
 								hasGuessed={hasGuessed}
 								guessUnguess2={guessUnguess2}
+								updateCurrentPageState={updateCurrentPageState}
+								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
 							/>
 						}
 					/>

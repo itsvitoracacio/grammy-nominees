@@ -18,13 +18,6 @@ body::-webkit-scrollbar,
 }
 
 /* Awards page header */
-.themeHasGuessed-true {
-	color: #fff
-}
-.themeHasGuessed-false {
-	color: #000
-}
-
 .apiCompliance {
 	/* Layout */
 	display: flex;
