@@ -3,14 +3,12 @@ import NomineeList from '../components/NomineeList'
 import AwardsPageHeader from '../components/theme-sensitive/AwardsPageHeader'
 
 const AwardsPage = ({
-	userToken,
-	authCreds,
 	hasGuessed,
-	guessUnguess2,
-	renderGuessConfirmationToUser,
+	guessUnguess,
+	renderGuessConfirmation,
 }) => {
 
-	renderGuessConfirmationToUser()
+	renderGuessConfirmation()
 
 	// Grab the award name and the category name from the url to determine which nominees to show
 	const { categoryNameUrl, awardNameUrl } = useParams()
@@ -44,9 +42,7 @@ const AwardsPage = ({
 			<NomineeList
 				categoryName={toSpaceCaseCat(categoryNameUrl)}
 				awardName={toSpaceCaseAward(awardNameUrl)}
-				userToken={userToken}
-				authCreds={authCreds}
-				guessUnguess2={guessUnguess2}
+				guessUnguess={guessUnguess}
 			/>
 		</>
 	)

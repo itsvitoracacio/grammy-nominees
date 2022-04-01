@@ -15,42 +15,6 @@ import Footer from './layout/Footer'
 */
 
 function App() {
-	// HANDLING SPOTIFY USER CREDENTIALS
-	const authCreds = {
-		CLIENT_ID: '9d34d6d2667e4f77b6d15e8e468091d6',
-		REDIRECT_URI: 'http://localhost:3000',
-		// REDIRECT_URI: 'https://idyllic-douhua-a03845.netlify.app/',
-		AUTH_ENDPOINT: 'https://accounts.spotify.com/authorize',
-		RESPONSE_TYPE: 'token',
-	}
-
-	const [userToken, setUserToken] = useState('')
-
-	useEffect(() => {
-		// Grabbing the user token when the user is logged into Spotify
-		const hash = window.location.hash
-		let userToken = window.localStorage.getItem('token')
-
-		if (!userToken && hash) {
-			userToken = hash
-				.substring(1)
-				.split('&')
-				.find(elem => elem.startsWith('access_token'))
-				.split('=')[1]
-
-			window.location.hash = ''
-			window.localStorage.setItem('token', userToken)
-		}
-
-		setUserToken(userToken)
-	}, [])
-
-	// Function for the user to log out of Spotify. Need to add UX confirmation of logging out
-	const logout = () => {
-		setUserToken('')
-		window.localStorage.removeItem('token')
-	}
-
 	// MAKING, STORING, AND SHOWING GUESSES
 	const guess = () => setHasGuessed(true)
 	const unguess = () => setHasGuessed(false)
@@ -58,12 +22,10 @@ function App() {
 	const updateCurrentPageState = () => setCurrentPage(pageUrl)
 
 	const [hasGuessed, setHasGuessed] = useState(false)
-	const [userGuesses, setUserGuesses] = useState([])
-	const [guessesCount, setGuessesCount] = useState(0)
 	const [currentPage, setCurrentPage] = useState('')
 
 	useEffect(() => {
-		renderGuessConfirmationToUser()
+		renderGuessConfirmation()
 	}, [currentPage])
 
 	// Function to convert the award name from the url to the format that can match the AllAwards obj
@@ -76,15 +38,13 @@ function App() {
 			.replaceAll('Music Small', 'Music/Small')
 	}
 
-	const renderGuessConfirmationToUser = () => {
-		// const currentPageUrl = document.body.baseURI.split('/')[3]
+	const renderGuessConfirmation = () => {
 		const currentAwardPageUrl = document.body.baseURI.split('/')[4]
 		if (currentAwardPageUrl) {
 			const currentAwardPageName = toSpaceCaseAward(currentAwardPageUrl)
 			const userGuessesLocallyStored =
 				JSON.parse(window.localStorage.getItem('userGuesses')) || []
 			if (userGuessesLocallyStored) {
-				// console.log(userGuessesLocallyStored)
 				const prevGuessForCurrentPage = userGuessesLocallyStored.find(
 					guess => guess.guessingFor === currentAwardPageName
 				)
@@ -97,18 +57,18 @@ function App() {
 				}
 			}
 		}
-		// console.log('Should revert bg to white')
-		// setting the bg to white in case there's no vote for this page's award or if it's not an award page
+
+		// setting the bg to white in case there's no guess for this page's award or if it's not an award page
 		document.body.style.background = ''
 		unguess()
 	}
 
-	const guessUnguess2 = e => {
+	const guessUnguess = e => {
 		// Converting the url path to "space case"
 		const currentAwardPageName = toSpaceCaseAward(
 			document.body.baseURI.split('/')[4]
 		)
-		// Grabbing the current votes that are stored locally
+		// Grabbing the current guesses that are stored locally
 		const userGuessesLocallyStored =
 			JSON.parse(window.localStorage.getItem('userGuesses')) || []
 		// Creating an object to store the current guess' details
@@ -123,7 +83,7 @@ function App() {
 		// Assinging the user guesses to a new variable just to keep the function semantically correct
 		let newUserGuesses = userGuessesLocallyStored
 
-		// CASE: USER HAS ALREADY VOTED AT ALL - checking if there are any guesses already on the local storage
+		// CASE: USER HAS ALREADY GUESSED AT ALL - checking if there are any guesses already on the local storage
 		if (userGuessesLocallyStored) {
 			// getting a potentially already-existing guess for the SAME AWARD
 			const prevGuessForCurrentPage = userGuessesLocallyStored.find(
@@ -151,7 +111,7 @@ function App() {
 						'userGuesses',
 						JSON.stringify(newUserGuesses)
 					)
-					renderGuessConfirmationToUser()
+					renderGuessConfirmation()
 
 					// getting out of the function so that the rest of it doesn't run
 					return
@@ -165,7 +125,7 @@ function App() {
 
 		// doing everything we need to do after the user guesses
 		window.localStorage.setItem('userGuesses', JSON.stringify(newUserGuesses))
-		renderGuessConfirmationToUser()
+		renderGuessConfirmation()
 	}
 
 	// RENDERING THE APP
@@ -179,7 +139,7 @@ function App() {
 				}
 				hasGuessed={hasGuessed}
 			/>
-			<Sidebar userToken={userToken} authCreds={authCreds} logout={logout} />
+			<Sidebar />
 			<main
 				className={
 					pageUrl != 'share-screen' ? 'mainRegularPages' : 'mainShareScreen'
@@ -188,29 +148,21 @@ function App() {
 				<Routes>
 					<Route
 						path='/'
-						element={
-							<Home
-								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
-							/>
-						}
+						element={<Home renderGuessConfirmation={renderGuessConfirmation} />}
 					/>
 					<Route
 						path='/about'
 						element={
-							<AboutPage
-								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
-							/>
+							<AboutPage renderGuessConfirmation={renderGuessConfirmation} />
 						}
 					/>
 					<Route
 						path='/:categoryNameUrl/:awardNameUrl'
 						element={
 							<AwardsPage
-								userToken={userToken}
-								authCreds={authCreds}
 								hasGuessed={hasGuessed}
-								guessUnguess2={guessUnguess2}
-								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
+								guessUnguess={guessUnguess}
+								renderGuessConfirmation={renderGuessConfirmation}
 							/>
 						}
 					/>
@@ -218,10 +170,9 @@ function App() {
 						path='/share-your-guesses'
 						element={
 							<ShareGuesses
-								userGuesses={userGuesses}
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}
-								renderGuessConfirmationToUser={renderGuessConfirmationToUser}
+								renderGuessConfirmation={renderGuessConfirmation}
 							/>
 						}
 					/>

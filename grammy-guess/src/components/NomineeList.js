@@ -6,11 +6,9 @@ import Nominee from './Nominee'
 const NomineeList = ({
 	categoryName,
 	awardName,
-	userToken,
-	authCreds,
-	guessUnguess2
+	guessUnguess
 }) => {
-	// App credentials to be used in case user doesn't want to log in
+	// App credentials to be used for authorization (provided by our Spotify app)
 	const CLIENT_ID = '9d34d6d2667e4f77b6d15e8e468091d6'
 	const CLIENT_SECRET = '32d7d019ad2443e390a34215dbcaed25'
 
@@ -40,11 +38,6 @@ const NomineeList = ({
 		award => award.awardName === awardName
 	)
 
-	let isLoggedIn
-	userToken ? (isLoggedIn = true) : (isLoggedIn = false)
-	let token
-	isLoggedIn ? (token = userToken) : (token = clientToken)
-
 	let nomineeListJsx = []
 	currentAward.awardNominees.forEach(currentNominee => {
 		nomineeListJsx.push(
@@ -52,10 +45,8 @@ const NomineeList = ({
 				key={currentNominee.nomineeName}
 				eachAward={currentAward}
 				eachNominee={currentNominee}
-				isLoggedIn={isLoggedIn}
-				token={token}
-				authCreds={authCreds}
-				guessUnguess2={guessUnguess2}
+				clientToken={clientToken}
+				guessUnguess={guessUnguess}
 			/>
 		)
 	})

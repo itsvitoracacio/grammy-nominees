@@ -17,14 +17,14 @@
 
 /* ABOUT PAGE ELEMENTS DESIGN */
 .textPage p {
-	font-family: HelveticaNeueRoman;
+	font-family: HelveticaNeueRoman, sans-serif;
 	font-size: 1.5rem;
 	line-height: 1.4;
 }
 
 .textPage p:first-of-type {
 	font-size: 2rem;
-	font-family: HelveticaNeueMedium;
+	font-family: HelveticaNeueMedium, sans-serif;
 }
 
 .textPage a {
@@ -66,12 +66,12 @@
 }
 
 .title{
-  font-family: HelveticaNeueMedium;
+  font-family: HelveticaNeueMedium, sans-serif;
   font-size: 2.4rem; 
 }
 
 p{
-  font-family: HelveticaNeueRoman;
+  font-family: HelveticaNeueRoman, sans-serif;
   font-size: 1.3rem; 
 }
 
@@ -91,12 +91,12 @@ p{
   }
   
   .title{
-   font-family: HelveticaNeueMedium;
+   font-family: HelveticaNeueMedium, sans-serif;
    font-size: clamp(2rem, 3.5vw, 2.5rem); 
   }
 
  p{
-   font-family: HelveticaNeueRoman;
+   font-family: HelveticaNeueRoman, sans-serif;
    font-size: clamp(0.9rem, 2.2vw, 1.8rem); 
  }
 } */

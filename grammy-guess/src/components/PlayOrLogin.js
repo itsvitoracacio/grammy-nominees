@@ -1,17 +1,13 @@
-import LogInButton from './LogInButton'
-
 const PlayOrLogin = ({
-	isLoggedIn,
 	isTherePreview,
-	authCreds,
 	spotifyId,
 	playPauseTrack,
 	playPauseIcon,
+	fullUrlFromSpotify,
 }) => {
-
-	const determineWhatToShow = () => {
-		if (!isLoggedIn && isTherePreview) return <PlayPreviewBtn />
-		if(!isLoggedIn) return <NoPreviewLoginBtn />
+	const playPreviewHereOrFullOnSpotify = () => {
+		if (isTherePreview) return <PlayPreviewBtn />
+		else return <ListenOnSpotify />
 	}
 
 	const PlayPreviewBtn = () => {
@@ -32,18 +28,19 @@ const PlayOrLogin = ({
 		)
 	}
 
-	const NoPreviewLoginBtn = () => {
+	const ListenOnSpotify = () => {
 		return (
-			<div className='spotifyLoginArea'>
-				<span className='previewNotAvailableMsg'>
-					Preview not available.
-				</span>
-				<LogInButton authCreds={authCreds} />
+			<div className='listenOnSpotifyArea'>
+				<span className='previewNotAvailableMsg'>Preview not available.</span>
+				<a href={fullUrlFromSpotify} target='_blank'>
+					<img height='28px' src='./../spotify-icon-black.png' />
+					<span>Play On Spotify</span>
+				</a>
 			</div>
 		)
 	}
 
-	return determineWhatToShow()
+	return playPreviewHereOrFullOnSpotify()
 }
 
 export default PlayOrLogin

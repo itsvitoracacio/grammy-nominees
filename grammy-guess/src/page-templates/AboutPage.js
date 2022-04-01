@@ -1,5 +1,5 @@
-const AboutPage = ({ renderGuessConfirmationToUser }) => {
-  renderGuessConfirmationToUser()
+const AboutPage = ({ renderGuessConfirmation }) => {
+  renderGuessConfirmation()
   return (
     <>
       <h1>What exactly is this website?</h1>

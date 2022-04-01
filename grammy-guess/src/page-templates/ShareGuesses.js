@@ -2,12 +2,11 @@ import UserWinner from '../components/UserWinner'
 import html2canvas from 'html2canvas'
 
 const ShareGuesses = ({
-	userGuesses,
 	currentPage,
 	setCurrentPage,
-	renderGuessConfirmationToUser,
+	renderGuessConfirmation,
 }) => {
-	renderGuessConfirmationToUser()
+	renderGuessConfirmation()
 	setCurrentPage('share-screen')
 	console.log(currentPage)
 	const guessesToShowJSON = window.localStorage.getItem('userGuesses')

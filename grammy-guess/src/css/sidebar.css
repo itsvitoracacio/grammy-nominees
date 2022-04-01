@@ -52,22 +52,29 @@
 
 .sidebarLogo {
 	width: 12rem;
-	margin-bottom: 2rem;
 }
 
-.spotifyLoginArea {
+.listenOnSpotifyArea {
 	text-align: center;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 1.25rem 0 2.5rem;
+	margin: 1rem 0 .25rem;
+}
+
+.shareGuessesSidebarArea {
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 4rem 0;
 }
 
 .loginBtn {
 	margin-bottom: 0.75rem;
 }
 
-.spotifyLoginArea .loginBtn {
+.listenOnSpotifyArea .loginBtn {
 	margin-bottom: 2rem;
 }
 
@@ -76,7 +83,25 @@
 }
 
 .shareBtn {
-	margin: 0 0 1rem;
+	font-family: HelveticaNeueBold, sans-serif;
+	font-weight: 700;
+	font-size: 0.85rem;
+	text-transform: uppercase;
+	color: #fff;
+	background-color: #000;
+	padding: 0.9rem 1.35rem 0.8rem;
+	border: 3.5px solid #000;
+	margin: 0.25rem 0;
+	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
+	transition: all 0.4s ease;
+}
+
+.shareBtn:hover {
+	text-decoration: none;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+	position: relative;
+	top: -1px;
+	transition: all 0.8s ease;
 }
 
 nav {
@@ -144,7 +169,7 @@ nav {
 	background-color: #1ed760;
 	border: 1px solid #878787;
 	border-radius: 50px;
-	font-family: HelveticaNeueBold;
+	font-family: HelveticaNeueBold, sans-serif;
 	font-weight: 700;
 	cursor: pointer;
 	font-size: 0.9rem;
@@ -163,14 +188,35 @@ nav {
 }
 
 .userName {
-	font-family: HelveticaNeueBold;
+	font-family: HelveticaNeueBold, sans-serif;
 	font-weight: 700;
 }
 
-.spotifyLoginArea span {
+.listenOnSpotifyArea > span {
 	line-height: 1.4;
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 	/* color: #878787; */
+}
+
+.listenOnSpotifyArea a {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-top: .15rem;
+}
+
+.listenOnSpotifyArea a:hover {
+	text-decoration: none;
+}
+
+.listenOnSpotifyArea a span {
+	font-family: GothamBold, sans-serif;
+	/* font-weight: 600; */
+	font-size: .85rem;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	position:relative;
+	top: .05rem;
 }
 
 .logoutBtn {
@@ -190,7 +236,7 @@ nav {
 }
 
 .awardsList label {
-	font-family: HelveticaNeueBold;
+	font-family: HelveticaNeueBold, sans-serif;
 	font-weight: 700;
 	font-size: 1.5rem;
 }

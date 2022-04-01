@@ -5,10 +5,8 @@ import PlayOrLogin from './PlayOrLogin'
 const Nominee = ({
 	eachAward,
 	eachNominee,
-	isLoggedIn,
-	token,
-	authCreds,
-	guessUnguess2,
+	clientToken,
+	guessUnguess,
 }) => {
 	const { awardTarget, awardName } = eachAward
 	const { nomineeName, nomineeArtistName, spotifyId } = eachNominee
@@ -20,21 +18,19 @@ const Nominee = ({
 	const [nomineeThumbFromSpotify, setNomineeThumbFromSpotify] = useState('')
 	const [nomineeBigImgFromSpotify, setNomineeBigImgFromSpotify] = useState('')
 	const [previewUrlFromSpotify, setPreviewUrlFromSpotify] = useState('')
-	const [hasPreview, setHasPreview] = useState(false)
-	const [fullUriFromSpotify, setFullUriFromSpotify] = useState('') // API doesn't provide full URL!!!
+	const [fullUrlFromSpotify, setFullUrlFromSpotify] = useState('')
 
 	const fetchNominee = async () => {
 		const { data } = await axios.get(
 			`https://api.spotify.com/v1/${awardTarget}/${spotifyId}`,
 			{
 				headers: {
-					Authorization: `Bearer ${token}`,
+					Authorization: `Bearer ${clientToken}`,
 					'Content-Type': 'audio/mpeg',
 				},
 			}
 		) /* .catch() */ //load placeholder img, name and artist name, all without nominee card
-		// console.dir(data)
-		const { name, artists, album, images, uri, preview_url } = data
+		const { name, artists, album, images, external_urls, preview_url } = data
 
 		const allArtistsNamesArr = []
 		artists.forEach(artist => allArtistsNamesArr.push(artist.name))
@@ -43,7 +39,7 @@ const Nominee = ({
 		setNomineeNameFromSpotify(name)
 		setArtistNameFromSpotify(artists[0].name)
 		setAllArtistsFromSpotify(allAristsNamesStr)
-		setFullUriFromSpotify(uri)
+		setFullUrlFromSpotify(external_urls.spotify)
 		setPreviewUrlFromSpotify(preview_url)
 
 		switch (awardTarget) {
@@ -71,19 +67,17 @@ const Nominee = ({
 		fetchNominee()
 	}, [])
 
-	// This block will need to change now that we know there's no full track URL provided
-	let audioFile
-	isLoggedIn
-		? (audioFile = fullUriFromSpotify)
-		: (audioFile = previewUrlFromSpotify)
+	// Storing the preview audio file in a variable to be loaded
+	const audioFile = previewUrlFromSpotify
+	// Determining if there's a preview audio file available for the work
 	let isTherePreview
 	previewUrlFromSpotify ? (isTherePreview = true) : (isTherePreview = false)
 
 	// Loading the track to the page with the Web Audio API
 	const [trackIsLoaded, setTrackIsLoaded] = useState(false)
 	let actx
-	const nomineeTrack = document.querySelector(`#track-${spotifyId}`)
 	let track
+	const nomineeTrack = document.querySelector(`#track-${spotifyId}`)
 	const loadTrack = () => {
 		if (trackIsLoaded == false) {
 			actx = new AudioContext()
@@ -112,17 +106,17 @@ const Nominee = ({
 		}
 	}
 
-	const VoteBtn = () => {
+	const GuessBtn = () => {
 		return (
 			<>
 				<button
-					className='voteBtn'
-					id={`voteBtn-${spotifyId}`}
+					className='guessBtn'
+					id={`guessBtn-${spotifyId}`}
 					value={spotifyId}
 					data-nominee-name={nomineeNameFromSpotify}
 					data-artists-list={allArtistsFromSpotify}
 					data-nominee-img={nomineeBigImgFromSpotify}
-					onClick={guessUnguess2} // This function is declared on the App component
+					onClick={guessUnguess} // This function is declared on the App component
 				>
 					This is the winner!
 				</button>
@@ -133,7 +127,7 @@ const Nominee = ({
 	const renderNominee = () => {
 		return (
 			<div className='nominee'>
-				<VoteBtn />
+				<GuessBtn />
 				<div
 					className='nomineeImgArea'
 					width='188px' // Find a way to make this be a square even when the image doesn't load
@@ -141,7 +135,7 @@ const Nominee = ({
 					onMouseEnter={loadTrack}
 					onMouseLeave={markTrackAsLoaded}
 				>
-					<label htmlFor={`voteBtn-${spotifyId}`}>
+					<label htmlFor={`guessBtn-${spotifyId}`}>
 						<img
 							width='200px'
 							className='nomineeImg'
@@ -159,16 +153,15 @@ const Nominee = ({
 				<div className='nomineeCardBottom'>
 					<span className='nomineeName'>{nomineeNameFromSpotify}</span>
 					<span className='artistName'>{artistNameFromSpotify}</span>
-					{<PlayOrLogin
-						isLoggedIn={isLoggedIn}
-						isTherePreview={isTherePreview}
-						authCreds={authCreds}
-						token={token}
-						spotifyId={spotifyId}
-						playPauseTrack={playPauseTrack}
-						playPauseIcon={playPauseIcon}
-						playableUri={fullUriFromSpotify ? [fullUriFromSpotify] : []}
-					/>}
+					{
+						<PlayOrLogin
+							isTherePreview={isTherePreview}
+							spotifyId={spotifyId}
+							playPauseTrack={playPauseTrack}
+							playPauseIcon={playPauseIcon}
+							fullUrlFromSpotify={fullUrlFromSpotify}
+						/>
+					}
 				</div>
 			</div>
 		)

@@ -24,13 +24,13 @@
 .shareMyGuess {
 	border-top: 0.2rem solid black;
 	border-bottom: 0.2rem solid black;
-	font-family: 'HelveticaNeueBold';
+	font-family: HelveticaNeueBold, sans-serif;
 	font-size: clamp(1.156rem, 3.69vw, 1.659rem);
 	padding: 0.8rem 0;
 }
 
 .underline {
-	font-family: 'HelveticaNeueBold';
+	font-family: HelveticaNeueBold, sans-serif;
 	text-decoration: underline;
 	text-underline-offset: 14%;
 }
@@ -44,7 +44,7 @@
 }
 
 .shareCategory {
-  font-family: 'HelveticaNeueRoman';
+  font-family: HelveticaNeueRoman, sans-serif;
   font-size: clamp(0.16rem, 3.33vw, 1.4rem);
 	width: 22.5%;
 	padding-top: 1.5rem;
@@ -58,7 +58,7 @@
 }
 
 .shareWork {
-  font-family: 'HelveticaNeueBold';
+  font-family: HelveticaNeueBold, sans-serif;
   font-size: clamp(0.5rem, 7.5vw, 2.5rem);
   line-height: 1;
   letter-spacing: -1px;
@@ -68,7 +68,7 @@
 }
 
 .shareArtist {
-  font-family: 'HelveticaNeueRoman';
+  font-family: HelveticaNeueRoman, sans-serif;
   font-size: clamp(0.16rem, 3.33vw, 1.4rem);
 	width: 33.75%;
 	align-self: flex-end;
@@ -80,7 +80,7 @@
 
 .footer {
   padding: 0.8rem 0;
-	font-family: 'HelveticaNeueBold';
+	font-family: HelveticaNeueBold, sans-serif;
 	font-size: clamp(1.5rem, 2.2766vw, 1.78rem);
 }
 

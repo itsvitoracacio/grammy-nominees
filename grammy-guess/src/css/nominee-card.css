@@ -1,21 +1,21 @@
 /*
 ------ Table of contents ------
-..VOTE BUTTON
+..GUESS BUTTON
 ..IMAGE AREA
 ..CARD BOTTOM
 ....Case: Not Logged In && Preview Available
 ....Case: Not Logged In && No Preview Available
 */
 
-/* VOTE BUTTON */
-.voteBtn,
+/* GUESS BUTTON */
+.guessBtn,
 .playPauseBtn,
 .loginBtn,
 .nominee label {
   cursor: pointer;
 }
 
-.voteBtn {
+.guessBtn {
   /* Layout */
   padding: 0.25rem 0;
 	border-top: 1px solid #eaeaea;
@@ -31,7 +31,7 @@
 	background-color: transparent;
 }
 
-.voteBtn:hover {
+.guessBtn:hover {
 	text-decoration: underline;
 	text-decoration-thickness: 0.125rem;
 }
@@ -39,7 +39,7 @@
 /* IMAGE AREA */
 .nomineeImgArea {
   max-height: 225px;
-	filter: drop-shadow(0px 16px 16px rgba(0, 0, 0, 0.2));
+	filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.2));
 }
 
 
@@ -58,6 +58,7 @@
 }
 
 .nomineeName {
+	font-family: HelveticaNeueBoldItalic, sans-serif;
 	font-size: 1rem;
 	font-style: italic;
 	line-height: 1.25;
