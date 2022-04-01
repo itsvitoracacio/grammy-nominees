@@ -36,3 +36,67 @@
 	text-underline-offset: 0.2rem;
 }
 /* END OF ABOUT PAGE ELEMENTS DESIGN */
+
+
+/* CODIGO NOVO DO DUDA */
+/* HTML */
+/* <main>
+	<div class="functionalities">
+		<span class="title">discover</span>
+		<p>browse through every category, and listen to the nominees work</p>
+	</div>
+
+	<div class="functionalities">
+		<span class="title">guess</span>
+		<p>choose who are your favorites for winning each award</p>
+	</div>
+	
+	<div class="functionalities">
+		<span class="title">share</span>
+		<p>share your guesses and compare them with your friends'</p>
+	</div>
+</main> */
+/* CSS */
+/* main{
+  padding: 5% 20%;
+}
+
+.functionalities{
+  height: 8rem;
+}
+
+.title{
+  font-family: HelveticaNeueMedium;
+  font-size: 2.4rem; 
+}
+
+p{
+  font-family: HelveticaNeueRoman;
+  font-size: 1.3rem; 
+}
+
+@media (min-width: 600px)
+{
+  main{
+    width: 100%;
+    height: clamp(15vh, 30vw, 30vh);
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    padding: 0 18%;
+  }
+
+  .functionalities{
+   width: 27%;
+  }
+  
+  .title{
+   font-family: HelveticaNeueMedium;
+   font-size: clamp(2rem, 3.5vw, 2.5rem); 
+  }
+
+ p{
+   font-family: HelveticaNeueRoman;
+   font-size: clamp(0.9rem, 2.2vw, 1.8rem); 
+ }
+} */

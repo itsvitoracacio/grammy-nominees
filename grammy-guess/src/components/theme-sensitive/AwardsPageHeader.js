@@ -17,9 +17,11 @@ const AwardsPageHeader = ({ categoryName, hasGuessed }) => {
 
 		return (
 			<>
-				<h1 className={`awardsPageElement-themeHasGuessed-${hasGuessed}`}>{categoryName}</h1>
+				<h1 className={`awardsPageElement-themeHasGuessed-${hasGuessed}`}>
+					{categoryName}
+				</h1>
 				<div className='apiCompliance'>
-					<span className={`awardsPageElement-themeHasGuessed-${hasGuessed}`}>
+					<span className={`awardsPageElement-themeHasGuessed`}>
 						All nominee info
 						<br />
 						is provided by

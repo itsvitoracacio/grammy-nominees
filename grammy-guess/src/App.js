@@ -91,7 +91,7 @@ function App() {
 				if (prevGuessForCurrentPage) {
 					const { chosenNomineeImg } = prevGuessForCurrentPage
 					document.body.style.height = '100vh'
-					document.body.style.background = `no-repeat top/cover url(${chosenNomineeImg})`
+					document.body.style.background = `no-repeat center/40% url(${chosenNomineeImg})`
 					guess()
 					return
 				}

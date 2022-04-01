@@ -11,7 +11,7 @@ const AwardsPageThemes = [
     hasGuessed: true,
     bgImg: `no-repeat top/cover url('')`, //url(${nomineeChoiceImg})
     headerLogoSrc: '../64th-grammy-white.svg',
-    spotifyLogoSrc: '../spotify-logo-white.png',
+    spotifyLogoSrc: '../spotify-logo-black.png', //'../spotify-logo-white.png',
     sidebarOpenBtnColor: 'rgba(255, 255, 255, 0.75)',
     footerTextColor: 'rgba(255, 255, 255, 0.9)',
   }

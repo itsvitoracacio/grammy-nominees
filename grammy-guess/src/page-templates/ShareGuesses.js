@@ -1,7 +1,12 @@
 import UserWinner from '../components/UserWinner'
 import html2canvas from 'html2canvas'
 
-const ShareGuesses = ({ userGuesses, currentPage, setCurrentPage, renderGuessConfirmationToUser }) => {
+const ShareGuesses = ({
+	userGuesses,
+	currentPage,
+	setCurrentPage,
+	renderGuessConfirmationToUser,
+}) => {
 	renderGuessConfirmationToUser()
 	setCurrentPage('share-screen')
 	console.log(currentPage)
@@ -26,7 +31,7 @@ const ShareGuesses = ({ userGuesses, currentPage, setCurrentPage, renderGuessCon
 	return (
 		<>
 			<a className='shareSaveToDevice spotifyBtn' onClick={shareSaveToDevice}>
-				Save To Device
+				Download
 			</a>
 			{/* <button className='shareTweet'>Share on Twitter</button> */}
 			<div className='shareGuessesPageWrapper'>

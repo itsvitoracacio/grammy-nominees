@@ -1551,7 +1551,7 @@ const AllAwards = [
 				],
 			},
 			{
-				awardName: 'Best Regional Mexican Music Album (Including Tejano)',
+				awardName: 'Best Regional Mexican Music Album',
 				awardTarget: 'albums',
 				awardNominees: [
 					{
@@ -2279,8 +2279,7 @@ const AllAwards = [
 				awardNominees: [
 					{
 						nomineeName: 'Eberhard',
-						nomineeArtistName:
-							"Lyle Mays, composer (Lyle Mays)",
+						nomineeArtistName: 'Lyle Mays, composer (Lyle Mays)',
 						spotifyId: '6wmNtLV4MstxOVA06GvttX',
 					},
 					{

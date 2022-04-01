@@ -16,7 +16,7 @@ const SpotifySidebarLogin = ({ userToken, authCreds, logout }) => {
 				</div>
 			) : (
 				<div className='spotifyLoginArea'>
-					<LoggedInAs userToken={userToken} logout={logout}/>
+					<LoggedInAs userToken={userToken} logout={logout} />
 					<a className='logoutBtn' onClick={logout}>
 						Click Here to Logout
 					</a>
