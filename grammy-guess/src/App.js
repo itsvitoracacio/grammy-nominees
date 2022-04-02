@@ -8,6 +8,7 @@ import ShareGuesses from './page-templates/ShareGuesses'
 import Header from './layout/Header'
 import Sidebar from './layout/Sidebar'
 import Footer from './layout/Footer'
+import NotFound404 from './page-templates/NotFound404'
 
 /*------TABLE OF CONTENTS------
 ..HANDLING SPOTIFY USER CREDENTIALS - line 17 (need to include user confirmation for logout)
@@ -222,6 +223,12 @@ function App() {
 								renderGuessConfirmation={renderGuessConfirmation}
 								closeSidebar={closeSidebar}
 							/>
+						}
+					/>
+					<Route
+						path='*'
+						element={
+							<NotFound404 />
 						}
 					/>
 				</Routes>
