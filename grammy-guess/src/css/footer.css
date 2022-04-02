@@ -1,7 +1,7 @@
 /* FOOTER LAYOUT */
 footer {
 	/* position: fixed;  */
-	bottom: 0;
+	/* bottom: 0; */
 	/* padding: 0 12.5vw; */
 	/* margin: 0 auto; */
 	/* margin-bottom: 1.5rem; */
@@ -22,9 +22,8 @@ footer {
 	color: #878787;
 	opacity: 0.6;
 	text-align: center;
-	position: absolute;
-	/* bottom: 1rem; */
-
+	position: fixed;
+	bottom: 0;
 }
 
 footer p {
@@ -33,6 +32,7 @@ footer p {
 }
 
 footer a {
-  color: #878787
+  color: #878787;
+	display: block;
 }
 /* END OF FOOTER ELEMENTS DESIGN */

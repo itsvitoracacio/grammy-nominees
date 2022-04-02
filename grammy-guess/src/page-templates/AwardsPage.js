@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import NomineeList from '../components/NomineeList'
 import AwardsPageHeader from '../components/theme-sensitive/AwardsPageHeader'
@@ -6,10 +7,13 @@ const AwardsPage = ({
 	hasGuessed,
 	guessUnguess,
 	renderGuessConfirmation,
+	closeSidebar,
 }) => {
-
-	renderGuessConfirmation()
-
+	// renderGuessConfirmation()
+	useEffect(() => {
+    closeSidebar()
+    renderGuessConfirmation()
+  }, [])
 	// Grab the award name and the category name from the url to determine which nominees to show
 	const { categoryNameUrl, awardNameUrl } = useParams()
 
@@ -43,7 +47,9 @@ const AwardsPage = ({
 				categoryName={toSpaceCaseCat(categoryNameUrl)}
 				awardName={toSpaceCaseAward(awardNameUrl)}
 				guessUnguess={guessUnguess}
+				closeSidebar={closeSidebar}
 			/>
+			<span>hey</span>
 		</>
 	)
 }

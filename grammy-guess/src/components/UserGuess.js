@@ -1,4 +1,4 @@
-const UserWinner = ({ guess }) => {
+const UserGuess = ({ guess }) => {
 	let artistToShare = ''
 	/* if (artists.length === 1) {
     artistToShare = artists[0].name
@@ -16,13 +16,13 @@ const UserWinner = ({ guess }) => {
 				<span>{guess.guessingFor}</span>
 			</div>
 			<div className='shareWork'>
-				<span>{guess.nomineeChoiceName}</span>
+				<span>{guess.chosenNomineeName}</span>
 			</div>
 			<div className='shareArtist'>
-				<span>{guess.nomineeChoiceArtists}</span>
+				<span>{guess.chosenNomineeArtists}</span>
 			</div>
 		</div>
 	)
 }
 
-export default UserWinner
+export default UserGuess

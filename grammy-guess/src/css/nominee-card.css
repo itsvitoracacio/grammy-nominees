@@ -10,7 +10,6 @@
 /* GUESS BUTTON */
 .guessBtn,
 .playPauseBtn,
-.loginBtn,
 .nominee label {
   cursor: pointer;
 }
@@ -32,8 +31,10 @@
 }
 
 .guessBtn:hover {
-	text-decoration: underline;
-	text-decoration-thickness: 0.125rem;
+	background-color: #000;
+	color: #fff;
+	border-color: #000;
+	text-decoration: none;
 }
 
 /* IMAGE AREA */
@@ -99,6 +100,7 @@
 }
 .playPauseBtnArea label {
 	font-size: 0.75rem;
+	letter-spacing: 1px;
 }
 
 /* Case: Not Logged In && No Preview Available */

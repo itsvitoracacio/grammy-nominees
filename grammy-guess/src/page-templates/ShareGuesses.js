@@ -1,20 +1,26 @@
-import UserWinner from '../components/UserWinner'
+import { useEffect } from 'react'
+import UserGuess from '../components/UserGuess'
 import html2canvas from 'html2canvas'
 
 const ShareGuesses = ({
 	currentPage,
 	setCurrentPage,
 	renderGuessConfirmation,
+	closeSidebar
 }) => {
-	renderGuessConfirmation()
+	// renderGuessConfirmation()
+	// closeSidebar()
+	useEffect(() => {
+    closeSidebar()
+    renderGuessConfirmation()
+  }, [])
 	setCurrentPage('share-screen')
-	console.log(currentPage)
 	const guessesToShowJSON = window.localStorage.getItem('userGuesses')
 	const guessesToShow = JSON.parse(guessesToShowJSON)
 
 	let userGuessesJsx = []
 	guessesToShow.forEach(guess => {
-		userGuessesJsx.push(<UserWinner key={Math.random()} guess={guess} />)
+		userGuessesJsx.push(<UserGuess key={Math.random()} guess={guess} />)
 	})
 
 	const shareSaveToDevice = () => {
@@ -29,10 +35,13 @@ const ShareGuesses = ({
 
 	return (
 		<>
-			<a className='shareSaveToDevice spotifyBtn' onClick={shareSaveToDevice}>
-				Download
-			</a>
-			{/* <button className='shareTweet'>Share on Twitter</button> */}
+			<h1>Share Your Guesses!</h1>
+			<div className='shareGuessesBtnsArea'>
+				<a className='shareBtn shareDownload' onClick={shareSaveToDevice}>
+					Download Guesses
+				</a>
+				<a className='shareBtn shareTweet'>Tweet Your Guesses</a>
+			</div>
 			<div className='shareGuessesPageWrapper'>
 				<div className='shareMyGuess'>
 					<p>

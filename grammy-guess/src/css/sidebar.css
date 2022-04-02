@@ -59,7 +59,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	margin: 1rem 0 .25rem;
+	margin: 1rem 0 0.25rem;
 }
 
 .shareGuessesSidebarArea {
@@ -68,6 +68,10 @@
 	flex-direction: column;
 	align-items: center;
 	margin: 4rem 0;
+}
+
+.shareGuessesSidebarArea span {
+	font-size: 0.9rem;
 }
 
 .loginBtn {
@@ -89,7 +93,7 @@
 	text-transform: uppercase;
 	color: #fff;
 	background-color: #000;
-	padding: 0.9rem 1.35rem 0.8rem;
+	padding: 0.9rem 1.35rem;
 	border: 3.5px solid #000;
 	margin: 0.25rem 0;
 	box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.5);
@@ -102,6 +106,7 @@
 	position: relative;
 	top: -1px;
 	transition: all 0.8s ease;
+	cursor: pointer;
 }
 
 nav {
@@ -116,9 +121,20 @@ nav {
 
 .awardsList li {
 	margin: 0.4rem 0;
+	display: flex;
+	gap: 0.75rem;
 }
 
-.awardsList label + li {
+.awardsList li > span {
+	height: 1.35rem;
+}
+
+.awardsList li > span span {
+	position: relative;
+	top: -0.6rem;
+}
+
+.awardsList span + li {
 	margin-top: 1rem;
 }
 
@@ -202,7 +218,7 @@ nav {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
-	margin-top: .15rem;
+	margin-top: 0.15rem;
 }
 
 .listenOnSpotifyArea a:hover {
@@ -212,11 +228,11 @@ nav {
 .listenOnSpotifyArea a span {
 	font-family: GothamBold, sans-serif;
 	/* font-weight: 600; */
-	font-size: .85rem;
+	font-size: 0.85rem;
 	letter-spacing: 1px;
 	text-transform: uppercase;
-	position:relative;
-	top: .05rem;
+	position: relative;
+	top: 0.05rem;
 }
 
 .logoutBtn {
@@ -235,10 +251,15 @@ nav {
 	list-style-type: none;
 }
 
-.awardsList label {
+.awardsList span {
 	font-family: HelveticaNeueBold, sans-serif;
 	font-weight: 700;
 	font-size: 1.5rem;
+	display: inline-block;
+}
+
+.awardsList span:not(:first-of-type) {
+	margin-top: 2rem;
 }
 
 .awardsList li {

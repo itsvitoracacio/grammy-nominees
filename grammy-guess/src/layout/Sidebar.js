@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import SidebarShareBtnArea from '../components/SidebarShareBtnArea'
 import Nav from '../components/Nav'
 
-const Sidebar = () => {
+const Sidebar = ({ renderGuessConfirmation }) => {
+
+	useEffect(() => {
+    // closeSidebar()
+		renderGuessConfirmation()
+  }, [])
 
 	return (
 		<>

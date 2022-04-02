@@ -1,9 +1,12 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
+
 const PlayOrLogin = ({
 	isTherePreview,
 	spotifyId,
-	playPauseTrack,
 	playPauseIcon,
 	fullUrlFromSpotify,
+	playPauseAudio
 }) => {
 	const playPreviewHereOrFullOnSpotify = () => {
 		if (isTherePreview) return <PlayPreviewBtn />
@@ -11,13 +14,18 @@ const PlayOrLogin = ({
 	}
 
 	const PlayPreviewBtn = () => {
+		const iconToShow = () => {
+			if (playPauseIcon === 'play') <FontAwesomeIcon icon={faPlay} />
+			if (playPauseIcon === 'pause') <FontAwesomeIcon icon={faPause} />
+		}
+
 		return (
 			<div className='playPauseBtnArea'>
 				<button
-					data-playing='false'
+					data-playing={false}
 					role='switch'
 					aria-checked='false'
-					onClick={playPauseTrack}
+					onClick={playPauseAudio}
 					id={`playPauseButton-${spotifyId}`}
 					className='playPauseBtn'
 				>

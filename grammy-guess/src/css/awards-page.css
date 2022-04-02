@@ -23,7 +23,7 @@ body::-webkit-scrollbar,
 	display: flex;
 	justify-content: flex-end;
 	gap: 11px;
-	position: fixed;
+	position: absolute;
 	top: clamp(5.75rem, 18.4vw, 12.25rem);
 	right: 4.7vw;
 	/* Design */
@@ -41,29 +41,38 @@ body::-webkit-scrollbar,
 /* Awards page main section */
 .nomineeListSection {
 	/* Scroll vertically to move horizontally */
-	width: 68vh;
-	height: 100vw;
-	padding-right: 3rem;
+	/* max-width: 68vh; */
+	max-height: 100vw;
+	width: 61vh;
+	padding-top: 3rem;
+
 	overflow-y: auto;
 	overflow-x: hidden;
-	transform: rotate(-90deg) translateY(-37.17%);
-	transform-origin: right top;
+	/* border-right: 2px solid red; */
+	/* border-bottom: 2px solid blue; */
+	transform: rotate(-90deg) translateX(-72.0vh) /* translateY(-37.17%) */;
+	transform-origin: left top;
 	/* Layout */
 	display: flex;
 	flex-direction: column;
-	align-items: flex-end;
-	position: fixed;
-	top: clamp(10rem, 25vw, 14rem);
+	justify-content: flex-start;
+	align-items: center;
+	/* position: fixed; */
+	/* position: absolute; */
+	/* bottom: -14.25vh; */
+	/* right: -34vh; */
+	/* left: 0; */
+	/* top: clamp(10rem, 25vw, 14rem); */
 	/* Design */
-	background-color: transparent;
+	/* background-color: coral; */
 }
 
 .nominee {
 	/* Scroll vertically to move horizontally */
 	height: auto;
 	max-width: 200px;
-	transform: rotate(90deg) translateX(172%);
-	transform-origin: right top;
+	transform: rotate(90deg) /* translateY(25%) */ /* translateX(172%) */;
+	/* transform-origin: right top; */
 	/* Layout */
 	box-sizing: content-box;
 	padding: 1.5rem 1.5rem 0.5rem;
@@ -73,6 +82,7 @@ body::-webkit-scrollbar,
 	/* Design */
 	background-color: #fff;
 	border-radius: 5px;
+	margin: auto;
 	transition: box-shadow 0.2s ease, border 0.2s ease;
 }
 .nominee:hover {

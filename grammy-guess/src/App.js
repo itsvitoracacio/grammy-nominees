@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
 import { Routes, Route } from 'react-router-dom'
 import Home from './page-templates/Home'
 import AboutPage from './page-templates/AboutPage'
@@ -15,11 +16,15 @@ import Footer from './layout/Footer'
 */
 
 function App() {
+	const closeSidebar = () => {
+		document.body.children[1].children[1].checked = false
+	}
+
 	// MAKING, STORING, AND SHOWING GUESSES
 	const guess = () => setHasGuessed(true)
 	const unguess = () => setHasGuessed(false)
 	const pageUrl = document.URL.split('/')[4] || document.URL.split('/')[3]
-	const updateCurrentPageState = () => setCurrentPage(pageUrl)
+	// const updateCurrentPageState = () => setCurrentPage(pageUrl)
 
 	const [hasGuessed, setHasGuessed] = useState(false)
 	const [currentPage, setCurrentPage] = useState('')
@@ -41,17 +46,49 @@ function App() {
 	const renderGuessConfirmation = () => {
 		const currentAwardPageUrl = document.body.baseURI.split('/')[4]
 		if (currentAwardPageUrl) {
+			/* document.body.children[1].children[4].style.height = '100vh'
+			document.body.children[1].children[4].style.paddingTop = '10rem' */
 			const currentAwardPageName = toSpaceCaseAward(currentAwardPageUrl)
 			const userGuessesLocallyStored =
 				JSON.parse(window.localStorage.getItem('userGuesses')) || []
 			if (userGuessesLocallyStored) {
+				// Insert sidebar guess confirmation here
+
+				let categoriesGuessedUrlFromLocalStorage = []
+				userGuessesLocallyStored.forEach(guess => {
+					categoriesGuessedUrlFromLocalStorage.push(guess.guessingForUrl)
+				})
+
+				categoriesGuessedUrlFromLocalStorage.forEach(categoryUrl => {
+					const voteTick = React.createElement(
+						'span',
+						{
+							style: {
+								fontFamily: 'HelveticaNeueBold',
+								fontSize: '0.85rem',
+								lineHeight: '1',
+								backgroundColor: '#1ed761',
+								border: '0.5px solid #878787',
+								padding: '0.15rem 0.65rem 0.15rem 0.5rem',
+								borderRadius: '20px',
+							},
+						},
+						'\u2713'
+					)
+					ReactDOM.render(voteTick, document.getElementById(categoryUrl))
+				})
+
 				const prevGuessForCurrentPage = userGuessesLocallyStored.find(
 					guess => guess.guessingFor === currentAwardPageName
 				)
 				if (prevGuessForCurrentPage) {
 					const { chosenNomineeImg } = prevGuessForCurrentPage
-					document.body.style.height = '100vh'
-					document.body.style.background = `no-repeat center/40% url(${chosenNomineeImg})`
+					if (document.body.clientWidth < 768) {
+						document.body.style.background = `no-repeat center/80% url(${chosenNomineeImg})`
+					} else {
+						document.body.style.background = `no-repeat center/40% url(${chosenNomineeImg})`
+					}
+					document.body.style.backgroundColor = '#f8f1e8'
 					guess()
 					return
 				}
@@ -60,26 +97,27 @@ function App() {
 
 		// setting the bg to white in case there's no guess for this page's award or if it's not an award page
 		document.body.style.background = ''
+		document.body.style.backgroundColor = '#fff'
 		unguess()
 	}
 
 	const guessUnguess = e => {
 		// Converting the url path to "space case"
-		const currentAwardPageName = toSpaceCaseAward(
-			document.body.baseURI.split('/')[4]
-		)
+		const currentAwardPageUrl = document.body.baseURI.split('/')[4]
+		const currentAwardPageName = toSpaceCaseAward(currentAwardPageUrl)
 		// Grabbing the current guesses that are stored locally
 		const userGuessesLocallyStored =
 			JSON.parse(window.localStorage.getItem('userGuesses')) || []
 		// Creating an object to store the current guess' details
 		const currentGuess = {
 			guessingFor: currentAwardPageName,
+			guessingForUrl: currentAwardPageUrl,
 			chosenNomineeName: e.target.dataset.nomineeName,
 			chosenNomineeArtists: e.target.dataset.artistsList,
 			chosenNomineeImg: e.target.dataset.nomineeImg,
 		}
 		// Destruturing currentGuess to access chosenNomineeImg on its own
-		const { chosenNomineeImg } = currentGuess
+		// const { chosenNomineeImg } = currentGuess
 		// Assinging the user guesses to a new variable just to keep the function semantically correct
 		let newUserGuesses = userGuessesLocallyStored
 
@@ -95,7 +133,7 @@ function App() {
 				// creating an arr without the already-existing repeated guess
 				const allGuessesWithoutPrevGuessForCurrentPage =
 					userGuessesLocallyStored.filter(
-						guess => guess != prevGuessForCurrentPage
+						guess => guess !== prevGuessForCurrentPage
 					)
 
 				// removing from our main arr the previous guess for the same category
@@ -133,27 +171,35 @@ function App() {
 		<>
 			<Header
 				className={
-					currentPage != 'share-screen'
+					currentPage !== 'share-screen'
 						? 'headerRegularPages'
 						: 'headerShareScreen'
 				}
 				hasGuessed={hasGuessed}
 			/>
-			<Sidebar />
+			<Sidebar renderGuessConfirmation={renderGuessConfirmation} />
 			<main
 				className={
-					pageUrl != 'share-screen' ? 'mainRegularPages' : 'mainShareScreen'
+					pageUrl !== 'share-screen' ? 'mainRegularPages' : 'mainShareScreen'
 				}
 			>
 				<Routes>
 					<Route
 						path='/'
-						element={<Home renderGuessConfirmation={renderGuessConfirmation} />}
+						element={
+							<Home
+								renderGuessConfirmation={renderGuessConfirmation}
+								closeSidebar={closeSidebar}
+							/>
+						}
 					/>
 					<Route
 						path='/about'
 						element={
-							<AboutPage renderGuessConfirmation={renderGuessConfirmation} />
+							<AboutPage
+								renderGuessConfirmation={renderGuessConfirmation}
+								closeSidebar={closeSidebar}
+							/>
 						}
 					/>
 					<Route
@@ -163,6 +209,7 @@ function App() {
 								hasGuessed={hasGuessed}
 								guessUnguess={guessUnguess}
 								renderGuessConfirmation={renderGuessConfirmation}
+								closeSidebar={closeSidebar}
 							/>
 						}
 					/>
@@ -173,6 +220,7 @@ function App() {
 								currentPage={currentPage}
 								setCurrentPage={setCurrentPage}
 								renderGuessConfirmation={renderGuessConfirmation}
+								closeSidebar={closeSidebar}
 							/>
 						}
 					/>

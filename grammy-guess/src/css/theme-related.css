@@ -10,11 +10,11 @@
 }
 
 /* Nominees > Guess Button */
-/* .guessBtn-themeHasGuessed-true {
+.guessBtn-themeHasGuessed-true {
 	color: #fff;
 	background-color: #000;
 }
 .guessBtn-themeHasGuessed-false {
 	color: #000;
 	background-color: #fff;
-} */
+}

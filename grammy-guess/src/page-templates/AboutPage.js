@@ -1,5 +1,12 @@
-const AboutPage = ({ renderGuessConfirmation }) => {
-  renderGuessConfirmation()
+import { useEffect } from "react"
+
+const AboutPage = ({ renderGuessConfirmation, closeSidebar }) => {
+  // renderGuessConfirmation()
+  // closeSidebar()
+  useEffect(() => {
+    closeSidebar()
+    renderGuessConfirmation()
+  }, [])
   return (
     <>
       <h1>What exactly is this website?</h1>

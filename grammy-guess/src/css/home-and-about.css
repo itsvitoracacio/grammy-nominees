@@ -2,7 +2,7 @@
 .textPage {
 	/* border: 1px solid red; */
 	padding: 0 12.5vw;
-	margin-top: 9rem;
+	margin-top: 13rem;
 }
 
 .textPage p {
@@ -14,7 +14,6 @@
 }
 /* END OF HOME AND ABOUT PAGE LAYOUT */
 
-
 /* ABOUT PAGE ELEMENTS DESIGN */
 .textPage p {
 	font-family: HelveticaNeueRoman, sans-serif;
@@ -25,10 +24,11 @@
 .textPage p:first-of-type {
 	font-size: 2rem;
 	font-family: HelveticaNeueMedium, sans-serif;
+	line-height: 1.3;
 }
 
 .textPage a {
-  color: #878787;
+	color: #878787;
 }
 
 .textPage a:hover {
@@ -37,66 +37,50 @@
 }
 /* END OF ABOUT PAGE ELEMENTS DESIGN */
 
-
 /* CODIGO NOVO DO DUDA */
-/* HTML */
-/* <main>
-	<div class="functionalities">
-		<span class="title">discover</span>
-		<p>browse through every category, and listen to the nominees work</p>
-	</div>
-
-	<div class="functionalities">
-		<span class="title">guess</span>
-		<p>choose who are your favorites for winning each award</p>
-	</div>
-	
-	<div class="functionalities">
-		<span class="title">share</span>
-		<p>share your guesses and compare them with your friends'</p>
-	</div>
-</main> */
-/* CSS */
-/* main{
-  padding: 5% 20%;
+.featureList {
+	list-style-type: none;
+	margin: 0;
+	display: flex;
+	gap: 2rem;
+	flex-direction: column;
+	margin: 3.75rem 0;
 }
 
-.functionalities{
-  height: 8rem;
+.featureItem {
+	height: 8rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
-.title{
-  font-family: HelveticaNeueMedium, sans-serif;
-  font-size: 2.4rem; 
+.featureName {
+	font-family: HelveticaNeueMedium, sans-serif;
+	/* font-size: clamp(2rem, 3.5vw, 2.5rem); */
+	font-size: 2rem;
+	display: block;
 }
 
-p{
-  font-family: HelveticaNeueRoman, sans-serif;
-  font-size: 1.3rem; 
+.featureItem span:not(.featureName) {
+	font-family: HelveticaNeueRoman, sans-serif;
+	font-size: 1.25rem;
+	letter-spacing: 0.25px;
+	/* font-size: clamp(0.9rem, 2.2vw, 1.8rem); */
 }
 
-@media (min-width: 600px)
-{
-  main{
-    width: 100%;
-    height: clamp(15vh, 30vw, 30vh);
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    padding: 0 18%;
-  }
+@media screen and (min-width: 390px) {
+	.featureList {
+		gap: 1rem;
+	}
+}
 
-  .functionalities{
-   width: 27%;
-  }
-  
-  .title{
-   font-family: HelveticaNeueMedium, sans-serif;
-   font-size: clamp(2rem, 3.5vw, 2.5rem); 
-  }
+@media (min-width: 768px) {
+	.featureList {
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
- p{
-   font-family: HelveticaNeueRoman, sans-serif;
-   font-size: clamp(0.9rem, 2.2vw, 1.8rem); 
- }
-} */
+	.featureItem {
+		max-width: 15rem;
+	}
+}

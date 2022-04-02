@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import PlayOrLogin from './PlayOrLogin'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 
 const Nominee = ({
 	eachAward,
 	eachNominee,
 	clientToken,
 	guessUnguess,
+	closeSidebar,
 }) => {
-	const { awardTarget, awardName } = eachAward
+	const { awardTarget } = eachAward
 	const { nomineeName, nomineeArtistName, spotifyId } = eachNominee
 	const altText = `${nomineeArtistName}'s ${nomineeName}` // Need to write this differently for each case
 
@@ -60,11 +63,14 @@ const Nominee = ({
 			case 'producers':
 				// yet to be specified
 				break
+			default:
+				break
 		}
 	}
 
 	useEffect(() => {
 		fetchNominee()
+		closeSidebar()
 	}, [])
 
 	// Storing the preview audio file in a variable to be loaded
@@ -79,7 +85,7 @@ const Nominee = ({
 	let track
 	const nomineeTrack = document.querySelector(`#track-${spotifyId}`)
 	const loadTrack = () => {
-		if (trackIsLoaded == false) {
+		if (trackIsLoaded === false) {
 			actx = new AudioContext()
 			track = actx.createMediaElementSource(nomineeTrack)
 			track.connect(actx.destination)
@@ -92,17 +98,19 @@ const Nominee = ({
 
 	const [playPauseIcon, setPlayPauseIcon] = useState('►') // Change this for a fa-icon
 	const playPauseBtn = document.querySelector(`#playPauseButton-${spotifyId}`)
+	const [isPlaying, setIsPlaying] = useState(false)
 
-	const playPauseTrack = () => {
-		// play or pause track depending on state
-		if (playPauseBtn.dataset.playing === 'false') {
+	const playPauseAudio = () => {
+		const songIsPlaying = isPlaying
+		if (songIsPlaying === false) {
 			nomineeTrack.play()
-			playPauseBtn.dataset.playing = 'true'
-			setPlayPauseIcon('►|') // Change this to a fa-icon
-		} else {
+			setIsPlaying(true)
+			setPlayPauseIcon('❚❚')
+		}
+		if (songIsPlaying === true) {
 			nomineeTrack.pause()
-			playPauseBtn.dataset.playing = 'false'
-			setPlayPauseIcon('►') // Change this to a fa-icon
+			setIsPlaying(false)
+			setPlayPauseIcon('►')
 		}
 	}
 
@@ -157,9 +165,9 @@ const Nominee = ({
 						<PlayOrLogin
 							isTherePreview={isTherePreview}
 							spotifyId={spotifyId}
-							playPauseTrack={playPauseTrack}
 							playPauseIcon={playPauseIcon}
 							fullUrlFromSpotify={fullUrlFromSpotify}
+							playPauseAudio={playPauseAudio}
 						/>
 					}
 				</div>
