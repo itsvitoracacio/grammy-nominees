@@ -172,7 +172,7 @@ const AllAwards = [
 			},
 			{
 				awardName: 'Best New Artist',
-				awardTarget: 'artist',
+				awardTarget: 'artists',
 				awardNominees: [
 					{
 						nomineeName: 'Saweetie',

@@ -36,12 +36,13 @@ const Nominee = ({
 		const { name, artists, album, images, external_urls, preview_url } = data
 
 		const allArtistsNamesArr = []
-		artists.forEach(artist => allArtistsNamesArr.push(artist.name))
-		const allAristsNamesStr = allArtistsNamesArr.join(', ')
+		if (artists) {
+			artists.forEach(artist => allArtistsNamesArr.push(artist.name))
+			const allArtistsNamesStr = allArtistsNamesArr.join(', ')
+			setAllArtistsFromSpotify(allArtistsNamesStr)
+		}
 
 		setNomineeNameFromSpotify(name)
-		setArtistNameFromSpotify(artists[0].name)
-		setAllArtistsFromSpotify(allAristsNamesStr)
 		setFullUrlFromSpotify(external_urls.spotify)
 		setPreviewUrlFromSpotify(preview_url)
 
@@ -49,13 +50,21 @@ const Nominee = ({
 			case 'tracks':
 				setNomineeThumbFromSpotify(album.images[1].url)
 				setNomineeBigImgFromSpotify(album.images[0].url)
+				setArtistNameFromSpotify(artists[0].name)
+				console.log('These are tracks')
 				break
 			case 'albums':
 				setNomineeThumbFromSpotify(images[1].url)
 				setNomineeBigImgFromSpotify(images[0].url)
+				setArtistNameFromSpotify(artists[0].name)
+				console.log('These are albums')
 				break
 			case 'artists':
+				setNomineeThumbFromSpotify(images[1].url)
+				setNomineeBigImgFromSpotify(images[0].url)
+				console.dir(images)
 				// yet to be specified
+				console.log('These are artists')
 				break
 			case 'film/video':
 				// yet to be specified
