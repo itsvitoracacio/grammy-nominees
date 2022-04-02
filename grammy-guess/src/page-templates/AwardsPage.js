@@ -9,7 +9,7 @@ const AwardsPage = ({
 	renderGuessConfirmation,
 	closeSidebar,
 }) => {
-	// renderGuessConfirmation()
+	
 	useEffect(() => {
     closeSidebar()
     renderGuessConfirmation()
@@ -37,8 +37,10 @@ const AwardsPage = ({
 			.replaceAll('Music Small', 'Music/Small')
 	}
 
-	return (
-		<>
+	const renderAwardsPage = () => {
+		renderGuessConfirmation()
+		return (
+			<>
 			<AwardsPageHeader
 				categoryName={toSpaceCaseAward(awardNameUrl)}
 				hasGuessed={hasGuessed}
@@ -49,9 +51,11 @@ const AwardsPage = ({
 				guessUnguess={guessUnguess}
 				closeSidebar={closeSidebar}
 			/>
-			<span>hey</span>
 		</>
-	)
+		)
+	}
+
+	return renderAwardsPage()
 }
 
 export default AwardsPage
