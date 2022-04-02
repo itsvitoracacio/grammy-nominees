@@ -23,8 +23,8 @@ const ShareGuesses = ({
 		userGuessesJsx.push(<UserGuess key={Math.random()} guess={guess} />)
 	})
 
-	const shareSaveToDevice = () => {
-		const downloadBtn = document.querySelector('.shareSaveToDevice')
+	const shareDownload = () => {
+		const downloadBtn = document.querySelector('.shareDownload')
 		html2canvas(document.querySelector('.shareGuessesPageWrapper')).then(
 			canvas => {
 				downloadBtn.href = canvas.toDataURL('img/png')
@@ -37,10 +37,10 @@ const ShareGuesses = ({
 		<>
 			<h1>Share Your Guesses!</h1>
 			<div className='shareGuessesBtnsArea'>
-				<a className='shareBtn shareDownload' onClick={shareSaveToDevice}>
+				<a className='shareBtn shareDownload' onClick={shareDownload}>
 					Download Guesses
 				</a>
-				<a className='shareBtn shareTweet'>Tweet Your Guesses</a>
+				<span>And share it with your friends!</span>
 			</div>
 			<div className='shareGuessesPageWrapper'>
 				<div className='shareMyGuess'>
@@ -52,7 +52,7 @@ const ShareGuesses = ({
 				{userGuessesJsx}
 				<div className='footer'>
 					<p>
-						go to <span className='underline'>grammygame.gg</span>, discover the
+						go to <span className='underline'>grammyguess.netlify.app</span>, discover the
 						nominees and{' '}
 						<span className='underline'>share your guesses too</span>
 					</p>

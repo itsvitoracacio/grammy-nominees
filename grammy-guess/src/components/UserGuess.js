@@ -15,11 +15,11 @@ const UserGuess = ({ guess }) => {
 			<div className='shareCategory'>
 				<span>{guess.guessingFor}</span>
 			</div>
-			<div className='shareWork'>
-				<span>{guess.chosenNomineeName}</span>
-			</div>
 			<div className='shareArtist'>
 				<span>{guess.chosenNomineeArtists}</span>
+			</div>
+			<div className='shareWork'>
+				<span>{guess.chosenNomineeName}</span>
 			</div>
 		</div>
 	)

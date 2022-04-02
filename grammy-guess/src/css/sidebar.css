@@ -52,6 +52,7 @@
 
 .sidebarLogo {
 	width: 12rem;
+	position: relative;
 }
 
 .listenOnSpotifyArea {
