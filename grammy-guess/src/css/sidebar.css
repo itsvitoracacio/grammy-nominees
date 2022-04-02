@@ -45,9 +45,15 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	padding: 2.5rem 1.5rem 1rem;
+	padding: 6rem 1.5rem 1rem;
 	overflow-y: scroll;
 	overflow-x: hidden;
+}
+
+@media screen and (min-width: 768px) {
+	.sidebar {
+		padding-top: 2.5rem;
+	}
 }
 
 .sidebarLogo {
