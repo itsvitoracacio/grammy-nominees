@@ -1,0 +1,32 @@
+.instabilityPopUp {
+  font-family: HelveticaNeueMedium, sans-serif;
+  font-size: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 30%;
+  left: 30%;
+  z-index: 2;
+  margin: 0 auto;
+  background-color: #fff;
+  max-width: 500px;
+  padding: 3rem;
+  border: 2px solid #000;
+}
+.instabilityPopUp::before {
+  background-color: rgba(0,0,0,0.75);
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+.instabilityPopUp span {
+  font-family: HelveticaNeueRoman, sans-serif;
+  font-size: 0.85rem;
+  align-self: flex-end;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}
+.instabilityPopUp p:first-of-type {
+  margin-bottom: 2rem;
+}

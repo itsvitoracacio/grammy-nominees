@@ -362,7 +362,7 @@ const AllAwards = [
 			},
 		],
 	},
-	{
+	/* {
 		categoryName: 'Dance/Eletronic music',
 		categoryAwards: [
 			{
@@ -443,7 +443,7 @@ const AllAwards = [
 				],
 			},
 		],
-	},
+	}, */
 	{
 		categoryName: 'Contemporary Instrumental music',
 		categoryAwards: [
@@ -2308,7 +2308,7 @@ const AllAwards = [
 			},
 		],
 	},
-	{
+	/* {
 		categoryName: 'Arranging',
 		categoryAwards: [
 			{
@@ -2381,7 +2381,7 @@ const AllAwards = [
 				],
 			},
 		],
-	},
+	}, */
 	{
 		categoryName: 'Package, Notes & Historical Field',
 		categoryAwards: [
@@ -2538,7 +2538,7 @@ const AllAwards = [
 			},
 		],
 	},
-	{
+	/* {
 		categoryName: 'Engineered Album',
 		categoryAwards: [
 			{
@@ -2613,8 +2613,8 @@ const AllAwards = [
 				],
 			},
 		],
-	},
-	{
+	}, */
+	/* {
 		categoryName: 'Production Field',
 		categoryAwards: [
 			{
@@ -2726,8 +2726,8 @@ const AllAwards = [
 				],
 			},
 		],
-	},
-	{
+	}, */
+	/* {
 		categoryName: 'Remixer',
 		categoryAwards: [
 			{
@@ -2773,7 +2773,7 @@ const AllAwards = [
 				],
 			},
 		],
-	},
+	}, */
 	{
 		categoryName: 'Classical',
 		categoryAwards: [

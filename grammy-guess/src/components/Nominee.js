@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import PlayOrLogin from './PlayOrLogin'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons'
 
 const Nominee = ({
 	eachAward,
@@ -33,48 +31,57 @@ const Nominee = ({
 				},
 			}
 		) /* .catch() */ //load placeholder img, name and artist name, all without nominee card
-		const { name, artists, album, images, external_urls, preview_url } = data
 
-		const allArtistsNamesArr = []
-		if (artists) {
-			artists.forEach(artist => allArtistsNamesArr.push(artist.name))
-			const allArtistsNamesStr = allArtistsNamesArr.join(', ')
-			setAllArtistsFromSpotify(allArtistsNamesStr)
+		if (data) {
+			const { name, artists, album, images, external_urls, preview_url } = data
+	
+			const allArtistsNamesArr = []
+			if (artists) {
+				artists.forEach(artist => allArtistsNamesArr.push(artist.name))
+				const allArtistsNamesStr = allArtistsNamesArr.join(', ')
+				setAllArtistsFromSpotify(allArtistsNamesStr)
+			}
+	
+			setNomineeNameFromSpotify(name)
+			setFullUrlFromSpotify(external_urls.spotify)
+			setPreviewUrlFromSpotify(preview_url)
+	
+			switch (awardTarget) {
+				case 'tracks':
+					setNomineeThumbFromSpotify(album.images[1].url)
+					setNomineeBigImgFromSpotify(album.images[0].url)
+					setArtistNameFromSpotify(artists[0].name)
+					break
+				case 'albums':
+					setNomineeThumbFromSpotify(images[1].url)
+					setNomineeBigImgFromSpotify(images[0].url)
+					setArtistNameFromSpotify(artists[0].name)
+					break
+				case 'artists':
+					setNomineeThumbFromSpotify(images[1].url)
+					setNomineeBigImgFromSpotify(images[0].url)
+					// yet to be specified
+					break
+				case 'film/video':
+					// yet to be specified
+					break
+				case 'producers':
+					// yet to be specified
+					break
+				default:
+					break
+			}
+
+		}
+		else {
+			setNomineeNameFromSpotify(nomineeName)
+			setArtistNameFromSpotify(nomineeArtistName)
+			setNomineeThumbFromSpotify('../rick.jpg')
+			setNomineeBigImgFromSpotify('')
+			setFullUrlFromSpotify('#')
+			setPreviewUrlFromSpotify('#')
 		}
 
-		setNomineeNameFromSpotify(name)
-		setFullUrlFromSpotify(external_urls.spotify)
-		setPreviewUrlFromSpotify(preview_url)
-
-		switch (awardTarget) {
-			case 'tracks':
-				setNomineeThumbFromSpotify(album.images[1].url)
-				setNomineeBigImgFromSpotify(album.images[0].url)
-				setArtistNameFromSpotify(artists[0].name)
-				console.log('These are tracks')
-				break
-			case 'albums':
-				setNomineeThumbFromSpotify(images[1].url)
-				setNomineeBigImgFromSpotify(images[0].url)
-				setArtistNameFromSpotify(artists[0].name)
-				console.log('These are albums')
-				break
-			case 'artists':
-				setNomineeThumbFromSpotify(images[1].url)
-				setNomineeBigImgFromSpotify(images[0].url)
-				console.dir(images)
-				// yet to be specified
-				console.log('These are artists')
-				break
-			case 'film/video':
-				// yet to be specified
-				break
-			case 'producers':
-				// yet to be specified
-				break
-			default:
-				break
-		}
 	}
 
 	useEffect(() => {
