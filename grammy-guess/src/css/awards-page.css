@@ -41,38 +41,27 @@ body::-webkit-scrollbar,
 /* Awards page main section */
 .nomineeListSection {
 	/* Scroll vertically to move horizontally */
-	/* max-width: 68vh; */
-	max-height: 100vw;
-	width: 61vh;
+	max-height: 100vh;
+	/* width: 61vh;
 	padding-top: 3rem;
-
 	overflow-y: auto;
 	overflow-x: hidden;
-	/* border-right: 2px solid red; */
-	/* border-bottom: 2px solid blue; */
-	transform: rotate(-90deg) translateX(-72.0vh) /* translateY(-37.17%) */;
-	transform-origin: left top;
+	transform: rotate(-90deg) translateX(-72.0vh);
+	transform-origin: left top; */
 	/* Layout */
 	display: flex;
-	flex-direction: column;
+	gap: 3rem;
+	/* flex-direction: column; */
+	padding-left: 5rem;
 	justify-content: flex-start;
 	align-items: center;
-	/* position: fixed; */
-	/* position: absolute; */
-	/* bottom: -14.25vh; */
-	/* right: -34vh; */
-	/* left: 0; */
-	/* top: clamp(10rem, 25vw, 14rem); */
-	/* Design */
-	/* background-color: coral; */
 }
 
 .nominee {
 	/* Scroll vertically to move horizontally */
-	height: auto;
+	/* height: auto;
 	max-width: 200px;
-	transform: rotate(90deg) /* translateY(25%) */ /* translateX(172%) */;
-	/* transform-origin: right top; */
+	transform: rotate(90deg); */
 	/* Layout */
 	box-sizing: content-box;
 	padding: 1.5rem 1.5rem 0.5rem;
@@ -93,11 +82,23 @@ body::-webkit-scrollbar,
 /* Media queries */
 @media all and (min-width: 768px) {
 	.nomineeListSection {
-		/* transform: rotate(-90deg) translateY(-315px); */
+		/* Scroll vertically to move horizontally */
+		max-height: 100vw;
+		width: 61vh;
+		padding-top: 3rem;
+		overflow-y: auto;
+		overflow-x: hidden;
+		transform: rotate(-90deg) translateX(-72.0vh);
+		transform-origin: left top;
+		flex-direction: column;
+		padding-left: 0;
 	}
 
-	.playAndGuessButtonArea {
-		/* display: none; */
+	.nominee {
+		/* Scroll vertically to move horizontally */
+		height: auto;
+		max-width: 200px;
+		transform: rotate(90deg);
 	}
 
 	.nomineeImgArea {

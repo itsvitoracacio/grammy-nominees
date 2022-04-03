@@ -17,9 +17,11 @@ const Sidebar = ({ renderGuessConfirmation }) => {
 				view awards list
 			</label>
 			<div className='sidebar'>
-				<Link to='/'>
-					<img className='sidebarLogo' src='../sidebar-logo.svg' />
-				</Link>
+				<div className='sidebarLogoArea'>
+					<Link to='/'>
+						<img className='sidebarLogo' src='../sidebar-logo.svg' />
+					</Link>
+				</div>
 				<SidebarShareBtnArea />
 				<Nav />
 			</div>
