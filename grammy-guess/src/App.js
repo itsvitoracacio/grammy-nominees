@@ -47,9 +47,9 @@ function App() {
 	const renderGuessConfirmation = () => {
 		const currentAwardPageUrl = document.body.baseURI.split('/')[4]
 		if (currentAwardPageUrl) {
-			if (document.body.clientWidth < 768) {
+			/* if (document.body.clientWidth < 768) {
 				document.body.children[1].children[0].style.position = 'fixed'
-			}
+			} */
 			/* document.body.children[1].children[4].style.height = '100vh'
 			document.body.children[1].children[4].style.paddingTop = '10rem' */
 			const currentAwardPageName = toSpaceCaseAward(currentAwardPageUrl)
@@ -98,9 +98,9 @@ function App() {
 					return
 				}
 			}
-		} else {
+		} /* else {
 			document.body.children[1].children[0].style.position = 'absolute'
-		}
+		} */
 
 		// setting the bg to white in case there's no guess for this page's award or if it's not an award page
 		document.body.style.background = ''

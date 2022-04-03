@@ -9,7 +9,7 @@ const AwardsPageHeader = ({ categoryName, hasGuessed }) => {
 
 	const renderAwardsPageHeader = () => {
 		
-		let h1ClassName
+		/* let h1ClassName
 		if (document.body.clientWidth < 768) {
 			h1ClassName = 'awardsPageElement-themeHasGuessed'
 			document.body.children[1].children[4].children[0].style.position = 'fixed'
@@ -18,7 +18,7 @@ const AwardsPageHeader = ({ categoryName, hasGuessed }) => {
 			h1ClassName = `awardsPageElement-themeHasGuessed-${hasGuessed}`
 			document.body.children[1].children[4].children[0].style.position = 'absolute'
 			document.body.children[1].children[4].children[1].style.position = 'absolute'
-		}
+		} */
 
 		// Selecting the theme that matches the hasGuessed state each time this component gets rendered
 		const selectedTheme = AwardsPageThemes.find(
