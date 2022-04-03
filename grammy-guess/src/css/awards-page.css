@@ -9,12 +9,12 @@
 /* Window while on Awards page */
 body,
 .nomineeListSection {
-	/* overflow: -moz-scrollbars-none;
-	-ms-overflow-style: none; */
+	overflow: -moz-scrollbars-none;
+	-ms-overflow-style: none;
 }
 body::-webkit-scrollbar,
 .nomineeListSection::-webkit-scrollbar {
-	/* width: 0; */
+	width: 0;
 }
 
 /* Awards page header */
